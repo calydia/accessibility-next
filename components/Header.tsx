@@ -30,12 +30,10 @@ const Header = () => {
 
   return (
       <div className="text-center pt-2 pb-8 lg:py-4 clear-both lg:clear:none">
-        <Link href="/" passHref
-          className="home-main inline-block p-4-px lg:p-6-px border-y-4 border-transparent hover:decoration-2 hover:underline-offset-4 hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light focus:outline focus:outline-2 lg:focus:outline-offset-4	focus:outline-black dark:focus:outline-white"
-        >
-          <span className="block text-3xl font-title text-black dark:text-white dark:text-shadow-text">Sanna Mäkinen</span>
-          <span className="block text-lg mt-2 font-title leading-none text-black dark:text-white dark:text-shadow-text">Blog</span>
-        </Link>
+        <div>
+          <span className="block text-3xl font-title text-black dark:text-white dark:text-shadow-text">Sanna Mäkinen - I would if I could</span>
+          <span className="block text-lg mt-2 font-title leading-none text-black dark:text-white dark:text-shadow-text">a guide to web accessibility</span>
+        </div>
         <nav aria-label="Main">
           <ul className="flex flex-wrap justify-center lg:mt-4 p-0 mb-0">
 
