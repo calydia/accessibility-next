@@ -7,24 +7,16 @@ const Header = () => {
 
   const menuLinks = [
     {
-      url: '/cats',
-      text: 'Cats'
+      url: '/',
+      text: 'Menu 1'
     },
     {
-      url: '/life',
-      text: 'Life'
+      url: '/',
+      text: 'Menu 2'
     },
     {
-      url: '/games',
-      text: 'Games'
-    },
-    {
-      url: '/tech',
-      text: 'Tech'
-    },
-    {
-      url: '/accessibility',
-      text: 'Accessibility'
+      url: '/',
+      text: 'Menu 3'
     },
   ];
 
