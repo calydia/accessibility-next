@@ -29,8 +29,8 @@ module.exports = {
         'dk-code-border': '#18399a'
       },
       fontFamily: {
-        'title': 'Rock Salt, cursive',
-        'sans': 'Average Sans, Arial, sans-serif',
+        'title': ['var(--font-rock-salt)', 'cursive'],
+        'sans': ['var(--font-average-sans)', 'Arial', 'sans-serif'],
       },
       outlineOffset: {
         15: '15px',
@@ -40,6 +40,11 @@ module.exports = {
         '6-px': '24px',
         '8-px': '32px',
         '12-px': '48px'
+      },
+      height: {
+        '125-px': '125px',
+        '250-px': '250px',
+        '350-px': '350px'
       }
     },
   },
