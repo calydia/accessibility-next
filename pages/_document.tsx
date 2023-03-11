@@ -6,7 +6,6 @@ export default function Document() {
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.bunny.net/css?family=average-sans:400|rock-salt:400" rel="stylesheet" />
         <meta name='theme-color' content='#18399A' />
         <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
         <link rel='icon' sizes='192x192' href='/favicons/android-chrome-192x192.png' />
