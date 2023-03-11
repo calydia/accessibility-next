@@ -13,9 +13,10 @@ export default function Home({listing}: any) {
     <main className="max-w-5xl mx-auto px-4-px">
       <Head>
         <meta property="og:url" content="https://a11y.sanna.ninja/" />
-        <meta property="og:image" content="../images/osiris.jpg" />
+        <meta property="og:image" content="../some-share.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:type" content="website" />
       </Head>
       <h1 id="skip-target" className="block font-bold my-8 lg:mt-16 text-4xl md:text-5xl text-lt-gray dark:text-white">
         Sivulle otsikko
