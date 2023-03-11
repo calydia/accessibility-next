@@ -118,3 +118,40 @@ blockquote p:last-of-type {
   @apply mb-0
 }
 
+
+/* Silly background images */
+.bg-1 {
+  background-image: url('/mountains/1.jpg');
+}
+.bg-2 {
+  background-image: url('/mountains/2.jpg');
+}
+.bg-3 {
+  background-image: url('/mountains/3.jpg');
+}
+.bg-4 {
+  background-image: url('/mountains/4.jpg');
+}
+.bg-5 {
+  background-image: url('/mountains/5.jpg');
+}
+.bg-6 {
+  background-image: url('/mountains/6.jpg');
+}
+
+
+.main-image--wrapper::before {
+  @apply z-10 absolute block bottom-0 left-0 right-0 top-0 w-full;
+
+  content: "";
+}
+
+.light .main-image--wrapper::before{
+  background-color: rgba(230, 200, 252, 0.2);
+  background: linear-gradient(to right, rgba(187, 201, 247, 0.4) 0%, rgba(230,202, 252, 0.4) 50%, rgba(187, 201, 247, 0.4) 100%);
+}
+
+.dark .main-image--wrapper::before {
+  background-color: rgba(53, 3, 94, 0.2);
+  background: linear-gradient(to right, rgba(24, 57, 154, 0.3) 0%, rgba(53, 3, 94, 0.3) 50%, rgba(24, 57, 154, 0.3) 100%);
+}
