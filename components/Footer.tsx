@@ -35,7 +35,7 @@ const Footer = () => {
         </a>
         <div className="links">
           <a
-            href="https://a11y.sanna.ninja"
+            href="https://blog.sanna.ninja"
             className="flex align-center text-lt-blue-dark lg:text-xl font-bold border-y-4 border-transparent p-2 m-1 text-lt-blue-darkest dark:text-dk-blue-light
             hover:text-lt-purple hover:dark:text-dk-blue-light hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light
             focus:outline focus:outline-2 focus:outline-offset-8	focus:outline-black dark:focus:outline-white"
@@ -60,7 +60,7 @@ const Footer = () => {
               aria-hidden="true"
             />
           </span>
-            <span className="ml-2.5">My accessibility site</span>
+            <span className="ml-2.5">My blog</span>
           </a>
         </div>
       </div>
