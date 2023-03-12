@@ -17,14 +17,14 @@ export default function ArticlePage({ result }: any) {
         />
         <meta property="og:title" content={page.title} />
         <meta property="og:type" content="website" />
-        <meta property="og:locale" content="en" />
+        <meta property="og:locale" content={page.locale} />
         <meta property="og:site_name" content="I would if I could" />
-        <meta property="og:image" content="../some-share.jpg" />
+        <meta property="og:image" content="/some-share.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
       </Head>
-      <div className="grid custom-grid max-w-[1564px] mx-auto md:px-8-px">
-        <Breadcrumb current={page.title} extraLevel="true" extraLevelName={page.category} extraLevelPath={`/`} />
+      <div className="max-w-[1564px] mx-auto md:px-8-px">
+        <Breadcrumb current={page.title} firstLevel={page.mainCategory.data.attributes.title} secondLevel={page.secondaryCategory.data.attributes.title} />
         <div className="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto col-span-2 md:col-span-1 md:m-0 md:py-6 md:px-8-px lg:max-w-4xl">
           <h1 id="skip-target" className="text-3xl font-bold mt-4 mb-2 lg:text-4xl">{ page.title }</h1>
           <div dangerouslySetInnerHTML={{ __html: page.content }} className="text-xl bodytext"></div>
@@ -107,23 +107,40 @@ export async function getStaticPaths({ locales }: any) {
   };
 };
 
-export async function getStaticProps({ params }: any) {
+export async function getStaticProps({ locale, params }: any) {
   const slug = params.slug;
   const result = await client.query({
     query: gql`
-      query PagesWithSlug($slug: String) {
-        pages(filters: { slug: { eq: $slug } }) {
+      query PagesWithSlug($slug: String, $locale: I18NLocaleCode) {
+        pages(filters: { slug: { eq: $slug } }, locale: $locale ) {
           data {
             attributes {
               title
               slug
+              content
               locale
+              mainCategory {
+                data {
+                  attributes {
+                    slug
+                    title
+                  }
+                }
+              }
+              secondaryCategory {
+                data {
+                  attributes {
+                    slug
+                    title
+                  }
+                }
+              }
             }
           }
         }
       }
     `,
-    variables: { slug }
+    variables: { slug, locale: 'en' }
   });
 
   return {
