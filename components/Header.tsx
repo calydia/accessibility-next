@@ -1,24 +1,24 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
-const Header = () => {
+const Header = ({data}: any) => {
 
   const { asPath } = useRouter();
 
-  const menuLinks = [
-    {
-      url: '/',
-      text: 'Menu 1'
-    },
-    {
-      url: '/',
-      text: 'Menu 2'
-    },
-    {
-      url: '/',
-      text: 'Menu 3'
-    },
-  ];
+  const { t } = useTranslation('common')
+  const ariaLabel = t('main-menu-aria');
+
+  const buttonClickHandler = (event: React.MouseEvent<HTMLElement>) => {
+    // Toggle aria-expanded
+    const current = event.currentTarget;
+    const currentExpanded = current.getAttribute('aria-expanded');
+    (currentExpanded == 'true') ? current.setAttribute('aria-expanded', 'false') : current.setAttribute('aria-expanded', 'true');
+
+    //TODO Close all other menu items when the button is clicked by setting aria-expanded for the buttons to false
+
+
+  }
 
   return (
       <div className="text-center pt-2 pb-8 lg:py-4 clear-both lg:clear:none">
@@ -26,27 +26,67 @@ const Header = () => {
           <span className="block text-3xl font-title text-black dark:text-white dark:text-shadow-text">Sanna Mäkinen - I would if I could</span>
           <span className="block text-lg mt-2 font-title leading-none text-black dark:text-white dark:text-shadow-text">a guide to web accessibility</span>
         </div>
-        <nav aria-label="Main">
-          <ul className="flex flex-wrap justify-center lg:mt-4 p-0 mb-0">
+        <nav aria-labelledby="main-menu-label">
+          <h2 id="main-menu-label" className="sr-only" key="first-heading">{ariaLabel}</h2>
+          <ul className="flex flex-wrap justify-center lg:mt-4 p-0 mb-0" key="first-ul">
+            {data && data.renderNavigation.map((menuItem: any, index: number) => {
+              const ariaCurrentPath = (asPath.includes(menuItem.path) && menuItem.path !== '/') ? true : undefined;
 
-          {menuLinks.map((item, index) => {
+              return (
+                <>
+                  {menuItem.type == 'WRAPPER' &&
+                    // We know the first level items are only wrappers
+                    <li key={`menuItem-${index}`}>
+                      <button id={`button-${index}`} key={`button-${index}`} aria-current={ariaCurrentPath} aria-expanded="false" aria-controls={`menu-button-${index}`} aria-haspopup="true" className="menu-button" onClick={buttonClickHandler}>
+                      {menuItem.title}
+                      </button>
+                      {menuItem.items &&
+                        <ul id={`menu-button-${index}`} key={`menu-button-${index}`}>
+                          {menuItem.items && menuItem.items.map((subMenuItem: any, subIndex: string) => {
+                            const activeClass = (asPath === subMenuItem.path) ? 'active-link': 'non-active-link';
+                            const ariaCurrentPage = (asPath === subMenuItem.path) ? 'page' : undefined;
 
-            const activeClass = (asPath === item.url) ? 'active-link': 'non-active-link';
-            {/* aria-current should be true when the menu parent is active */}
-            const ariaCurrentPath = (asPath.includes(item.url) && item.url !== '/') ? true : undefined;
-            {/* aria-current should be "page" when the actual page is active */}
-            const ariaCurrentPage = (asPath === item.url) ? 'page' : undefined;
-            {/* if the page is active, we want to use that, otherwise check for menu parent */}
-            const ariaCurrent = ariaCurrentPage ? ariaCurrentPage : ariaCurrentPath;
-
-            return (
-              <li key={`menu-item${index}`} className="m-3.5">
-                <Link
-                className={`text-xl p-1 dark:text-shadow-text hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white ${activeClass}`}
-                href={item.url} aria-current={ariaCurrent}>
-                  {item.text}
-                </Link>
-              </li>
+                            return(
+                              <>
+                                {subMenuItem.type == 'WRAPPER'
+                                // The second level items will be either wrappers or links
+                                ? <li key={`subMenuItem-${subIndex}`}>
+                                    <h3 key={`subMenuItem-heading-${subIndex}`}>
+                                      {subMenuItem.title}
+                                    </h3>
+                                    <ul key={`subMenuItem-menu-${subIndex}`}>
+                                      {subMenuItem.items && subMenuItem.items.map((lowerSubMenuItem: any, lowerSubIndex: string) => {
+                                          const activeClassLower = (asPath === lowerSubMenuItem.path) ? 'active-link': 'non-active-link';
+                                          const ariaCurrentPageLower = (asPath === lowerSubMenuItem.path && lowerSubMenuItem.path !== '/') ? 'page' : undefined;
+                                          // The third level items are only links
+                                          return(
+                                            <li key={`lowerSubMenuItem-${lowerSubIndex}`}>
+                                              <Link href={lowerSubMenuItem.path} aria-current={ariaCurrentPageLower} key={`lowerSubMenuItem-link-${lowerSubIndex}`}
+                                                className={`text-xl p-1 dark:text-shadow-text hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white ${activeClassLower}`}
+                                              >
+                                                {lowerSubMenuItem.title}
+                                              </Link>
+                                            </li>
+                                          )
+                                      })}
+                                    </ul>
+                                  </li>
+                                : <li key={`subMenuItem-link-wrapper-${subIndex}`}>
+                                    <Link href={subMenuItem.path} aria-current={ariaCurrentPage} key={`subMenuItem-link-${subIndex}`}
+                                      className={`text-xl p-1 dark:text-shadow-text hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white ${activeClass}`}
+                                    >
+                                      {subMenuItem.title}
+                                    </Link>
+                                  </li>
+                                }
+                              </>
+                            )
+                          })}
+                        </ul>
+                      }
+                    </li>
+                  }
+                </>
               );
             })}
           </ul>

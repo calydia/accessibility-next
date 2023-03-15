@@ -1,4 +1,5 @@
-import Link from 'next/link'
+import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
 
 interface BreadCrumbTypes {
   current: string,
@@ -7,13 +8,15 @@ interface BreadCrumbTypes {
 }
 
 const Breadcrumb = ({ current, firstLevel, secondLevel }: BreadCrumbTypes) => {
+  const { t } = useTranslation('common')
+  const ariaLabel = t('breadcrumb-aria');
 
   return (
-    <nav aria-label="Breadcrumb" className="col-span-2 w-full max-w-[1564px] p-4-px pb-0 mx-auto text-lt-gray dark:text-white md:px-8-px">
+    <nav aria-label={ariaLabel} className="col-span-2 w-full max-w-[1564px] p-4-px pb-0 mx-auto text-lt-gray dark:text-white md:px-8-px">
       <ul className="block list-none m-0 p-0">
         <li className="inline">
           <Link href="/"  className="underline underline-offset-4 decoration-2 text-lt-blue-dark dark:text-dk-blue-light selection:hover:text-lt-purple hover:decoration-4 dark:hover:text-wheat focus:text-lt-purple dark:focus:text-wheat focus:outline-2 focus:outline-offset-8 focus:no-underline focus:outline-lt-purple dark:focus:outline-wheat">
-              Home
+            {t('home-link')}
           </Link>
           <span className="mx-2">/</span>
         </li>

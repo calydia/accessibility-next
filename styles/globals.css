@@ -155,3 +155,13 @@ blockquote p:last-of-type {
   background-color: rgba(53, 3, 94, 0.2);
   background: linear-gradient(to right, rgba(24, 57, 154, 0.3) 0%, rgba(53, 3, 94, 0.3) 50%, rgba(24, 57, 154, 0.3) 100%);
 }
+
+.hide-menu {
+  display: none;
+  visibility: visible;
+}
+
+.menu-button[aria-expanded="false"] + ul {
+  display: none;
+  visibility: hidden;
+}
