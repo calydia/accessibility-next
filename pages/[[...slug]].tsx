@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useDarkMode } from '../components/useDarkMode';
 import SkipLink from '@/components/SkipLink';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Toggle from '../components/Toggler';
 import Header from '../components/Header';
 import MainImage from '@/components/MainImage';
@@ -15,11 +16,15 @@ export default function ArticlePage({ result, menu }: any) {
 
   const [theme, themeToggler] = useDarkMode();
 
+  const engUrl = (page.locale == 'en') ? page.slug : page.localizations.data[0].attributes.slug;
+  const fiUrl = (page.locale == 'fi') ? page.slug : page.localizations.data[0].attributes.slug;
+
   return (
     <>
       <header className="bg-gradient-to-r from-lt-perfume via-lt-blue-light to-lt-perfume
         dark:from-dk-purple-header dark:via-dk-blue-header dark:to-dk-purple-header">
         <SkipLink skipTarget="skip-target" skipTextVariable="skip-link-text" />
+        <LanguageSwitcher englishURL={engUrl} finnishURL={fiUrl} />
         <Toggle theme={theme} toggleTheme={themeToggler} />
         <Header data={menu.data} />
       </header>
@@ -93,7 +98,6 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
         acc.push({
           params: {
             slug: slugArray,
-            miniSlug: page.attributes.slug
           },
           locale: page.attributes.locale,
         });
@@ -121,6 +125,15 @@ export async function getStaticProps({ locale, params }: any) {
               slug
               content
               locale
+              metaDescription
+              pageUrl
+              localizations {
+                data {
+                  attributes {
+                    slug
+                  }
+                }
+              }
             }
           }
         }
