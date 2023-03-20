@@ -3,7 +3,12 @@
   "breadcrumb-aria": "Murupolku",
   "home-link": "Etusivu",
   "main-menu-aria": "Sivuston päävalikko",
-  "footer-menu-aria": "Footer menu",
-  "theme-toggle-text-light": "Switch to light version",
-  "theme-toggle-text-dark": "Switch to dark version"
+  "footer-menu-aria": "Infovalikko",
+  "theme-toggle-text-light": "Vaihda vaaleaan teemaan",
+  "theme-toggle-text-dark": "Vaihda tummaan teemaan",
+  "demo-problematic-heading": "Haasteellinen esimerkki",
+  "demo-better-heading": "Parempi esimerkki",
+  "demo-final-heading": "Loppukommentit",
+  "language-switcher-aria": "Vaihda kieltä/Switch language. Nykyinen kieli: suomeksi",
+  "language-switcher-language": "suomeksi"
 }

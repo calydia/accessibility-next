@@ -7,9 +7,9 @@ const Footer = () => {
       <div className="md:flex md:justify-between max-w-[1500px] mx-auto">
         <nav aria-label="footer menu placeholder aria">
           <ul>
-            <li>Tähän linkkilista</li>
-            <li>Tähän linkkilista</li>
-            <li>Tähän linkkilista</li>
+            <li key="eka">Tähän linkkilista</li>
+            <li key="toka">Tähän linkkilista</li>
+            <li key="kolmas">Tähän linkkilista</li>
           </ul>
         </nav>
         <div className="flex items-center">
@@ -33,7 +33,7 @@ const Footer = () => {
           </span>
         <nav aria-label="my other projects">
           <ul>
-            <li>
+            <li key="footer-own-first">
               <a
               href="https://sanna.ninja"
               className="flex align-center font-bold p-2 m-1 border-y-4 border-transparent text-lt-blue-dark lg:text-xl text-lt-blue-darkest dark:text-dk-blue-light
@@ -45,7 +45,7 @@ const Footer = () => {
               My portfolio
             </a>
           </li>
-            <li>
+            <li key="footer-own-second">
             <a
               href="https://blog.sanna.ninja"
               className="flex align-center text-lt-blue-dark lg:text-xl font-bold border-y-4 border-transparent p-2 m-1 text-lt-blue-darkest dark:text-dk-blue-light

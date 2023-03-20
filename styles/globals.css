@@ -165,3 +165,8 @@ blockquote p:last-of-type {
   display: none;
   visibility: hidden;
 }
+
+.lang-switcher[aria-expanded="false"] + ul {
+  display: none;
+  visibility: hidden;
+}

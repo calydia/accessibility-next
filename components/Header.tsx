@@ -23,12 +23,12 @@ const Header = ({data}: any) => {
   return (
       <div className="text-center pt-2 pb-8 lg:py-4 clear-both lg:clear:none">
         <div>
-          <span className="block text-3xl font-title text-black dark:text-white dark:text-shadow-text">Sanna Mäkinen - I would if I could</span>
+          <span className="block text-2xl lg:text-3xl font-title text-black dark:text-white dark:text-shadow-text">Sanna Mäkinen - I would if I could</span>
           <span className="block text-lg mt-2 font-title leading-none text-black dark:text-white dark:text-shadow-text">a guide to web accessibility</span>
         </div>
         <nav aria-labelledby="main-menu-label">
           <h2 id="main-menu-label" className="sr-only" key="first-heading">{ariaLabel}</h2>
-          <ul className="flex flex-wrap justify-center lg:mt-4 p-0 mb-0" key="first-ul">
+          <ul className="flex flex-wrap justify-center mt-4 p-0 mb-0" key="first-ul">
             {data && data.renderNavigation.map((menuItem: any, index: number) => {
               const ariaCurrentPath = (asPath.includes(menuItem.path) && menuItem.path !== '/') ? true : undefined;
 
@@ -36,8 +36,9 @@ const Header = ({data}: any) => {
                 <>
                   {menuItem.type == 'WRAPPER' &&
                     // We know the first level items are only wrappers
-                    <li key={`menuItem-${index}`}>
-                      <button id={`button-${index}`} key={`button-${index}`} aria-current={ariaCurrentPath} aria-expanded="false" aria-controls={`menu-button-${index}`} aria-haspopup="true" className="menu-button" onClick={buttonClickHandler}>
+                    <li key={`menuItem-${index}`} className="m-2">
+                      <button id={`button-${index}`} key={`button-${index}`} aria-current={ariaCurrentPath} aria-expanded="false" aria-controls={`menu-button-${index}`} aria-haspopup="true" onClick={buttonClickHandler}
+                        className={`menu-button text-black dark:text-white text-xl p-1 dark:text-shadow-text hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white`}>
                       {menuItem.title}
                       </button>
                       {menuItem.items &&
@@ -51,7 +52,8 @@ const Header = ({data}: any) => {
                                 {subMenuItem.type == 'WRAPPER'
                                 // The second level items will be either wrappers or links
                                 ? <li key={`subMenuItem-${subIndex}`}>
-                                    <h3 key={`subMenuItem-heading-${subIndex}`}>
+                                    <h3 key={`subMenuItem-heading-${subIndex}`}
+                                      className={`text-xl p-1 dark:text-shadow-text mt-0 text-black dark:text-white ${subMenuItem.iconClass}`}>
                                       {subMenuItem.title}
                                     </h3>
                                     <ul key={`subMenuItem-menu-${subIndex}`}>
