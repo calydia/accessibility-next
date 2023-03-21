@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
+import { HiTranslate } from "react-icons/hi";
 
 interface SwitcherTypes {
   englishURL: string,
@@ -22,29 +23,29 @@ const LanguageSwitcher = ({ englishURL, finnishURL }: SwitcherTypes) => {
 
   const { asPath } = useRouter();
 
-  // TODO Active class + aria-current = page
+  const compareURLEN = englishURL.replace(/\/$/, '');
+  const compareURLFI = finnishURL.replace(/\/$/, '');
+
+  const ariaCurrentPageEn = (asPath.includes(compareURLEN) && compareURLEN !== '/') ? 'page' : undefined;
+  const ariaCurrentPageFi = (asPath.includes(compareURLFI) && compareURLFI !== '/') ? 'page' : undefined;
 
   return (
-    <div className="p-4-px pb-0 text-lt-gray dark:text-white md:px-8-px">
-      <button aria-label={ ariaLabel } aria-expanded="false" aria-controls="lang-switcher" onClick={ buttonClickHandler } className="lang-switcher flex gap-2">
-        <Image
-          src="/sm-logo-darkblue.png"
-          alt=""
-          width={35}
-          height={27}
-          aria-hidden="true"
-        />
-        { ariaLanguage }
+    <div className="text-black dark:text-white px-3 relative">
+      <button aria-label={ariaLabel} aria-expanded="false" aria-controls="lang-switcher" onClick={buttonClickHandler} className="lang-switcher flex gap-2 py-2 border-y-4 border-transparent items-center
+      hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light
+      focus:outline focus:outline-2 focus:outline-offset-4	focus:outline-black dark:focus:outline-white">
+        <HiTranslate className="h-8 w-8" aria-hidden="true" />
+        {ariaLanguage}
       </button>
-      <ul id="lang-switcher" className="p-2">
+      <ul id="lang-switcher" className="p-4 right-0 mt-1 mr-1.5 absolute flex flex-col gap-4 border-solid border-2 border-black bg-lt-code-bg dark:border-white w-[200%] dark:bg-dk-code-bg">
         <li>
-          <Link href={ englishURL } locale="en">
-            In English
+          <Link href={englishURL} locale="en" aria-current={ariaCurrentPageEn}>
+            English (EN)
           </Link>
         </li>
         <li>
-          <Link href={ finnishURL } locale="fi">
-            Suomeksi
+          <Link href={finnishURL} locale="fi" aria-current={ariaCurrentPageFi}>
+            Suomi (FI)
           </Link>
         </li>
       </ul>

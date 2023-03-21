@@ -20,11 +20,12 @@ const Header = ({data}: any) => {
 
   }
 
+
   return (
       <div className="text-center pt-2 pb-8 lg:py-4 clear-both lg:clear:none">
         <div>
-          <span className="block text-2xl lg:text-3xl font-title text-black dark:text-white dark:text-shadow-text">Sanna Mäkinen - I would if I could</span>
-          <span className="block text-lg mt-2 font-title leading-none text-black dark:text-white dark:text-shadow-text">a guide to web accessibility</span>
+          <span className="block text-2xl font-title text-black dark:text-white dark:text-shadow-text">Sanna Mäkinen <span className="text-blue-tory dark:text-lt-perfume">-</span> I would if I could</span>
+          <span className="block text-lg mt-2 font-title leading-none text-blue-tory dark:text-lt-perfume dark:text-shadow-text">a guide to web accessibility</span>
         </div>
         <nav aria-labelledby="main-menu-label">
           <h2 id="main-menu-label" className="sr-only" key="first-heading">{ariaLabel}</h2>

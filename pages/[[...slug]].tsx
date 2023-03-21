@@ -16,16 +16,18 @@ export default function ArticlePage({ result, menu }: any) {
 
   const [theme, themeToggler] = useDarkMode();
 
-  const engUrl = (page.locale == 'en') ? page.slug : page.localizations.data[0].attributes.slug;
-  const fiUrl = (page.locale == 'fi') ? page.slug : page.localizations.data[0].attributes.slug;
+  const engUrl = (page.locale == 'en') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;
+  const fiUrl = (page.locale == 'fi') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;
 
   return (
     <>
       <header className="bg-gradient-to-r from-lt-perfume via-lt-blue-light to-lt-perfume
         dark:from-dk-purple-header dark:via-dk-blue-header dark:to-dk-purple-header">
         <SkipLink skipTarget="skip-target" skipTextVariable="skip-link-text" />
-        <LanguageSwitcher englishURL={engUrl} finnishURL={fiUrl} />
-        <Toggle theme={theme} toggleTheme={themeToggler} />
+        <div className="flex flex-wrap justify-end gap-1">
+          <LanguageSwitcher englishURL={engUrl} finnishURL={fiUrl} />
+          <Toggle theme={theme} toggleTheme={themeToggler} />
+        </div>
         <Header data={menu.data} />
       </header>
       <MainImage />
@@ -130,7 +132,7 @@ export async function getStaticProps({ locale, params }: any) {
               localizations {
                 data {
                   attributes {
-                    slug
+                    pageUrl
                   }
                 }
               }
