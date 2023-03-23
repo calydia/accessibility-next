@@ -171,6 +171,13 @@ blockquote p:last-of-type {
   @apply max-md:hidden max-md:invisible;
 }
 
+.menu-toggle[aria-expanded="true"] .menu-open {
+  @apply max-md:hidden max-md:invisible;
+}
+.menu-toggle[aria-expanded="false"] .menu-close {
+  @apply max-md:hidden max-md:invisible;
+}
+
 .lang-switcher[aria-expanded="false"] + ul {
   @apply hidden invisible;
 }

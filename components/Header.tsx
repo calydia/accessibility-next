@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { HiMenu, HiChevronDown } from "react-icons/hi";
+import { HiMenu, HiChevronDown, HiX } from "react-icons/hi";
 
 const Header = ({data}: any) => {
 
@@ -42,7 +42,8 @@ const Header = ({data}: any) => {
         <nav aria-labelledby="main-menu-label">
           <h2 id="main-menu-label" className="sr-only" key="first-heading">{ariaLabel}</h2>
           <button id="main-menu-toggle" className="menu-toggle flex gap-2 mt-6 mx-auto text-black dark:text-white md:hidden md:invisible" aria-expanded="false" aria-controls="main-menu" aria-haspopup="true" onClick={menuToggleClickHandler}>
-            <HiMenu className="h-8 w-8" />
+            <HiMenu className="menu-open h-8 w-8" aria-hidden="true" />
+            <HiX className="menu-close h-8 w-8" aria-hidden="true" />
             <span className="sr-only">{menuButton}</span>
           </button>
           <ul id="main-menu" className="md:visible md:flex md:flex-wrap md:justify-center mt-4 p-0 mb-0" key="first-ul">
