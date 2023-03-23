@@ -10,5 +10,6 @@
   "demo-better-heading": "Better example",
   "demo-final-heading": "Final comments",
   "language-switcher-aria": "Switch language/Vaihda kieltä. Current language: English (EN)",
-  "language-switcher-language": "EN"
+  "language-switcher-language": "EN",
+  "menu-button": "Menu"
 }

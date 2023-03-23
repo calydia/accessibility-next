@@ -9,6 +9,7 @@ interface SwitcherTypes {
   finnishURL: string
 }
 
+// TODO When clicked outside, close this
 const buttonClickHandler = (event: React.MouseEvent<HTMLElement>) => {
   // Toggle aria-expanded
   const current = event.currentTarget;

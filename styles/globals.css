@@ -27,8 +27,7 @@ body.dark {
 
 .dark .logo-dark,
 .light .logo-light {
-  display: none;
-  visibility: hidden;
+  @apply hidden invisible;
 }
 
 p {
@@ -157,16 +156,26 @@ blockquote p:last-of-type {
 }
 
 .hide-menu {
-  display: none;
-  visibility: visible;
+  @apply hidden invisible;
 }
 
 .menu-button[aria-expanded="false"] + ul {
-  display: none;
-  visibility: hidden;
+  @apply hidden invisible;
+}
+
+.menu-button[aria-expanded="true"] .menu-button--icon  {
+  @apply rotate-180;
+}
+
+.menu-toggle[aria-expanded="false"] + ul {
+  @apply max-md:hidden max-md:invisible;
 }
 
 .lang-switcher[aria-expanded="false"] + ul {
-  display: none;
-  visibility: hidden;
+  @apply hidden invisible;
 }
+
+a[aria-current="page"] {
+  @apply underline underline-offset-2 decoration-2;
+}
+

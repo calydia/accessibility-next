@@ -24,8 +24,51 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const [isMounted, setIsMounted] = useState<Boolean>(false);
 
+  const keyHandler = (event: KeyboardEvent) => {
+    if (event.code == "Escape") {
+      const targetClass = (event.target as HTMLButtonElement).classList;
+      const currentExpanded = (event.target as HTMLButtonElement).getAttribute('aria-expanded');
+
+      // If we press esc when focused on a menu button or the toggle.
+      if (targetClass.contains('menu-button') || targetClass.contains('menu-toggle')) {
+        (event.target as HTMLButtonElement).setAttribute('aria-expanded', 'false');
+        (event.target as HTMLButtonElement).focus();
+      }
+
+      // If esc is pressed on a menu button with aria-expanded as false, close the menu and focus the toggle.
+      if (targetClass.contains('menu-button') && currentExpanded == 'false') {
+        const menuToggle = document.getElementById('main-menu-toggle');
+        (menuToggle as HTMLButtonElement).setAttribute('aria-expanded', 'false');
+        (menuToggle as HTMLButtonElement).focus();
+      }
+
+      // Find closest menu button or menu toggle, close menu elements accordingly.
+      if ((event.target as HTMLElement).tagName == 'A') {
+        const closestMenuButton = (event.target as HTMLAnchorElement).closest('.menu-button-ul');
+        const closestMenuToggle = (event.target as HTMLAnchorElement).closest('#main-menu');
+
+        if (closestMenuButton) {
+          (closestMenuButton.previousSibling as HTMLButtonElement).setAttribute('aria-expanded', 'false');
+          (closestMenuButton.previousSibling as HTMLButtonElement).focus();
+        } else if (closestMenuToggle) {
+          const menuToggle = document.getElementById('main-menu-toggle');
+          (menuToggle as HTMLButtonElement).setAttribute('aria-expanded', 'false');
+          (menuToggle as HTMLButtonElement).focus();
+        }
+      }
+    }
+  }
+
   useEffect(() => {
     setIsMounted(true)
+    window.addEventListener('keyup', e => {
+      keyHandler(e);
+    } );
+    return () => {
+      window.removeEventListener('keyup', e => {
+        keyHandler(e);
+      } );
+    };
   }, [])
 
   const { t } = useTranslation('common')

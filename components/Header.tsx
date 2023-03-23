@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import { HiMenu, HiChevronDown } from "react-icons/hi";
 
 const Header = ({data}: any) => {
 
@@ -8,6 +9,17 @@ const Header = ({data}: any) => {
 
   const { t } = useTranslation('common')
   const ariaLabel = t('main-menu-aria');
+  const menuButton = t('menu-button');
+
+  const menuToggleClickHandler = (event: React.MouseEvent<HTMLElement>) => {
+    // Toggle aria-expanded
+    const current = event.currentTarget;
+    const currentExpanded = current.getAttribute('aria-expanded');
+    (currentExpanded == 'true') ? current.setAttribute('aria-expanded', 'false') : current.setAttribute('aria-expanded', 'true');
+
+    // TODO When clicked outside, close this
+
+  }
 
   const buttonClickHandler = (event: React.MouseEvent<HTMLElement>) => {
     // Toggle aria-expanded
@@ -17,8 +29,8 @@ const Header = ({data}: any) => {
 
     //TODO Close all other menu items when the button is clicked by setting aria-expanded for the buttons to false
 
-
   }
+
 
 
   return (
@@ -29,7 +41,11 @@ const Header = ({data}: any) => {
         </div>
         <nav aria-labelledby="main-menu-label">
           <h2 id="main-menu-label" className="sr-only" key="first-heading">{ariaLabel}</h2>
-          <ul className="flex flex-wrap justify-center mt-4 p-0 mb-0" key="first-ul">
+          <button id="main-menu-toggle" className="menu-toggle flex gap-2 mt-6 mx-auto text-black dark:text-white md:hidden md:invisible" aria-expanded="false" aria-controls="main-menu" aria-haspopup="true" onClick={menuToggleClickHandler}>
+            <HiMenu className="h-8 w-8" />
+            <span className="sr-only">{menuButton}</span>
+          </button>
+          <ul id="main-menu" className="md:visible md:flex md:flex-wrap md:justify-center mt-4 p-0 mb-0" key="first-ul">
             {data && data.renderNavigation.map((menuItem: any, index: number) => {
               const ariaCurrentPath = (asPath.includes(menuItem.path) && menuItem.path !== '/') ? true : undefined;
 
@@ -37,13 +53,14 @@ const Header = ({data}: any) => {
                 <>
                   {menuItem.type == 'WRAPPER' &&
                     // We know the first level items are only wrappers
-                    <li key={`menuItem-${index}`} className="m-2">
+                    <li key={`menuItem-${index}`} className="m-2 relative">
                       <button id={`button-${index}`} key={`button-${index}`} aria-current={ariaCurrentPath} aria-expanded="false" aria-controls={`menu-button-${index}`} aria-haspopup="true" onClick={buttonClickHandler}
-                        className={`menu-button text-black dark:text-white text-xl p-1 dark:text-shadow-text hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white`}>
-                      {menuItem.title}
+                        className={`menu-button flex items-center gap-2 text-black dark:text-white text-xl p-1 dark:text-shadow-text hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white`}>
+                        {menuItem.title}
+                        <HiChevronDown className="menu-button--icon h-6 w-6" />
                       </button>
                       {menuItem.items &&
-                        <ul id={`menu-button-${index}`} key={`menu-button-${index}`}>
+                        <ul id={`menu-button-${index}`} key={`menu-button-${index}`} className="menu-button-ul md:absolute md:mt-2 md:z-20 md:w-[200%] md:left:0 md:right:0 md:p-4 md:border-2 md:border-solid md:border-black md:dark:border-white md:bg-lt-code-bg md:dark:bg-dk-code-bg">
                           {menuItem.items && menuItem.items.map((subMenuItem: any, subIndex: string) => {
                             const activeClass = (asPath === subMenuItem.path) ? 'active-link': 'non-active-link';
                             const ariaCurrentPage = (asPath === subMenuItem.path) ? 'page' : undefined;
