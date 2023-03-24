@@ -1,15 +1,30 @@
+import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script'
+import { useRouter } from 'next/router';
 
-const Footer = () => {
+const Footer = ({data}: any) => {
+  const { asPath } = useRouter();
+
   return (
     <footer className="mt-12 p-4-px lg:p-12-px border-t-8 border-solid border-blue-tory bg-lt-blue-light dark:bg-dk-purple">
       <div className="md:flex md:justify-between max-w-[1500px] mx-auto">
         <nav aria-label="footer menu placeholder aria">
           <ul>
-            <li key="eka">Tähän linkkilista</li>
-            <li key="toka">Tähän linkkilista</li>
-            <li key="kolmas">Tähän linkkilista</li>
+          {data && data.renderNavigation.map((menuItem: any, index: number) => {
+            const ariaCurrentPage = (asPath === menuItem.path) ? 'page' : undefined;
+            const activeClass = (asPath === menuItem.path) ? 'active-link': 'non-active-link';
+
+            return (
+              <li key={`info-menu-list-${index}`}>
+                <Link href={menuItem.path} aria-current={ariaCurrentPage} key={`info-menu-${index}`}
+                  className={`text-xl p-1 dark:text-shadow-text hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white ${activeClass}`}
+                >
+                  {menuItem.title}
+                </Link>
+              </li>
+            );
+          })}
           </ul>
         </nav>
         <div className="flex items-center">

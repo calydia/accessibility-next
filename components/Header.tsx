@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -54,7 +55,7 @@ const Header = ({data}: any) => {
               const ariaCurrentPath = (asPath.includes(menuItem.path) && menuItem.path !== '/') ? true : undefined;
 
               return (
-                <>
+                <Fragment key={`fragment-${index}`}>
                   {menuItem.type == 'WRAPPER' &&
                     // We know the first level items are only wrappers
                     <li key={`menuItem-${index}`} className="m-2 relative">
@@ -70,7 +71,7 @@ const Header = ({data}: any) => {
                             const ariaCurrentPage = (asPath === subMenuItem.path) ? 'page' : undefined;
 
                             return(
-                              <>
+                              <Fragment key={`fragment-sub-${index}`}>
                                 {subMenuItem.type == 'WRAPPER'
                                 // The second level items will be either wrappers or links
                                 ? <li key={`subMenuItem-${subIndex}`}>
@@ -103,14 +104,14 @@ const Header = ({data}: any) => {
                                     </Link>
                                   </li>
                                 }
-                              </>
+                              </Fragment>
                             )
                           })}
                         </ul>
                       }
                     </li>
                   }
-                </>
+                </Fragment>
               );
             })}
           </ul>

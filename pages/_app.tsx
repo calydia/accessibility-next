@@ -107,7 +107,6 @@ function MyApp({ Component, pageProps }: AppProps) {
             }}
           />
         {isMounted && <Component {...pageProps} />}
-        <Footer />
       </div>
     </ApolloProvider>
   );

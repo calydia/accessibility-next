@@ -168,11 +168,36 @@ export async function getStaticProps({ locale, params }: any) {
     variables: { locale }
   });
 
+  const infoMenu = await client.query({
+    query: gql`
+      query Menu($locale: I18NLocaleCode) {
+        renderNavigation(navigationIdOrSlug: "info", type: TREE, locale: $locale) {
+          id
+          title
+          type
+          path
+          items {
+            title
+            type
+            path
+            items {
+              title
+              type
+              path
+            }
+          }
+        }
+      }
+    `,
+    variables: { locale }
+  });
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
       result: result.data,
-      menu: menu
+      menu: menu,
+      infoMenu: infoMenu
     },
     revalidate: 60
   };

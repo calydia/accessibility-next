@@ -8,22 +8,23 @@ import SkipLink from '@/components/SkipLink';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Toggle from '@/components/Toggler';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
+import HumanSitemap from '@/components/HumanSitemap';
 import { useTranslation } from 'next-i18next';
 
 
-export default function DemoPage({ result, menu }: any) {
-  const page = result.demoPages.data[0].attributes;
+export default function InfoPage({ result, menu, infoMenu }: any) {
+  const page = result.pages.data[0].attributes;
 
   const [theme, themeToggler] = useDarkMode();
 
   const { t } = useTranslation('common');
-  const problematicHeading = t('demo-problematic-heading');
-  const betterHeading = t('demo-better-heading');
-  const finalHeading = t('demo-final-heading');
+  const mainMenuName = t('name-main-menu');
+  const infoMenuName = t('name-info-menu');
 
-  const engUrl = (page.locale == 'en') ? page.slug : page.localizations.data[0].attributes.slug;
-  const fiUrl = (page.locale == 'fi') ? page.slug : page.localizations.data[0].attributes.slug;
+  const engUrl = (page.locale == 'en') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;
+  const fiUrl = (page.locale == 'fi') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;
 
   return (
     <>
@@ -56,22 +57,21 @@ export default function DemoPage({ result, menu }: any) {
         <div className="max-w-[1564px] mx-auto md:px-8-px">
           <div className="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto col-span-2 md:col-span-1 md:m-0 md:py-6 md:px-8-px lg:max-w-4xl">
             <h1 id="skip-target" className="text-3xl font-bold mt-4 mb-2 lg:text-4xl">{ page.title }</h1>
-            <div dangerouslySetInnerHTML={{ __html: page.introduction }} className="text-xl bodytext"></div>
-            <div>
-              <h2>{ problematicHeading }</h2>
-              <div dangerouslySetInnerHTML={{ __html: page.problematicExample }} className="text-xl bodytext"></div>
-            </div>
-            <div>
-              <h2>{ betterHeading }</h2>
-              <div dangerouslySetInnerHTML={{ __html: page.betterExample }} className="text-xl bodytext"></div>
-            </div>
-            <div>
-              <h2>{ finalHeading }</h2>
-              <div dangerouslySetInnerHTML={{ __html: page.finalComments }} className="text-xl bodytext"></div>
-            </div>
+            <div dangerouslySetInnerHTML={{ __html: page.content }} className="text-xl bodytext"></div>
+
+            { (page.slug === "sitemap" || page.slug === 'sivukartta') ?
+            <>
+              <h2>{mainMenuName}</h2>
+              <HumanSitemap data={menu.data} keyPrefix="sm-main" />
+              <h2>{infoMenuName}</h2>
+              <HumanSitemap data={infoMenu.data} keyPrefix="sm-info" />
+            </>
+            : null }
+
           </div>
         </div>
       </main>
+      <Footer menuData={infoMenu.data} />
     </>
   );
 }
@@ -85,8 +85,8 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
         // map through locales
         const { data } = await client.query({
           query: gql`
-          query GetAllDemoPages($locale: I18NLocaleCode, $publicationState: PublicationState ) {
-            demoPages(locale: $locale, publicationState: $publicationState) {
+          query GetAllPages($locale: I18NLocaleCode, $publicationState: PublicationState ) {
+            pages(locale: $locale, publicationState: $publicationState) {
               data {
                 id
                 attributes {
@@ -105,27 +105,27 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
           },
         });
         return {
-          pages: data.demoPages,
+          pages: data.pages,
           locale,
         };
       })
     )
   ).reduce((acc, item) => {
     item.pages.data.map((page: any) => {
-
-      acc.push({
-        params: {
-          slug: page.attributes.slug,
-        },
-        locale: page.attributes.locale,
-      });
-      return page;
-  });
+        acc.push({
+          params: {
+            slug: page.attributes.slug,
+          },
+          locale: page.attributes.locale,
+        });
+        return page;
+    });
     return acc;
   }, []);
+
   return {
       paths,
-      fallback: 'blocking',
+      fallback: false,
   };
 };
 
@@ -135,22 +135,19 @@ export async function getStaticProps({ locale, params }: any) {
   const result = await client.query({
     query: gql`
       query PagesWithSlug($slug: String, $locale: I18NLocaleCode) {
-        demoPages(filters: { slug: { eq: $slug } }, locale: $locale ) {
+        pages(filters: { slug: { eq: $slug } }, locale: $locale ) {
           data {
             attributes {
               title
               slug
+              content
               locale
-              introduction
-              problematicExample
-              betterExample
-              finalComments
               metaDescription
               pageUrl
               localizations {
                 data {
                   attributes {
-                    slug
+                    pageUrl
                   }
                 }
               }
@@ -162,7 +159,7 @@ export async function getStaticProps({ locale, params }: any) {
     variables: { slug, locale }
   });
 
-  const menu = await client.query({
+  const mainMenu = await client.query({
     query: gql`
       query Menu($locale: I18NLocaleCode) {
         renderNavigation(navigationIdOrSlug: "main-navigation", type: TREE, locale: $locale) {
@@ -174,7 +171,6 @@ export async function getStaticProps({ locale, params }: any) {
             title
             type
             path
-            iconClass
             items {
               title
               type
@@ -215,7 +211,7 @@ export async function getStaticProps({ locale, params }: any) {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
       result: result.data,
-      menu: menu,
+      menu: mainMenu,
       infoMenu: infoMenu
     },
     revalidate: 60

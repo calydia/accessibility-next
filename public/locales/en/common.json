@@ -11,5 +11,7 @@
   "demo-final-heading": "Final comments",
   "language-switcher-aria": "Switch language/Vaihda kieltä. Current language: English (EN)",
   "language-switcher-language": "EN",
-  "menu-button": "Menu"
+  "menu-button": "Menu",
+  "name-main-menu": "Main menu",
+  "name-info-menu": "Info menu"
 }
