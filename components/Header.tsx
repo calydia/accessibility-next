@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { HiMenu, HiChevronDown, HiX } from "react-icons/hi";
+import MenuIcon from './MenuIcon';
 
 const Header = ({data}: any) => {
   const { asPath } = useRouter();
@@ -77,7 +78,8 @@ const Header = ({data}: any) => {
                                 // The second level items will be either wrappers or links
                                 ? <li key={`subMenuItem-${subIndex}`}>
                                     <h3 key={`subMenuItem-heading-${subIndex}`}
-                                      className={`text-xl p-1 dark:text-shadow-text mt-0 text-black dark:text-white ${subMenuItem.iconClass}`}>
+                                      className={`flex gap-2 items-center text-xl p-1 dark:text-shadow-text mt-0 text-black dark:text-white ${subMenuItem.iconClass}`}>
+                                      <MenuIcon iconClass={subMenuItem.iconClass} iconPosition="header" />
                                       {subMenuItem.title}
                                     </h3>
                                     <ul key={`subMenuItem-menu-${subIndex}`}>
