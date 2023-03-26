@@ -8,12 +8,13 @@ import SkipLink from '@/components/SkipLink';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Toggle from '../components/Toggler';
 import Header from '../components/Header';
+import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 
 
-export default function ArticlePage({ result, menu }: any) {
+export default function ArticlePage({ result, menu, infoMenu }: any) {
   const page = result.pages.data[0].attributes;
-
+H
   const [theme, themeToggler] = useDarkMode();
 
   const engUrl = (page.locale == 'en') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;
@@ -54,6 +55,7 @@ export default function ArticlePage({ result, menu }: any) {
           </div>
         </div>
       </main>
+      <Footer data={infoMenu.data} />
     </>
   );
 }
@@ -152,14 +154,17 @@ export async function getStaticProps({ locale, params }: any) {
           title
           type
           path
+          iconClass
           items {
             title
             type
             path
+            iconClass
             items {
               title
               type
               path
+              iconClass
             }
           }
         }
@@ -176,14 +181,17 @@ export async function getStaticProps({ locale, params }: any) {
           title
           type
           path
+          iconClass
           items {
             title
             type
             path
+            iconClass
             items {
               title
               type
               path
+              iconClass
             }
           }
         }

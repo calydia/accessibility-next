@@ -23,8 +23,8 @@ export default function InfoPage({ result, menu, infoMenu }: any) {
   const mainMenuName = t('name-main-menu');
   const infoMenuName = t('name-info-menu');
 
-  const engUrl = (page.locale == 'en') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;
-  const fiUrl = (page.locale == 'fi') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;
+  const engUrl = (page.locale == 'en') ? page.slug : page.localizations.data[0].attributes.slug;
+  const fiUrl = (page.locale == 'fi') ? page.slug : page.localizations.data[0].attributes.slug;
 
   return (
     <>
@@ -71,7 +71,7 @@ export default function InfoPage({ result, menu, infoMenu }: any) {
           </div>
         </div>
       </main>
-      <Footer menuData={infoMenu.data} />
+      <Footer data={infoMenu.data} />
     </>
   );
 }
@@ -143,11 +143,11 @@ export async function getStaticProps({ locale, params }: any) {
               content
               locale
               metaDescription
-              pageUrl
+              slug
               localizations {
                 data {
                   attributes {
-                    pageUrl
+                    slug
                   }
                 }
               }
@@ -167,14 +167,17 @@ export async function getStaticProps({ locale, params }: any) {
           title
           type
           path
+          iconClass
           items {
             title
             type
             path
+            iconClass
             items {
               title
               type
               path
+              iconClass
             }
           }
         }
@@ -191,14 +194,17 @@ export async function getStaticProps({ locale, params }: any) {
           title
           type
           path
+          iconClass
           items {
             title
             type
             path
+            iconClass
             items {
               title
               type
               path
+              iconClass
             }
           }
         }

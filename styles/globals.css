@@ -75,9 +75,12 @@ code {
   @apply text-base border-solid border py-0.5 px-1 mx-0.5 inline-block bg-lt-code-bg border-lt-code-border dark:bg-dk-code-bg dark:border-dk-code-border
 }
 
-.box a,
-.bodytext a,
-.lead-content a {
+main {
+  @apply text-lg lg:text-xl
+}
+
+main a,
+footer a {
   @apply underline underline-offset-4 decoration-2 text-lt-blue-dark dark:text-dk-blue-light;
   @apply hover:text-lt-purple hover:decoration-4 dark:hover:text-wheat;
   @apply focus:text-lt-purple dark:focus:text-wheat focus:outline-2 focus:outline-offset-2 focus:no-underline focus:outline-lt-purple dark:focus:outline-wheat
@@ -87,13 +90,10 @@ code {
   @apply list-disc ml-5 leading-8
 }
 
-.non-active-link {
-  @apply text-black dark:text-white
-}
-
 a[aria-current=true],
 .active-link {
-  @apply underline decoration-2 underline-offset-4 text-lt-purple dark:text-dk-blue-light
+  @apply underline decoration-4 underline-offset-4 text-lt-purple dark:text-wheat;
+  @apply hover:decoration-2;
 }
 
 blockquote ol {
@@ -182,7 +182,7 @@ blockquote p:last-of-type {
   @apply hidden invisible;
 }
 
-a[aria-current="page"] {
-  @apply underline underline-offset-2 decoration-2;
-}
 
+.icon--footer {
+  @apply fill-lt-blue-dark dark:fill-dk-blue-light
+}

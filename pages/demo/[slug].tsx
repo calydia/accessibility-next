@@ -8,11 +8,12 @@ import SkipLink from '@/components/SkipLink';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Toggle from '@/components/Toggler';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 import { useTranslation } from 'next-i18next';
 
 
-export default function DemoPage({ result, menu }: any) {
+export default function DemoPage({ result, menu, infoMenu }: any) {
   const page = result.demoPages.data[0].attributes;
 
   const [theme, themeToggler] = useDarkMode();
@@ -72,6 +73,7 @@ export default function DemoPage({ result, menu }: any) {
           </div>
         </div>
       </main>
+      <Footer data={infoMenu.data} />
     </>
   );
 }
@@ -170,6 +172,7 @@ export async function getStaticProps({ locale, params }: any) {
           title
           type
           path
+          iconClass
           items {
             title
             type
@@ -179,6 +182,7 @@ export async function getStaticProps({ locale, params }: any) {
               title
               type
               path
+              iconClass
             }
           }
         }
@@ -195,14 +199,17 @@ export async function getStaticProps({ locale, params }: any) {
           title
           type
           path
+          iconClass
           items {
             title
             type
             path
+            iconClass
             items {
               title
               type
               path
+              iconClass
             }
           }
         }
