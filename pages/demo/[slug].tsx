@@ -12,7 +12,6 @@ import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 import { useTranslation } from 'next-i18next';
 
-
 export default function DemoPage({ result, menu, infoMenu }: any) {
   const page = result.demoPages.data[0].attributes;
 
@@ -55,20 +54,20 @@ export default function DemoPage({ result, menu, infoMenu }: any) {
           <meta property="og:image:height" content="630" />
         </Head>
         <div className="max-w-[1564px] mx-auto md:px-8-px">
-          <div className="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto col-span-2 md:col-span-1 md:m-0 md:py-6 md:px-8-px lg:max-w-4xl">
+          <div className="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
             <h1 id="skip-target" className="text-3xl font-bold mt-4 mb-2 lg:text-4xl">{ page.title }</h1>
             <div dangerouslySetInnerHTML={{ __html: page.introduction }} className="text-xl bodytext"></div>
             <div>
               <h2>{ problematicHeading }</h2>
-              <div dangerouslySetInnerHTML={{ __html: page.problematicExample }} className="text-xl bodytext"></div>
+              <div dangerouslySetInnerHTML={{ __html: page.problematicExample }} className="demo-wrapper text-xl bodytext experience-box p-4-px lg:p-8-px border-t-4 gradient-border-light dark:gradient-border-dark"></div>
             </div>
             <div>
               <h2>{ betterHeading }</h2>
-              <div dangerouslySetInnerHTML={{ __html: page.betterExample }} className="text-xl bodytext"></div>
+              <div dangerouslySetInnerHTML={{ __html: page.betterExample }} className="demo-wrapper text-xl bodytext experience-box p-4-px lg:p-8-px border-t-4 gradient-border-light dark:gradient-border-dark"></div>
             </div>
             <div>
               <h2>{ finalHeading }</h2>
-              <div dangerouslySetInnerHTML={{ __html: page.finalComments }} className="text-xl bodytext"></div>
+              <div dangerouslySetInnerHTML={{ __html: page.finalComments }} className="text-xl bodytext experience-box p-4-px lg:p-8-px border-t-4 gradient-border-light dark:gradient-border-dark"></div>
             </div>
           </div>
         </div>
@@ -153,6 +152,7 @@ export async function getStaticProps({ locale, params }: any) {
                 data {
                   attributes {
                     slug
+                    pageUrl
                   }
                 }
               }

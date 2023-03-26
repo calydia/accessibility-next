@@ -86,6 +86,7 @@ footer a {
   @apply focus:text-lt-purple dark:focus:text-wheat focus:outline-2 focus:outline-offset-2 focus:no-underline focus:outline-lt-purple dark:focus:outline-wheat
 }
 
+.bodytext ul,
 .box ul {
   @apply list-disc ml-5 leading-8
 }
@@ -181,7 +182,6 @@ blockquote p:last-of-type {
 .lang-switcher[aria-expanded="false"] + ul {
   @apply hidden invisible;
 }
-
 
 .icon--footer {
   @apply fill-lt-blue-dark dark:fill-dk-blue-light

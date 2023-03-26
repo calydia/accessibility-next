@@ -10,6 +10,7 @@ import Toggle from '../components/Toggler';
 import Header from '../components/Header';
 import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
+import { useTranslation } from 'next-i18next';
 
 
 export default function ArticlePage({ result, menu, infoMenu }: any) {
@@ -19,6 +20,9 @@ export default function ArticlePage({ result, menu, infoMenu }: any) {
 
   const engUrl = (page.locale == 'en') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;
   const fiUrl = (page.locale == 'fi') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;
+
+  const { t } = useTranslation('common');
+  const sourceHeading = t('box-source');
 
   return (
     <>
@@ -49,9 +53,15 @@ export default function ArticlePage({ result, menu, infoMenu }: any) {
           <meta property="og:image:height" content="630" />
         </Head>
         <div className="max-w-[1564px] mx-auto md:px-8-px">
-          <div className="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto col-span-2 md:col-span-1 md:m-0 md:py-6 md:px-8-px lg:max-w-4xl">
+          <div className="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
             <h1 id="skip-target" className="text-3xl font-bold mt-4 mb-2 lg:text-4xl">{ page.title }</h1>
             <div dangerouslySetInnerHTML={{ __html: page.content }} className="text-xl bodytext"></div>
+            { page.sourceMaterial ?
+            <div className="text-xl bodytext mt-12 p-8-px lg:mt-20 txt-base border-solid border-4 bg-lt-code-bg border-lt-code-border dark:bg-dk-code-bg dark:border-dk-code-border">
+              <h2 className="mt-0">{sourceHeading}</h2>
+              <div dangerouslySetInnerHTML={{ __html: page.sourceMaterial }}></div>
+            </div>
+            : ''}
           </div>
         </div>
       </main>
@@ -131,6 +141,7 @@ export async function getStaticProps({ locale, params }: any) {
               locale
               metaDescription
               pageUrl
+              sourceMaterial
               localizations {
                 data {
                   attributes {

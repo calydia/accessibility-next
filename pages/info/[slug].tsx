@@ -55,7 +55,7 @@ export default function InfoPage({ result, menu, infoMenu }: any) {
           <meta property="og:image:height" content="630" />
         </Head>
         <div className="max-w-[1564px] mx-auto md:px-8-px">
-          <div className="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto col-span-2 md:col-span-1 md:m-0 md:py-6 md:px-8-px lg:max-w-4xl">
+          <div className="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
             <h1 id="skip-target" className="text-3xl font-bold mt-4 mb-2 lg:text-4xl">{ page.title }</h1>
             <div dangerouslySetInnerHTML={{ __html: page.content }} className="text-xl bodytext"></div>
 
