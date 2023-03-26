@@ -7,6 +7,7 @@ import '../styles/globals.css';
 import { Average_Sans, Rock_Salt } from 'next/font/google'
 import { appWithTranslation } from 'next-i18next';
 import { useTranslation } from 'next-i18next';
+import { useClickAnyWhere } from 'usehooks-ts';
 
 const rockSalt = Rock_Salt({
   subsets: ['latin'],
@@ -83,6 +84,34 @@ function MyApp({ Component, pageProps }: AppProps) {
       }
     }
   }
+
+  useClickAnyWhere(() => {
+    const mainNav = document.getElementById('main-menu-nav');
+    const langNav = document.getElementById('language-switcher');
+
+    if (event.target) {
+      // If the click happens outside of the main menu or the language menu
+      if (!(mainNav as HTMLElement).contains(event.target)) {
+        // Close the main menu toggle
+        const mainMenuToggle = document.getElementById('main-menu-toggle');
+        (mainMenuToggle as HTMLButtonElement).setAttribute('aria-expanded', 'false');
+
+        // Close all other menu levels except the current one
+        const allButtons = document.getElementsByClassName('menu-button');
+        if (allButtons instanceof HTMLCollection) {
+          Array.from(allButtons).forEach((element: Element) => {
+            if (element !== event.target) {
+              element.setAttribute('aria-expanded', 'false')
+            }
+          });
+        }
+      }
+      if (!(langNav as HTMLElement).contains(event.target)) {
+        const langMenuToggle = document.getElementById('language-menu-button');
+        (langMenuToggle as HTMLButtonElement).setAttribute('aria-expanded', 'false');
+      }
+    }
+  });
 
   useEffect(() => {
     setIsMounted(true)

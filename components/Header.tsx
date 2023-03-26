@@ -5,7 +5,6 @@ import { useTranslation } from 'next-i18next';
 import { HiMenu, HiChevronDown, HiX } from "react-icons/hi";
 
 const Header = ({data}: any) => {
-
   const { asPath } = useRouter();
 
   const { t } = useTranslation('common')
@@ -17,7 +16,6 @@ const Header = ({data}: any) => {
     const current = event.currentTarget;
     const currentExpanded = current.getAttribute('aria-expanded');
     (currentExpanded == 'true') ? current.setAttribute('aria-expanded', 'false') : current.setAttribute('aria-expanded', 'true');
-
   }
 
   const buttonClickHandler = (event: React.MouseEvent<HTMLElement>) => {
@@ -25,9 +23,17 @@ const Header = ({data}: any) => {
     const current = event.currentTarget;
     const currentExpanded = current.getAttribute('aria-expanded');
     (currentExpanded == 'true') ? current.setAttribute('aria-expanded', 'false') : current.setAttribute('aria-expanded', 'true');
+
+    // Close all other menu levels except the current one
+    const allButtons = document.getElementsByClassName('menu-button');
+    if (allButtons instanceof HTMLCollection) {
+      Array.from(allButtons).forEach((element: Element) => {
+        if (element !== current) {
+          element.setAttribute('aria-expanded', 'false')
+        }
+      });
+    }
   }
-
-
 
   return (
       <div className="text-center pt-2 pb-8 lg:py-4 clear-both lg:clear:none">
@@ -35,7 +41,7 @@ const Header = ({data}: any) => {
           <span className="block text-2xl font-title text-black dark:text-white dark:text-shadow-text">Sanna Mäkinen <span className="text-blue-tory dark:text-lt-perfume">-</span> I would if I could</span>
           <span className="block text-lg mt-2 font-title leading-none text-blue-tory dark:text-lt-perfume dark:text-shadow-text">a guide to web accessibility</span>
         </div>
-        <nav aria-labelledby="main-menu-label">
+        <nav id="main-menu-nav" aria-labelledby="main-menu-label">
           <h2 id="main-menu-label" className="sr-only" key="first-heading">{ariaLabel}</h2>
           <button id="main-menu-toggle" className="menu-toggle flex gap-2 mt-6 mx-auto text-black border-y-4 border-transparent dark:text-white md:hidden md:invisible
           hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light
