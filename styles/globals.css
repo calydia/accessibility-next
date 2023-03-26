@@ -123,22 +123,39 @@ blockquote p:last-of-type {
 .bg-1 {
   background-image: url('/mountains/1.jpg');
 }
+@supports (background-image: -webkit-image-set(url('/mountains/1.webp') 1x)) {
+  .bg-1 {background-image: -webkit-image-set(url('/mountains/1.webp') 1x) }
+}
 .bg-2 {
   background-image: url('/mountains/2.jpg');
+}
+@supports (background-image: -webkit-image-set(url('/mountains/2.webp') 1x)) {
+  .bg-2 {background-image: -webkit-image-set(url('/mountains/2.webp') 1x) }
 }
 .bg-3 {
   background-image: url('/mountains/3.jpg');
 }
+@supports (background-image: -webkit-image-set(url('/mountains/3.webp') 1x)) {
+  .bg-3 {background-image: -webkit-image-set(url('/mountains/3.webp') 1x) }
+}
 .bg-4 {
   background-image: url('/mountains/4.jpg');
+}
+@supports (background-image: -webkit-image-set(url('/mountains/4.webp') 1x)) {
+  .bg-4 {background-image: -webkit-image-set(url('/mountains/4.webp') 1x) }
 }
 .bg-5 {
   background-image: url('/mountains/5.jpg');
 }
+@supports (background-image: -webkit-image-set(url('/mountains/5.webp') 1x)) {
+  .bg-5 {background-image: -webkit-image-set(url('/mountains/5.webp') 1x) }
+}
 .bg-6 {
   background-image: url('/mountains/6.jpg');
 }
-
+@supports (background-image: -webkit-image-set(url('/mountains/6.webp') 1x)) {
+  .bg-6 {background-image: -webkit-image-set(url('/mountains/6.webp') 1x) }
+}
 
 .main-image--wrapper::before {
   @apply z-10 absolute block bottom-0 left-0 right-0 top-0 w-full;
