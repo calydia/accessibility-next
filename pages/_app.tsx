@@ -89,26 +89,30 @@ function MyApp({ Component, pageProps }: AppProps) {
     const mainNav = document.getElementById('main-menu-nav');
     const langNav = document.getElementById('language-switcher');
 
-    if (event.target) {
-      // If the click happens outside of the main menu or the language menu
-      if (!(mainNav as HTMLElement).contains(event.target)) {
-        // Close the main menu toggle
-        const mainMenuToggle = document.getElementById('main-menu-toggle');
-        (mainMenuToggle as HTMLButtonElement).setAttribute('aria-expanded', 'false');
+    if (event !== undefined) {
+      if ((event.target !== undefined)) {
+        const currentTarget = (event.target as HTMLElement);
+        const currentTargetSource = (event.srcElement as HTMLElement)
+        // If the click happens outside of the main menu or the language menu
+        if (!(mainNav as HTMLElement).contains(currentTargetSource)) {
+          // Close the main menu toggle
+          const mainMenuToggle = document.getElementById('main-menu-toggle');
+          (mainMenuToggle as HTMLButtonElement).setAttribute('aria-expanded', 'false');
 
-        // Close all other menu levels except the current one
-        const allButtons = document.getElementsByClassName('menu-button');
-        if (allButtons instanceof HTMLCollection) {
-          Array.from(allButtons).forEach((element: Element) => {
-            if (element !== event.target) {
-              element.setAttribute('aria-expanded', 'false')
-            }
-          });
+          // Close all other menu levels except the current one
+          const allButtons = document.getElementsByClassName('menu-button');
+          if (allButtons instanceof HTMLCollection) {
+            Array.from(allButtons).forEach((element: Element) => {
+              if (element !== (currentTarget as HTMLElement)) {
+                element.setAttribute('aria-expanded', 'false')
+              }
+            });
+          }
         }
-      }
-      if (!(langNav as HTMLElement).contains(event.target)) {
-        const langMenuToggle = document.getElementById('language-menu-button');
-        (langMenuToggle as HTMLButtonElement).setAttribute('aria-expanded', 'false');
+        if (!(langNav as HTMLElement).contains(currentTargetSource)) {
+          const langMenuToggle = document.getElementById('language-menu-button');
+          (langMenuToggle as HTMLButtonElement).setAttribute('aria-expanded', 'false');
+        }
       }
     }
   });

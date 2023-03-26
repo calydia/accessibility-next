@@ -108,13 +108,17 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
     item.pages.data.map((page: any) => {
         // reduce through the array of returned objects
         const slugArray = page.attributes.pageUrl.split('/').filter((p:any) => p);
+        const hasInfo = slugArray.includes('info');
 
-        acc.push({
-          params: {
-            slug: slugArray,
-          },
-          locale: page.attributes.locale,
-        });
+        if (!hasInfo) {
+          acc.push({
+            params: {
+              slug: slugArray,
+            },
+            locale: page.attributes.locale,
+          });
+        }
+
         return page;
     });
     return acc;
