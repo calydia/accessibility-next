@@ -42,7 +42,7 @@ const Header = ({data}: any) => {
           <span className="block text-2xl font-title text-black dark:text-white dark:text-shadow-text">Sanna Mäkinen <span className="text-blue-tory dark:text-lt-perfume">-</span> I would if I could</span>
           <span className="block text-lg mt-2 font-title leading-none text-blue-tory dark:text-lt-perfume dark:text-shadow-text">a guide to web accessibility</span>
         </div>
-        <nav id="main-menu-nav" aria-labelledby="main-menu-label">
+        <nav id="main-menu-nav" aria-labelledby="main-menu-label" className="text-black dark:text-white">
           <h2 id="main-menu-label" className="sr-only" key="first-heading">{ariaLabel}</h2>
           <button id="main-menu-toggle" className="menu-toggle flex gap-2 mt-6 mx-auto text-black border-y-4 border-transparent dark:text-white md:hidden md:invisible
           hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light
@@ -78,7 +78,7 @@ const Header = ({data}: any) => {
                                 // The second level items will be either wrappers or links
                                 ? <li key={`subMenuItem-${subIndex}`}>
                                     <h3 key={`subMenuItem-heading-${subIndex}`}
-                                      className={`flex gap-2 items-center text-xl p-1 dark:text-shadow-text mt-0 text-black dark:text-white ${subMenuItem.iconClass}`}>
+                                      className={`flex gap-2 items-center text-xl p-1 mt-0 text-black dark:text-white ${subMenuItem.iconClass}`}>
                                       <MenuIcon iconClass={subMenuItem.iconClass} iconPosition="header" />
                                       {subMenuItem.title}
                                     </h3>
@@ -90,7 +90,7 @@ const Header = ({data}: any) => {
                                           return(
                                             <li key={`lowerSubMenuItem-${lowerSubIndex}`}>
                                               <Link href={lowerSubMenuItem.path} aria-current={ariaCurrentPageLower} key={`lowerSubMenuItem-link-${lowerSubIndex}`}
-                                                className={`text-xl p-1 dark:text-shadow-text hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white ${activeClassLower}`}
+                                                className={`text-xl p-1 hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white ${activeClassLower}`}
                                               >
                                                 {lowerSubMenuItem.title}
                                               </Link>
@@ -101,7 +101,7 @@ const Header = ({data}: any) => {
                                   </li>
                                 : <li key={`subMenuItem-link-wrapper-${subIndex}`}>
                                     <Link href={subMenuItem.path} aria-current={ariaCurrentPage} key={`subMenuItem-link-${subIndex}`}
-                                      className={`text-xl p-1 dark:text-shadow-text hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white ${activeClass}`}
+                                      className={`text-xl p-1 hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white ${activeClass}`}
                                     >
                                       {subMenuItem.title}
                                     </Link>

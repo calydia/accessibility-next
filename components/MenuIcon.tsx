@@ -23,98 +23,98 @@ const MenuIcon = (iconClass: {iconClass: string, iconPosition: string}): JSX.Ele
   if (iconClass.iconClass == 'icon--question') {
     return (
       <>
-        <HiQuestionMarkCircle className={`icon--${iconClass.iconPosition} h-8 w-8`} aria-hidden="true" />
+        <HiQuestionMarkCircle className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--user-group') {
     return (
       <>
-        <HiUserGroup className={`icon--${iconClass.iconPosition} h-8 w-8`} aria-hidden="true" />
+        <HiUserGroup className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--document-text') {
     return (
       <>
-        <HiDocumentText className={`icon--${iconClass.iconPosition} h-8 w-8`} aria-hidden="true" />
+        <HiDocumentText className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--scale') {
     return (
       <>
-        <HiScale className={`icon--${iconClass.iconPosition} h-8 w-8`} aria-hidden="true" />
+        <HiScale className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--book-open') {
     return (
       <>
-        <HiBookOpen className={`icon--${iconClass.iconPosition} h-8 w-8`} aria-hidden="true" />
+        <HiBookOpen className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--academic-cap') {
     return (
       <>
-        <HiAcademicCap className={`icon--${iconClass.iconPosition} h-8 w-8`} aria-hidden="true" />
+        <HiAcademicCap className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--document-search') {
     return (
       <>
-        <HiDocumentSearch className={`icon--${iconClass.iconPosition} h-8 w-8`} aria-hidden="true" />
+        <HiDocumentSearch className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--shield-check') {
     return (
       <>
-        <HiShieldCheck className={`icon--${iconClass.iconPosition} h-8 w-8`} aria-hidden="true" />
+        <HiShieldCheck className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--document-add') {
     return (
       <>
-        <HiDocumentAdd className={`icon--${iconClass.iconPosition} h-8 w-8`} aria-hidden="true" />
+        <HiDocumentAdd className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--flag') {
     return (
       <>
-        <HiFlag className={`icon--${iconClass.iconPosition} h-8 w-8`} aria-hidden="true" />
+        <HiFlag className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--template') {
     return (
       <>
-        <HiTemplate className={`icon--${iconClass.iconPosition} h-8 w-8`} aria-hidden="true" />
+        <HiTemplate className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--code') {
     return (
       <>
-        <HiCode className={`icon--${iconClass.iconPosition} h-8 w-8`} aria-hidden="true" />
+        <HiCode className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--document-duplicate') {
     return (
       <>
-        <HiDocumentDuplicate className={`icon--${iconClass.iconPosition} h-8 w-8`} aria-hidden="true" />
+        <HiDocumentDuplicate className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--glasses') {
     return (
       <>
-        <FaGlasses className={`icon--${iconClass.iconPosition} h-8 w-8`} aria-hidden="true" />
+        <FaGlasses className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
       </>
     );
   }
