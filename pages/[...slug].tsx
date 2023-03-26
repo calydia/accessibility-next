@@ -14,7 +14,7 @@ import MainImage from '@/components/MainImage';
 
 export default function ArticlePage({ result, menu, infoMenu }: any) {
   const page = result.pages.data[0].attributes;
-H
+
   const [theme, themeToggler] = useDarkMode();
 
   const engUrl = (page.locale == 'en') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;
