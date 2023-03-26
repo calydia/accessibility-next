@@ -29,6 +29,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       const targetClass = (event.target as HTMLButtonElement).classList;
       const currentExpanded = (event.target as HTMLButtonElement).getAttribute('aria-expanded');
 
+      /**
+       * Main menu
+       */
+
       // If we press esc when focused on a menu button or the toggle.
       if (targetClass.contains('menu-button') || targetClass.contains('menu-toggle')) {
         (event.target as HTMLButtonElement).setAttribute('aria-expanded', 'false');
@@ -52,6 +56,27 @@ function MyApp({ Component, pageProps }: AppProps) {
           (closestMenuButton.previousSibling as HTMLButtonElement).focus();
         } else if (closestMenuToggle) {
           const menuToggle = document.getElementById('main-menu-toggle');
+          (menuToggle as HTMLButtonElement).setAttribute('aria-expanded', 'false');
+          (menuToggle as HTMLButtonElement).focus();
+        }
+      }
+
+      /**
+       * Language switcher
+       */
+
+      // If we press esc when focused on language switcher toggle.
+      if (targetClass.contains('lang-switcher')) {
+        (event.target as HTMLButtonElement).setAttribute('aria-expanded', 'false');
+        (event.target as HTMLButtonElement).focus();
+      }
+
+      // Close the language swicher if we press esc in a language switcher link
+      if ((event.target as HTMLElement).tagName == 'A') {
+        const closestMenuToggle = (event.target as HTMLAnchorElement).closest('#lang-switcher');
+
+        if (closestMenuToggle) {
+          const menuToggle = document.getElementById('language-menu-button');
           (menuToggle as HTMLButtonElement).setAttribute('aria-expanded', 'false');
           (menuToggle as HTMLButtonElement).focus();
         }

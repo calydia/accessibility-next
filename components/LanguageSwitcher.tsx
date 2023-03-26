@@ -31,8 +31,8 @@ const LanguageSwitcher = ({ englishURL, finnishURL }: SwitcherTypes) => {
   const ariaCurrentPageFi = (asPath.includes(compareURLFI) && compareURLFI !== '/') ? 'page' : undefined;
 
   return (
-    <div className="text-black dark:text-white px-3 relative">
-      <button aria-label={ariaLabel} aria-expanded="false" aria-controls="lang-switcher" onClick={buttonClickHandler} className="lang-switcher flex gap-2 py-2 border-y-4 border-transparent items-center
+    <div className="lang-switcher text-black dark:text-white px-3 relative">
+      <button id="language-menu-button" aria-label={ariaLabel} aria-expanded="false" aria-controls="lang-switcher" onClick={buttonClickHandler} className="lang-switcher flex gap-2 py-2 border-y-4 border-transparent items-center
       hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light
       focus:outline focus:outline-2 focus:outline-offset-4	focus:outline-black dark:focus:outline-white">
         <HiTranslate className="h-8 w-8" aria-hidden="true" />

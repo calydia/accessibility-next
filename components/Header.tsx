@@ -18,8 +18,6 @@ const Header = ({data}: any) => {
     const currentExpanded = current.getAttribute('aria-expanded');
     (currentExpanded == 'true') ? current.setAttribute('aria-expanded', 'false') : current.setAttribute('aria-expanded', 'true');
 
-    // TODO When clicked outside, close this
-
   }
 
   const buttonClickHandler = (event: React.MouseEvent<HTMLElement>) => {
@@ -27,9 +25,6 @@ const Header = ({data}: any) => {
     const current = event.currentTarget;
     const currentExpanded = current.getAttribute('aria-expanded');
     (currentExpanded == 'true') ? current.setAttribute('aria-expanded', 'false') : current.setAttribute('aria-expanded', 'true');
-
-    //TODO Close all other menu items when the button is clicked by setting aria-expanded for the buttons to false
-
   }
 
 
