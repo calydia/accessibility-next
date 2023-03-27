@@ -79,6 +79,7 @@ main {
   @apply text-lg lg:text-xl
 }
 
+#main-menu-nav a,
 main a,
 footer a {
   @apply underline underline-offset-4 decoration-2 text-lt-blue-dark dark:text-dk-blue-light;
@@ -186,14 +187,14 @@ blockquote p:last-of-type {
 }
 
 .menu-toggle[aria-expanded="false"] + ul {
-  @apply max-md:hidden max-md:invisible;
+  @apply max-lg:hidden max-lg:invisible;
 }
 
 .menu-toggle[aria-expanded="true"] .menu-open {
-  @apply max-md:hidden max-md:invisible;
+  @apply max-lg:hidden max-lg:invisible;
 }
 .menu-toggle[aria-expanded="false"] .menu-close {
-  @apply max-md:hidden max-md:invisible;
+  @apply max-lg:hidden max-lg:invisible;
 }
 
 .lang-switcher[aria-expanded="false"] + ul {

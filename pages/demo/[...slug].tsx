@@ -22,8 +22,8 @@ export default function DemoPage({ result, menu, infoMenu }: any) {
   const betterHeading = t('demo-better-heading');
   const finalHeading = t('demo-final-heading');
 
-  const engUrl = (page.locale == 'en') ? page.slug : page.localizations.data[0].attributes.slug;
-  const fiUrl = (page.locale == 'fi') ? page.slug : page.localizations.data[0].attributes.slug;
+  const engUrl = (page.locale == 'en') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;
+  const fiUrl = (page.locale == 'fi') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;
 
   return (
     <>
@@ -113,10 +113,10 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
     )
   ).reduce((acc, item) => {
     item.pages.data.map((page: any) => {
-
+      const slugArray = page.attributes.pageUrl.split('/').filter((p:any) => p);
       acc.push({
         params: {
-          slug: page.attributes.slug,
+          slug: slugArray,
         },
         locale: page.attributes.locale,
       });
@@ -131,7 +131,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
 };
 
 export async function getStaticProps({ locale, params }: any) {
-  const slug = params.slug;
+  const slug = params.slug.at(-1);
 
   const result = await client.query({
     query: gql`

@@ -44,7 +44,7 @@ const Header = ({data}: any) => {
         </div>
         <nav id="main-menu-nav" aria-labelledby="main-menu-label" className="text-black dark:text-white">
           <h2 id="main-menu-label" className="sr-only" key="first-heading">{ariaLabel}</h2>
-          <button id="main-menu-toggle" className="menu-toggle flex gap-2 mt-6 mx-auto text-black border-y-4 border-transparent dark:text-white md:hidden md:invisible
+          <button id="main-menu-toggle" className="menu-toggle flex gap-2 mt-6 mx-auto text-black border-y-4 border-transparent dark:text-white lg:hidden lg:invisible
           hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light
           focus:outline focus:outline-2 focus:outline-offset-4 	focus:outline-black dark:focus:outline-white"
             aria-expanded="false" aria-controls="main-menu" aria-haspopup="true" onClick={menuToggleClickHandler}>
@@ -52,7 +52,7 @@ const Header = ({data}: any) => {
             <HiX className="menu-close h-8 w-8" aria-hidden="true" />
             <span className="sr-only">{menuButton}</span>
           </button>
-          <ul id="main-menu" className="text-left md:visible md:flex md:flex-wrap md:justify-center mt-4 p-0 mb-0" key="first-ul">
+          <ul id="main-menu" className="text-left lg:visible lg:flex lg:flex-wrap lg:justify-center mt-4 p-0 mb-0" key="first-ul">
             {data && data.renderNavigation.map((menuItem: any, index: number) => {
               const ariaCurrentPath = (asPath.includes(menuItem.path) && menuItem.path !== '/') ? true : undefined;
 
@@ -60,18 +60,17 @@ const Header = ({data}: any) => {
                 <Fragment key={`fragment-${index}`}>
                   {menuItem.type == 'WRAPPER' &&
                     // We know the first level items are only wrappers
-                    <li key={`menuItem-${index}`} className="m-2 relative">
+                    <li key={`menuItem-${index}`} className="m-2 static">
                       <button id={`button-${index}`} key={`button-${index}`} aria-current={ariaCurrentPath} aria-expanded="false" aria-controls={`menu-button-${index}`} aria-haspopup="true" onClick={buttonClickHandler}
                         className={`menu-button flex items-center text-left gap-2 text-black dark:text-white text-xl p-1 dark:text-shadow-text hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white`}>
                         {menuItem.title}
                         <HiChevronDown className="menu-button--icon h-6 w-6" />
                       </button>
                       {menuItem.items &&
-                        <ul id={`menu-button-${index}`} key={`menu-button-${index}`} className="menu-button-ul ml-2 md:absolute md:mt-2 md:z-20 md:w-[200%] md:left:0 md:right:0 md:p-4 md:border-2 md:border-solid md:border-black md:dark:border-white md:bg-lt-code-bg md:dark:bg-dk-code-bg">
+                        <ul id={`menu-button-${index}`} key={`menu-button-${index}`} className="menu-button-ul ml-2 lg:absolute lg:mt-2 lg:z-20 lg:grid lg:grid-cols-3 lg:gap-8 lg:w-[80%] lg:max-w-screen-menu lg:mx-auto lg:left-0 lg:right-0 lg:p-4 lg:border-2 lg:border-solid lg:border-black lg:dark:border-white lg:bg-lt-code-bg lg:dark:bg-dk-code-bg">
                           {menuItem.items && menuItem.items.map((subMenuItem: any, subIndex: string) => {
                             const activeClass = (asPath === subMenuItem.path) ? 'active-link': 'non-active-link';
                             const ariaCurrentPage = (asPath === subMenuItem.path) ? 'page' : undefined;
-
                             return(
                               <Fragment key={`fragment-sub-${index}`}>
                                 {subMenuItem.type == 'WRAPPER'

@@ -45,7 +45,10 @@ module.exports = {
         '125-px': '125px',
         '250-px': '250px',
         '350-px': '350px'
-      }
+      },
+      maxWidth: {
+        'screen-menu': '96rem'
+      },
     },
   },
   plugins: [],
