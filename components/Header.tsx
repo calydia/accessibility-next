@@ -52,7 +52,9 @@ const Header = ({data}: any) => {
             <HiX className="menu-close h-8 w-8" aria-hidden="true" />
             <span className="sr-only">{menuButton}</span>
           </button>
-          <ul id="main-menu" className="text-left lg:visible lg:flex lg:flex-wrap lg:justify-center mt-4 p-0 mb-0" key="first-ul">
+          <ul id="main-menu" key="first-ul" className="text-left mx-auto lg:visible lg:flex lg:flex-wrap lg:justify-center mt-4 p-0 mb-0
+            max-lg:absolute max-lg:z-20 lg:w-[80%] max-lg:mx-auto max-lg:left-0 max-lg:right-0 max-lg:p-4 max-lg:border-2 max-lg:border-solid max-lg:border-black max-lg:dark:border-white max-lg:bg-lt-code-bg max-lg:dark:bg-dk-code-bg"
+          >
             {data && data.renderNavigation.map((menuItem: any, index: number) => {
               const ariaCurrentPath = (asPath.includes(menuItem.path) && menuItem.path !== '/') ? true : undefined;
 
@@ -77,19 +79,19 @@ const Header = ({data}: any) => {
                                 // The second level items will be either wrappers or links
                                 ? <li key={`subMenuItem-${subIndex}`}>
                                     <h3 key={`subMenuItem-heading-${subIndex}`}
-                                      className={`flex gap-2 items-center text-xl p-1 mt-0 text-black dark:text-white ${subMenuItem.iconClass}`}>
+                                      className={`flex gap-2 items-center text-xl p-1 mt-0 text-black dark:text-white ${subMenuItem.iconClass} max-lg:mt-3 max-lg:mb-2`}>
                                       <MenuIcon iconClass={subMenuItem.iconClass} iconPosition="header" />
                                       {subMenuItem.title}
                                     </h3>
-                                    <ul key={`subMenuItem-menu-${subIndex}`}>
+                                    <ul key={`subMenuItem-menu-${subIndex}`} className="ml-3">
                                       {subMenuItem.items && subMenuItem.items.map((lowerSubMenuItem: any, lowerSubIndex: string) => {
                                           const activeClassLower = (asPath === lowerSubMenuItem.path) ? 'active-link': 'non-active-link';
                                           const ariaCurrentPageLower = (asPath === lowerSubMenuItem.path && lowerSubMenuItem.path !== '/') ? 'page' : undefined;
                                           // The third level items are only links
                                           return(
-                                            <li key={`lowerSubMenuItem-${lowerSubIndex}`}>
+                                            <li key={`lowerSubMenuItem-${lowerSubIndex}`} className="my-2">
                                               <Link href={lowerSubMenuItem.path} aria-current={ariaCurrentPageLower} key={`lowerSubMenuItem-link-${lowerSubIndex}`}
-                                                className={`text-xl p-1 hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white ${activeClassLower}`}
+                                                className={`text-xl p-1 ${activeClassLower}`}
                                               >
                                                 {lowerSubMenuItem.title}
                                               </Link>
@@ -98,9 +100,9 @@ const Header = ({data}: any) => {
                                       })}
                                     </ul>
                                   </li>
-                                : <li key={`subMenuItem-link-wrapper-${subIndex}`}>
+                                : <li key={`subMenuItem-link-wrapper-${subIndex}`} className="my-2">
                                     <Link href={subMenuItem.path} aria-current={ariaCurrentPage} key={`subMenuItem-link-${subIndex}`}
-                                      className={`text-xl p-1 hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white ${activeClass}`}
+                                      className={`text-xl p-1 ${activeClass}`}
                                     >
                                       {subMenuItem.title}
                                     </Link>
