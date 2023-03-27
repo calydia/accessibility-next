@@ -14,6 +14,11 @@ import {
   HiFlag,
   HiTemplate,
   HiCode,
+  HiColorSwatch,
+  HiCursorClick,
+  HiPuzzle,
+  HiTerminal,
+  HiSpeakerphone,
   HiDocumentDuplicate,
   HiClipboardList,
   HiUser } from 'react-icons/hi';
@@ -115,6 +120,41 @@ const MenuIcon = (iconClass: {iconClass: string, iconPosition: string}): JSX.Ele
     return (
       <>
         <FaGlasses className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
+      </>
+    );
+  }
+  if (iconClass.iconClass == 'icon--color-swatch') {
+    return (
+      <>
+        <HiColorSwatch className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
+      </>
+    );
+  }
+  if (iconClass.iconClass == 'icon--cursor-click') {
+    return (
+      <>
+        <HiCursorClick className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
+      </>
+    );
+  }
+  if (iconClass.iconClass == 'icon--puzzle') {
+    return (
+      <>
+        <HiPuzzle className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
+      </>
+    );
+  }
+  if (iconClass.iconClass == 'icon--terminal') {
+    return (
+      <>
+        <HiTerminal className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
+      </>
+    );
+  }
+  if (iconClass.iconClass == 'icon--speakerphone') {
+    return (
+      <>
+        <HiSpeakerphone className={`icon--${iconClass.iconPosition} h-6 w-6`} aria-hidden="true" />
       </>
     );
   }
