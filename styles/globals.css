@@ -213,3 +213,9 @@ blockquote p:last-of-type {
 .lang-switcher a {
   @apply hover:underline hover:text-lt-purple hover:decoration-4 dark:hover:text-wheat;
 }
+
+.button {
+  @apply bg-lt-blue-dark text-white dark:bg-dk-blue-light dark:text-black;
+  @apply hover:decoration-2 hover:bg-lt-purple dark:hover:bg-wheat;
+  @apply focus:outline focus:outline-2 focus:outline-offset-4 	focus:outline-black dark:focus:outline-white
+}
