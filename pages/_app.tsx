@@ -1,8 +1,8 @@
 import { AppProps } from 'next/app';
 import { ApolloProvider } from '@apollo/client';
 import { client } from '../lib/apollo';
-import { useState, useEffect } from "react";
-import Footer from '../components/Footer';
+import { useState, useEffect, useCallback } from "react";
+import { useRouter } from 'next/router';
 import '../styles/globals.css';
 import { Average_Sans, Rock_Salt } from 'next/font/google'
 import { appWithTranslation } from 'next-i18next';
@@ -24,6 +24,17 @@ const averageSans = Average_Sans({
 function MyApp({ Component, pageProps }: AppProps) {
 
   const [isMounted, setIsMounted] = useState<Boolean>(false);
+  const { events } = useRouter();
+
+  const closeMenus = () => {
+    // Close all other menu levels except the current one
+    const allButtons = document.getElementsByClassName('menu-button');
+    if (allButtons instanceof HTMLCollection) {
+      Array.from(allButtons).forEach((element: Element) => {
+        element.setAttribute('aria-expanded', 'false');
+      });
+    }
+  };
 
   const keyHandler = (event: KeyboardEvent) => {
     if (event.code == "Escape") {
@@ -122,10 +133,12 @@ function MyApp({ Component, pageProps }: AppProps) {
     window.addEventListener('keyup', e => {
       keyHandler(e);
     } );
+    events.on('routeChangeStart', closeMenus);
     return () => {
       window.removeEventListener('keyup', e => {
         keyHandler(e);
       } );
+      events.off('routeChangeStart', closeMenus);
     };
   }, [])
 

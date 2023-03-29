@@ -59,15 +59,15 @@ export default function DemoPage({ result, menu, infoMenu }: any) {
             <div dangerouslySetInnerHTML={{ __html: page.introduction }} className="text-xl bodytext"></div>
             <div>
               <h2>{ problematicHeading }</h2>
-              <div dangerouslySetInnerHTML={{ __html: page.problematicExample }} className="demo-wrapper text-xl bodytext experience-box p-4-px lg:p-8-px border-t-4 gradient-border-light dark:gradient-border-dark"></div>
+              <div dangerouslySetInnerHTML={{ __html: page.problematicExample }} className="demo-wrapper text-xl bodytext example-section p-4-px lg:p-8-px border-t-4 gradient-border-light dark:gradient-border-dark"></div>
             </div>
             <div>
               <h2>{ betterHeading }</h2>
-              <div dangerouslySetInnerHTML={{ __html: page.betterExample }} className="demo-wrapper text-xl bodytext experience-box p-4-px lg:p-8-px border-t-4 gradient-border-light dark:gradient-border-dark"></div>
+              <div dangerouslySetInnerHTML={{ __html: page.betterExample }} className="demo-wrapper text-xl bodytext example-section p-4-px lg:p-8-px border-t-4 gradient-border-light dark:gradient-border-dark"></div>
             </div>
             <div>
               <h2>{ finalHeading }</h2>
-              <div dangerouslySetInnerHTML={{ __html: page.finalComments }} className="text-xl bodytext experience-box p-4-px lg:p-8-px border-t-4 gradient-border-light dark:gradient-border-dark"></div>
+              <div dangerouslySetInnerHTML={{ __html: page.finalComments }} className="text-xl bodytext example-section p-4-px lg:p-8-px border-t-4 gradient-border-light dark:gradient-border-dark"></div>
             </div>
           </div>
         </div>

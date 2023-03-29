@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { HiMenu, HiChevronDown, HiX } from "react-icons/hi";
+import { HiMenu, HiChevronDown, HiX, HiPlus, HiMinus } from "react-icons/hi";
 import MenuIcon from './MenuIcon';
 
 const Header = ({data}: any) => {
@@ -11,12 +11,21 @@ const Header = ({data}: any) => {
   const { t } = useTranslation('common')
   const ariaLabel = t('main-menu-aria');
   const menuButton = t('menu-button');
+  const nextLevel = t('menu-button-next-level');
 
   const menuToggleClickHandler = (event: React.MouseEvent<HTMLElement>) => {
     // Toggle aria-expanded
     const current = event.currentTarget;
     const currentExpanded = current.getAttribute('aria-expanded');
     (currentExpanded == 'true') ? current.setAttribute('aria-expanded', 'false') : current.setAttribute('aria-expanded', 'true');
+
+    // Set mobile menu lower level toggles to expanded false.
+    const allLowerButtons = document.getElementsByClassName('mobile-menu-toggle');
+    if (allLowerButtons instanceof HTMLCollection) {
+      Array.from(allLowerButtons).forEach((element: Element) => {
+        element.setAttribute('aria-expanded', 'false')
+      });
+    }
   }
 
   const buttonClickHandler = (event: React.MouseEvent<HTMLElement>) => {
@@ -34,6 +43,13 @@ const Header = ({data}: any) => {
         }
       });
     }
+  }
+
+  const buttonLowerToggleHandler = (event: React.MouseEvent<HTMLElement>) => {
+    // Toggle aria-expanded
+    const current = event.currentTarget;
+    const currentExpanded = current.getAttribute('aria-expanded');
+    (currentExpanded == 'true') ? current.setAttribute('aria-expanded', 'false') : current.setAttribute('aria-expanded', 'true');
   }
 
   return (
@@ -74,16 +90,21 @@ const Header = ({data}: any) => {
                             const activeClass = (asPath === subMenuItem.path) ? 'active-link': 'non-active-link';
                             const ariaCurrentPage = (asPath === subMenuItem.path) ? 'page' : undefined;
                             return(
-                              <Fragment key={`fragment-sub-${index}`}>
+                              <Fragment key={`fragment-sub-${subIndex}`}>
                                 {subMenuItem.type == 'WRAPPER'
                                 // The second level items will be either wrappers or links
-                                ? <li key={`subMenuItem-${subIndex}`}>
+                                ? <li key={`subMenuItem-${subIndex}`} className="relative">
                                     <h3 key={`subMenuItem-heading-${subIndex}`}
-                                      className={`flex gap-2 items-center text-xl p-1 mt-0 text-black dark:text-white ${subMenuItem.iconClass} max-lg:mt-3 max-lg:mb-2`}>
+                                      className={`sub-header flex gap-2 items-center text-xl p-1 mt-0 text-black dark:text-white ${subMenuItem.iconClass} max-lg:mt-3 max-lg:mb-2`}>
                                       <MenuIcon iconClass={subMenuItem.iconClass} iconPosition="header" />
                                       {subMenuItem.title}
                                     </h3>
-                                    <ul key={`subMenuItem-menu-${subIndex}`} className="ml-3">
+                                    <button aria-expanded="true" className="mobile-menu-toggle absolute right-0 top-0" aria-controls={`menu-button-lower-${subIndex}`} onClick={buttonLowerToggleHandler}>
+                                      <HiPlus className="h-8 w8 icon--plus" />
+                                      <HiMinus className="h-8 w8 icon--minus" />
+                                      <span className="sr-only">{nextLevel}</span>
+                                    </button>
+                                    <ul id={`menu-button-lower-${subIndex}`} key={`subMenuItem-menu-${subIndex}`} className="ml-3">
                                       {subMenuItem.items && subMenuItem.items.map((lowerSubMenuItem: any, lowerSubIndex: string) => {
                                           const activeClassLower = (asPath === lowerSubMenuItem.path) ? 'active-link': 'non-active-link';
                                           const ariaCurrentPageLower = (asPath === lowerSubMenuItem.path && lowerSubMenuItem.path !== '/') ? 'page' : undefined;

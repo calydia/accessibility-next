@@ -215,7 +215,98 @@ blockquote p:last-of-type {
 }
 
 .button {
-  @apply bg-lt-blue-dark text-white dark:bg-dk-blue-light dark:text-black;
+  @apply bg-lt-blue-dark text-white dark:bg-dk-blue-light dark:text-black py-3 px-5;
   @apply hover:decoration-2 hover:bg-lt-purple dark:hover:bg-wheat;
   @apply focus:outline focus:outline-2 focus:outline-offset-4 	focus:outline-black dark:focus:outline-white
 }
+
+.example-section p:first-child {
+  @apply mt-0;
+}
+
+/* Demo content */
+.demo-no-focus:focus {
+  @apply hidden;
+}
+.pseudo-test-triangle-problem,
+.pseudo-test-triangle-better {
+  @apply flex;
+}
+.pseudo-test-triangle-problem::before {
+  content: '\25BA' !important;
+  display: block !important;
+  height: 10px !important;
+  padding-right: 30px !important;
+  width: 10px !important;
+}
+.pseudo-test-triangle-better::before {
+  content: '\25BA' / '';
+  display: block;
+  height: 10px;
+  padding-right: 30px;
+  width: 10px;
+}
+
+.list-no-style {
+  list-style: none;
+}
+.list-css-fix li {
+  @apply list-none;
+}
+.list-css-fix li::before {
+  content: "\200B";
+}
+
+
+table {
+  @apply border-2 border-black dark:border-white p-2;
+}
+
+th {
+  @apply font-bold p-4 border-2 border-black dark:border-white;
+}
+
+td {
+  @apply p-4 border-2 border-black dark:border-white;
+}
+
+table caption {
+  @apply text-center my-2;
+}
+
+.table figcaption {
+  @apply my-2;
+}
+
+a.no-focus:focus {
+  @apply border-none text-lt-blue-dark dark:text-dk-blue-light underline underline-offset-4 decoration-2;
+
+  outline: none !important;
+}
+
+.example-section select {
+  @apply p-2 text-black border-2 border-black;
+}
+
+input[type="text"] {
+  @apply py-2 px-4 my-2 text-black border-2 border-black;
+}
+
+.mobile-menu-toggle {
+  @apply float-right;
+}
+.mobile-menu-toggle[aria-expanded="false"] .icon--minus {
+  @apply hidden invisible;
+}
+.mobile-menu-toggle[aria-expanded="true"] .icon--plus {
+  @apply hidden invisible;
+}
+.mobile-menu-toggle[aria-expanded="false"] + ul {
+  @apply hidden invisible;
+}
+
+
+.sub-header {
+  width: calc(100% - 1.25rem);
+}
+
