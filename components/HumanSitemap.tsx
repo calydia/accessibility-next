@@ -44,7 +44,7 @@ const HumanSitemap = ({ data, keyPrefix }: any) => {
                                       const ariaCurrentPageLower = (asPath === lowerSubMenuItem.path && lowerSubMenuItem.path !== '/') ? 'page' : undefined;
                                       // The third level items are only links
                                       return(
-                                        <li key={`${keyPrefix}-lowerSubMenuItem-${lowerSubIndex}`}>
+                                        <li key={`${keyPrefix}-lowerSubMenuItem-${lowerSubIndex}`} className="my-2">
                                           <Link href={lowerSubMenuItem.path} aria-current={ariaCurrentPageLower} key={`${keyPrefix}-lowerSubMenuItem-link-${lowerSubIndex}`}
                                             className={`${activeClassLower}`}
                                           >
@@ -71,7 +71,7 @@ const HumanSitemap = ({ data, keyPrefix }: any) => {
                 </li>
               :
               <Fragment key={`${keyPrefix}-Fragment-top-${index}`}>
-                <li key={`${keyPrefix}-menu-top-level-list-${index}`}>
+                <li key={`${keyPrefix}-menu-top-level-list-${index}`} className="my-2">
                   <Link href={menuItem.path} aria-current={ariaCurrentPageTop} key={`${keyPrefix}-top-level-link-${index}`}
                     className={`${activeClassTop}`}
                   >

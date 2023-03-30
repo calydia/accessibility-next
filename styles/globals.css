@@ -93,7 +93,14 @@ footer a {
 }
 
 a[aria-current=true],
+a[aria-current="page"],
+#main-menu-nav a[aria-current="page"],
 .active-link {
+  @apply underline decoration-4 underline-offset-4 text-lt-purple dark:text-wheat;
+  @apply hover:decoration-2;
+}
+
+button[aria-current="true"] {
   @apply underline decoration-4 underline-offset-4 text-lt-purple dark:text-wheat;
   @apply hover:decoration-2;
 }

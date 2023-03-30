@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }: AppProps) {
        */
 
       // If we press esc when focused on a menu button or the toggle.
-      if (targetClass.contains('menu-button') || targetClass.contains('menu-toggle')) {
+      if (targetClass.contains('menu-button') || targetClass.contains('menu-toggle') || targetClass.contains('mobile-menu-toggle')) {
         (event.target as HTMLButtonElement).setAttribute('aria-expanded', 'false');
         (event.target as HTMLButtonElement).focus();
       }
@@ -58,12 +58,25 @@ function MyApp({ Component, pageProps }: AppProps) {
         (menuToggle as HTMLButtonElement).focus();
       }
 
+      // If esc is pressed on a menu plus/minus button with aria-expanded as false, close the menu and focus the previous button.
+      if (targetClass.contains('mobile-menu-toggle') && currentExpanded == 'false') {
+        const closestMenuButton = (event.target as HTMLAnchorElement).closest('.menu-button-ul');
+        if (closestMenuButton) {
+          (closestMenuButton.previousSibling as HTMLButtonElement).setAttribute('aria-expanded', 'false');
+          (closestMenuButton.previousSibling as HTMLButtonElement).focus();
+        }
+      }
+
       // Find closest menu button or menu toggle, close menu elements accordingly.
       if ((event.target as HTMLElement).tagName == 'A') {
+        const closestMenuLevelToggle = (event.target as HTMLAnchorElement).closest('.menu-lower-level');
         const closestMenuButton = (event.target as HTMLAnchorElement).closest('.menu-button-ul');
         const closestMenuToggle = (event.target as HTMLAnchorElement).closest('#main-menu');
 
-        if (closestMenuButton) {
+        if (closestMenuLevelToggle) {
+          (closestMenuLevelToggle.previousSibling as HTMLButtonElement).setAttribute('aria-expanded', 'false');
+          (closestMenuLevelToggle.previousSibling as HTMLButtonElement).focus();
+        } else if (closestMenuButton) {
           (closestMenuButton.previousSibling as HTMLButtonElement).setAttribute('aria-expanded', 'false');
           (closestMenuButton.previousSibling as HTMLButtonElement).focus();
         } else if (closestMenuToggle) {

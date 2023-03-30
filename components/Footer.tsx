@@ -9,13 +9,13 @@ const Footer = ({data}: any) => {
   const { asPath } = useRouter();
 
   const { t } = useTranslation('common')
-  const portfolioLink = t('ext-portfolio');
   const blogLink = t('ext-blog');
+  const footerMenuAria = t('footer-menu-aria')
 
   return (
     <footer className="mt-12 p-4-px lg:p-12-px border-t-8 border-solid border-blue-tory bg-lt-blue-light dark:bg-dk-purple">
       <div className="md:flex md:justify-between max-w-[1500px] mx-auto">
-        <nav aria-label="footer menu placeholder aria">
+        <nav aria-label={footerMenuAria}>
           <ul>
           {data && data.renderNavigation.map((menuItem: any, index: number) => {
             const ariaCurrentPage = (asPath === menuItem.path) ? 'page' : undefined;

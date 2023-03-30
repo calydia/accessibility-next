@@ -8,9 +8,10 @@ import SkipLink from '@/components/SkipLink';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Toggle from '../components/Toggler';
 import Header from '../components/Header';
+import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 
-export default function FrontPage({ result, menu }: any) {
+export default function FrontPage({ result, menu, infoMenu }: any) {
   const page = result.frontPage.data.attributes;
 
   const [theme, themeToggler] = useDarkMode();
@@ -53,6 +54,7 @@ export default function FrontPage({ result, menu }: any) {
           </div>
         </div>
       </main>
+      <Footer data={infoMenu.data} />
     </>
   );
 }
@@ -108,14 +110,17 @@ export async function getStaticProps({ locale }: any) {
           title
           type
           path
+          iconClass
           items {
             title
             type
             path
+            iconClass
             items {
               title
               type
               path
+              iconClass
             }
           }
         }

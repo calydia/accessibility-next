@@ -12,6 +12,8 @@ const Header = ({data}: any) => {
   const ariaLabel = t('main-menu-aria');
   const menuButton = t('menu-button');
   const nextLevel = t('menu-button-next-level');
+  const siteName = t('site-name');
+  const siteSlogan = t('site-slogan');
 
   const menuToggleClickHandler = (event: React.MouseEvent<HTMLElement>) => {
     // Toggle aria-expanded
@@ -55,8 +57,8 @@ const Header = ({data}: any) => {
   return (
       <div className="text-center pt-2 pb-8 lg:py-4 clear-both lg:clear:none">
         <div>
-          <span className="block text-2xl font-title text-black dark:text-white dark:text-shadow-text">Sanna Mäkinen <span className="text-blue-tory dark:text-lt-perfume">-</span> I would if I could</span>
-          <span className="block text-lg mt-2 font-title leading-none text-blue-tory dark:text-lt-perfume dark:text-shadow-text">a guide to web accessibility</span>
+          <span className="block text-2xl font-title text-black dark:text-white dark:text-shadow-text">Sanna Mäkinen <span className="text-blue-tory dark:text-lt-perfume">-</span> {siteName}</span>
+          <span className="block text-lg mt-2 font-title leading-none text-blue-tory dark:text-lt-perfume dark:text-shadow-text">{siteSlogan}</span>
         </div>
         <nav id="main-menu-nav" aria-labelledby="main-menu-label" className="text-black dark:text-white">
           <h2 id="main-menu-label" className="sr-only" key="first-heading">{ariaLabel}</h2>
@@ -99,20 +101,20 @@ const Header = ({data}: any) => {
                                       <MenuIcon iconClass={subMenuItem.iconClass} iconPosition="header" />
                                       {subMenuItem.title}
                                     </h3>
-                                    <button aria-expanded="true" className="mobile-menu-toggle absolute right-0 top-0" aria-controls={`menu-button-lower-${subIndex}`} onClick={buttonLowerToggleHandler}>
-                                      <HiPlus className="h-8 w8 icon--plus" />
-                                      <HiMinus className="h-8 w8 icon--minus" />
+                                    <button aria-expanded="true" className="mobile-menu-toggle absolute right-0 top-0 h-6 w-6 flex items-center justify-center md:top-1" aria-controls={`menu-button-lower-${subIndex}`} onClick={buttonLowerToggleHandler}>
+                                      <HiPlus className="h-6 w-6 icon--plus md:h-4 md:w-4" />
+                                      <HiMinus className="h-6 w-6 icon--minus md:h-4 md:w-4" />
                                       <span className="sr-only">{nextLevel}</span>
                                     </button>
-                                    <ul id={`menu-button-lower-${subIndex}`} key={`subMenuItem-menu-${subIndex}`} className="ml-3">
+                                    <ul id={`menu-button-lower-${subIndex}`} key={`subMenuItem-menu-${subIndex}`} className="ml-3 menu-lower-level">
                                       {subMenuItem.items && subMenuItem.items.map((lowerSubMenuItem: any, lowerSubIndex: string) => {
                                           const activeClassLower = (asPath === lowerSubMenuItem.path) ? 'active-link': 'non-active-link';
                                           const ariaCurrentPageLower = (asPath === lowerSubMenuItem.path && lowerSubMenuItem.path !== '/') ? 'page' : undefined;
                                           // The third level items are only links
                                           return(
-                                            <li key={`lowerSubMenuItem-${lowerSubIndex}`} className="my-2">
+                                            <li key={`lowerSubMenuItem-${lowerSubIndex}`} className="my-3">
                                               <Link href={lowerSubMenuItem.path} aria-current={ariaCurrentPageLower} key={`lowerSubMenuItem-link-${lowerSubIndex}`}
-                                                className={`text-xl p-1 ${activeClassLower}`}
+                                                className={`text-lg p-1 ${activeClassLower}`}
                                               >
                                                 {lowerSubMenuItem.title}
                                               </Link>
@@ -121,9 +123,9 @@ const Header = ({data}: any) => {
                                       })}
                                     </ul>
                                   </li>
-                                : <li key={`subMenuItem-link-wrapper-${subIndex}`} className="my-2">
+                                : <li key={`subMenuItem-link-wrapper-${subIndex}`} className="my-3">
                                     <Link href={subMenuItem.path} aria-current={ariaCurrentPage} key={`subMenuItem-link-${subIndex}`}
-                                      className={`text-xl p-1 ${activeClass}`}
+                                      className={`text-lg p-1 ${activeClass}`}
                                     >
                                       {subMenuItem.title}
                                     </Link>
