@@ -18,7 +18,7 @@
 }
 
 body {
-  @apply bg-white font-sans
+  @apply bg-white font-sans hyphens-auto;
 }
 
 body.dark {
@@ -87,6 +87,7 @@ footer a {
   @apply focus:text-lt-purple dark:focus:text-wheat focus:outline-2 focus:outline-offset-2 focus:no-underline focus:outline-lt-purple dark:focus:outline-wheat
 }
 
+.glossary-term ul,
 .bodytext ul,
 .box ul {
   @apply list-disc ml-5 leading-8
@@ -317,3 +318,9 @@ input[type="text"] {
   width: calc(100% - 1.25rem);
 }
 
+.glossary-term p:first-of-type {
+  @apply mt-0;
+}
+.glossary-term p:last-of-type {
+  @apply mb-0;
+}

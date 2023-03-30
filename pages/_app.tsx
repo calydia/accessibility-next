@@ -34,6 +34,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         element.setAttribute('aria-expanded', 'false');
       });
     }
+    const langButton = document.getElementById('language-menu-button');
+    (langButton as HTMLButtonElement).setAttribute('aria-expanded', 'false');
   };
 
   const keyHandler = (event: KeyboardEvent) => {

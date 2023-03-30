@@ -11,9 +11,10 @@ import Header from '../components/Header';
 import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 import { useTranslation } from 'next-i18next';
+import Glossary from '@/components/Glossary';
 
 
-export default function ArticlePage({ result, menu, infoMenu }: any) {
+export default function ArticlePage({ result, menu, infoMenu, glossary }: any) {
   const page = result.pages.data[0].attributes;
 
   const [theme, themeToggler] = useDarkMode();
@@ -56,6 +57,11 @@ export default function ArticlePage({ result, menu, infoMenu }: any) {
           <div className="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
             <h1 id="skip-target" className="text-3xl font-bold mt-4 mb-2 lg:text-4xl">{ page.title }</h1>
             <div dangerouslySetInnerHTML={{ __html: page.content }} className="text-xl bodytext"></div>
+            { (page.slug === "glossary" || page.slug === 'sanasto') ?
+            <>
+              <Glossary data={glossary.data} />
+            </>
+            : null }
             { page.sourceMaterial ?
             <div className="text-xl bodytext mt-12 p-8-px lg:mt-20 txt-base border-solid border-4 bg-lt-code-bg border-lt-code-border dark:bg-dk-code-bg dark:border-dk-code-border">
               <h2 className="mt-0">{sourceHeading}</h2>
@@ -215,12 +221,31 @@ export async function getStaticProps({ locale, params }: any) {
     variables: { locale }
   });
 
+  const glossaryItems = await client.query({
+    query: gql`
+      query GlossaryItems($locale: I18NLocaleCode) {
+        glossaryTerms(locale: $locale) {
+          data {
+            attributes {
+              termName
+              termDescription
+            }
+          }
+        }
+      }
+    `,
+    variables: { locale }
+  });
+
+  const glossary = (slug == 'glossary' || slug == 'sanasto') ? glossaryItems : null;
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
       result: result.data,
       menu: menu,
-      infoMenu: infoMenu
+      infoMenu: infoMenu,
+      glossary: glossary
     },
     revalidate: 60
   };
