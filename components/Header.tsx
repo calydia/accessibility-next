@@ -66,8 +66,8 @@ const Header = ({data}: any) => {
           hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light
           focus:outline focus:outline-2 focus:outline-offset-4 	focus:outline-black dark:focus:outline-white"
             aria-expanded="false" aria-controls="main-menu" aria-haspopup="true" onClick={menuToggleClickHandler}>
-            <HiMenu className="menu-open h-8 w-8" aria-hidden="true" />
-            <HiX className="menu-close h-8 w-8" aria-hidden="true" />
+            <HiMenu className="menu-open h-11 w-11" aria-hidden="true" />
+            <HiX className="menu-close h-11 w-11" aria-hidden="true" />
             <span className="sr-only">{menuButton}</span>
           </button>
           <ul id="main-menu" key="first-ul" className="text-left mx-auto lg:visible lg:flex lg:flex-wrap lg:justify-center mt-4 p-0 mb-0
