@@ -91,6 +91,7 @@ const Header = ({data}: any) => {
                           {menuItem.items && menuItem.items.map((subMenuItem: any, subIndex: string) => {
                             const activeClass = (asPath === subMenuItem.path) ? 'active-link': 'non-active-link';
                             const ariaCurrentPage = (asPath === subMenuItem.path) ? 'page' : undefined;
+                            const titleModified = subMenuItem.title.replace(/\s+/g, '-').toLowerCase();
                             return(
                               <Fragment key={`fragment-sub-${subIndex}`}>
                                 {subMenuItem.type == 'WRAPPER'
@@ -101,12 +102,12 @@ const Header = ({data}: any) => {
                                       <MenuIcon iconClass={subMenuItem.iconClass} iconPosition="header" />
                                       {subMenuItem.title}
                                     </h3>
-                                    <button aria-expanded="true" className="mobile-menu-toggle absolute right-0 top-0 h-6 w-6 flex items-center justify-center md:top-1" aria-controls={`menu-button-lower-${subIndex}`} onClick={buttonLowerToggleHandler}>
+                                    <button aria-expanded="true" className="mobile-menu-toggle absolute right-0 top-0 h-6 w-6 flex items-center justify-center md:top-1" aria-controls={`menu-button-lower-${subIndex}-${titleModified}`} onClick={buttonLowerToggleHandler}>
                                       <HiPlus className="h-6 w-6 icon--plus md:h-4 md:w-4" />
                                       <HiMinus className="h-6 w-6 icon--minus md:h-4 md:w-4" />
                                       <span className="sr-only">{nextLevel}</span>
                                     </button>
-                                    <ul id={`menu-button-lower-${subIndex}`} key={`subMenuItem-menu-${subIndex}`} className="ml-3 menu-lower-level">
+                                    <ul id={`menu-button-lower-${subIndex}-${titleModified}`} key={`subMenuItem-menu-${subIndex}`} className="ml-3 menu-lower-level">
                                       {subMenuItem.items && subMenuItem.items.map((lowerSubMenuItem: any, lowerSubIndex: string) => {
                                           const activeClassLower = (asPath === lowerSubMenuItem.path) ? 'active-link': 'non-active-link';
                                           const ariaCurrentPageLower = (asPath === lowerSubMenuItem.path && lowerSubMenuItem.path !== '/') ? 'page' : undefined;
