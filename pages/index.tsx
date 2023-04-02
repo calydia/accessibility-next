@@ -8,6 +8,7 @@ import SkipLink from '@/components/SkipLink';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Toggle from '../components/Toggler';
 import Header from '../components/Header';
+import Breadcrumb from '@/components/Breadcrumb';
 import SearchBar from '@/components/SearchBar';
 import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
@@ -33,6 +34,7 @@ export default function FrontPage({ result, menu, infoMenu }: any) {
       </header>
       <SearchBar />
       <MainImage />
+      <Breadcrumb currentTitle={page.title} currentSlug={page.slug} />
       <main>
         <Head>
           <title>{page.title} | Blog - Sanna Mäkinen</title>
