@@ -8,6 +8,7 @@ import SkipLink from '@/components/SkipLink';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Toggle from '@/components/Toggler';
 import Header from '@/components/Header';
+import SearchBar from '@/components/SearchBar';
 import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 import HumanSitemap from '@/components/HumanSitemap';
@@ -37,6 +38,7 @@ export default function InfoPage({ result, menu, infoMenu }: any) {
         </div>
         <Header data={menu.data} />
       </header>
+      <SearchBar />
       <MainImage />
       <main>
         <Head>

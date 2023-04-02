@@ -18,5 +18,7 @@
   "name-main-menu": "Päävalikko",
   "name-info-menu": "Infovalikko",
   "ext-blog": "Tutustu blogiini",
-  "box-source": "Lähdemateriaali"
+  "box-source": "Lähdemateriaali",
+  "search-label": "Hae sisältöä",
+  "search-button": "Hae"
 }
