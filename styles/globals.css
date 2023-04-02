@@ -79,6 +79,8 @@ main {
   @apply text-lg lg:text-xl
 }
 
+
+.breadcrumb a,
 #main-menu-nav a,
 main a,
 footer a {

@@ -16,7 +16,7 @@ import { useTranslation } from 'next-i18next';
 import Glossary from '@/components/Glossary';
 
 
-export default function ArticlePage({ result, menu, infoMenu, glossary }: any) {
+export default function ArticlePage({ result, menu, infoMenu, glossary, menuList }: any) {
   const page = result.pages.data[0].attributes;
 
   const [theme, themeToggler] = useDarkMode();
@@ -40,7 +40,7 @@ export default function ArticlePage({ result, menu, infoMenu, glossary }: any) {
       </header>
       <SearchBar />
       <MainImage />
-      <Breadcrumb currentTitle={page.title} currentSlug={page.slug} />
+      <Breadcrumb currentTitle={page.title} currentSlug={page.slug} menuList={menuList.data.menuTitleList.data.attributes.titleList.menuItems} />
       <main>
         <Head>
           <title>{page.title} | Blog - Sanna Mäkinen</title>
@@ -243,13 +243,29 @@ export async function getStaticProps({ locale, params }: any) {
 
   const glossary = (slug == 'glossary' || slug == 'sanasto') ? glossaryItems : null;
 
+  const menuList = await client.query({
+    query: gql`
+      query menuTitleList($locale: I18NLocaleCode) {
+        menuTitleList(locale: $locale) {
+          data {
+            attributes {
+              titleList
+            }
+          }
+        }
+      }
+    `,
+    variables: { locale }
+  });
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
       result: result.data,
-      menu: menu,
-      infoMenu: infoMenu,
-      glossary: glossary
+      menu,
+      infoMenu,
+      glossary,
+      menuList
     },
     revalidate: 60
   };

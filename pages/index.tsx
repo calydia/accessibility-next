@@ -13,7 +13,7 @@ import SearchBar from '@/components/SearchBar';
 import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 
-export default function FrontPage({ result, menu, infoMenu }: any) {
+export default function FrontPage({ result, menu, infoMenu, menuList }: any) {
   const page = result.frontPage.data.attributes;
 
   const [theme, themeToggler] = useDarkMode();
@@ -34,7 +34,7 @@ export default function FrontPage({ result, menu, infoMenu }: any) {
       </header>
       <SearchBar />
       <MainImage />
-      <Breadcrumb currentTitle={page.title} currentSlug={page.slug} />
+      <Breadcrumb currentTitle={page.title} currentSlug={page.slug} menuList={menuList.data.menuTitleList.data.attributes.titleList.menuItems} />
       <main>
         <Head>
           <title>{page.title} | Blog - Sanna Mäkinen</title>
@@ -133,12 +133,29 @@ export async function getStaticProps({ locale }: any) {
     variables: { locale }
   });
 
+
+  const menuList = await client.query({
+    query: gql`
+      query menuTitleList($locale: I18NLocaleCode) {
+        menuTitleList(locale: $locale) {
+          data {
+            attributes {
+              titleList
+            }
+          }
+        }
+      }
+    `,
+    variables: { locale }
+  });
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
       result: result.data,
-      menu: menu,
-      infoMenu: infoMenu
+      menu,
+      infoMenu,
+      menuList
     },
     revalidate: 60
   };

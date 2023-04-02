@@ -16,7 +16,7 @@ import HumanSitemap from '@/components/HumanSitemap';
 import { useTranslation } from 'next-i18next';
 
 
-export default function InfoPage({ result, menu, infoMenu }: any) {
+export default function InfoPage({ result, menu, infoMenu, menuList }: any) {
   const page = result.pages.data[0].attributes;
 
   const [theme, themeToggler] = useDarkMode();
@@ -41,7 +41,7 @@ export default function InfoPage({ result, menu, infoMenu }: any) {
       </header>
       <SearchBar />
       <MainImage />
-      <Breadcrumb currentTitle={page.title} currentSlug={page.slug} />
+      <Breadcrumb currentTitle={page.title} currentSlug={page.slug} menuList={menuList.data.menuTitleList.data.attributes.titleList.menuItems} />
       <main>
         <Head>
           <title>{page.title} | Blog - Sanna Mäkinen</title>
@@ -217,12 +217,29 @@ export async function getStaticProps({ locale, params }: any) {
     variables: { locale }
   });
 
+
+  const menuList = await client.query({
+    query: gql`
+      query menuTitleList($locale: I18NLocaleCode) {
+        menuTitleList(locale: $locale) {
+          data {
+            attributes {
+              titleList
+            }
+          }
+        }
+      }
+    `,
+    variables: { locale }
+  });
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
       result: result.data,
       menu: mainMenu,
-      infoMenu: infoMenu
+      infoMenu,
+      menuList
     },
     revalidate: 60
   };
