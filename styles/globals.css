@@ -225,9 +225,9 @@ blockquote p:last-of-type {
 }
 
 .button {
-  @apply bg-lt-blue-dark text-white dark:bg-dk-blue-light dark:text-black py-3 px-5;
-  @apply hover:decoration-2 hover:bg-lt-purple dark:hover:bg-wheat;
-  @apply focus:outline focus:outline-2 focus:outline-offset-4 	focus:outline-black dark:focus:outline-white
+  @apply bg-lt-blue-dark text-white border-4 border-transparent dark:bg-dk-blue-light dark:text-black py-3 px-5;
+  @apply hover:border-4 hover:border-lt-blue-dark hover:bg-transparent hover:text-lt-blue-dark dark:hover:text-dk-blue-light dark:hover:border-dk-blue-light;
+  @apply focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white
 }
 
 .example-section p:first-child {
