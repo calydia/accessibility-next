@@ -92,7 +92,7 @@ footer a {
 .glossary-term ul,
 .bodytext ul,
 .box ul {
-  @apply list-disc ml-5 leading-8
+  @apply list-disc ml-5 leading-loose
 }
 
 a[aria-current=true],
@@ -108,8 +108,18 @@ button[aria-current="true"] {
   @apply hover:decoration-2;
 }
 
-blockquote ol {
-  @apply list-decimal
+ol {
+  @apply list-decimal leading-normal;
+
+  margin-block-start: 0.25em;
+  margin-block-end: 0.25em;
+  margin-inline-start: 1.5em;
+  margin-inline-end: 0;
+  padding-inline-start: 0;
+}
+
+ol li {
+  @apply my-4
 }
 
 blockquote ul {

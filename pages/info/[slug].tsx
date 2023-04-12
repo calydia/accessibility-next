@@ -42,7 +42,7 @@ export default function InfoPage({ result, menu, infoMenu, menuList }: any) {
       <SearchBar />
       <MainImage />
       <Breadcrumb currentTitle={page.title} currentSlug={page.slug} menuList={menuList.data.menuTitleList.data.attributes.titleList.menuItems} />
-      <main>
+      <main className="mb-8 md:mb-12">
         <Head>
           <title>{page.title} | Blog - Sanna Mäkinen</title>
           <meta name="Description" content={page.metaDescription} />

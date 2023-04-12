@@ -15,7 +15,6 @@ import MainImage from '@/components/MainImage';
 import { useTranslation } from 'next-i18next';
 import Glossary from '@/components/Glossary';
 
-
 export default function ArticlePage({ result, menu, infoMenu, glossary, menuList }: any) {
   const page = result.pages.data[0].attributes;
 
@@ -41,7 +40,7 @@ export default function ArticlePage({ result, menu, infoMenu, glossary, menuList
       <SearchBar />
       <MainImage />
       <Breadcrumb currentTitle={page.title} currentSlug={page.slug} menuList={menuList.data.menuTitleList.data.attributes.titleList.menuItems} />
-      <main>
+      <main className="mb-8 md:mb-12">
         <Head>
           <title>{page.title} | Blog - Sanna Mäkinen</title>
           <meta name="Description" content={page.metaDescription} />
@@ -67,9 +66,9 @@ export default function ArticlePage({ result, menu, infoMenu, glossary, menuList
             </>
             : null }
             { page.sourceMaterial ?
-            <div className="text-xl bodytext mt-12 p-8-px lg:mt-20 txt-base border-solid border-4 bg-lt-code-bg border-lt-code-border dark:bg-dk-code-bg dark:border-dk-code-border">
-              <h2 className="mt-0">{sourceHeading}</h2>
-              <div dangerouslySetInnerHTML={{ __html: page.sourceMaterial }}></div>
+            <div className="relative text-xl bodytext mt-12 p-8-px lg:mt-20 txt-base border-solid border-4 bg-lt-code-bg border-lt-code-border dark:bg-dk-code-bg dark:border-dk-code-border">
+              <h2 className="mt-0 mb-6">{sourceHeading}</h2>
+              <div className="" dangerouslySetInnerHTML={{ __html: page.sourceMaterial }}></div>
             </div>
             : ''}
           </div>

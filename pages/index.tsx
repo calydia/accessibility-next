@@ -12,8 +12,9 @@ import Breadcrumb from '@/components/Breadcrumb';
 import SearchBar from '@/components/SearchBar';
 import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
+import BlogHighlights from '@/components/BlogHighlights';
 
-export default function FrontPage({ result, menu, infoMenu, menuList }: any) {
+export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: any) {
   const page = result.frontPage.data.attributes;
 
   const [theme, themeToggler] = useDarkMode();
@@ -58,6 +59,7 @@ export default function FrontPage({ result, menu, infoMenu, menuList }: any) {
           </div>
         </div>
       </main>
+      <BlogHighlights data={blogs} />
       <Footer data={infoMenu.data} />
     </>
   );
@@ -149,13 +151,49 @@ export async function getStaticProps({ locale }: any) {
     variables: { locale }
   });
 
+    const drupalArticles = await fetch('https://drupal.ampere.corrupted.pw/blogs/node/article?sort=-created&page[limit]=3&filter[field_blog_category.id][value]=a4bd8146-d52f-471f-9c07-bff738f81a47&include=field_blog_listing_image.field_media_image&fields[file--file]=uri,url');
+    const articles = await drupalArticles.json();
+    const posts: { title: string, path: string, created: string, image?: string}[] = [];
+
+    if (articles) {
+      const includedFiles = articles.included.filter((item:any) => item.type === 'file--file');
+      const includedMedia = articles.included.filter((item:any) => item.type === 'media--image');
+
+      articles.data.map((item: any) => {
+        let fileURL;
+
+          let mediaID = item.relationships.field_blog_listing_image.data.id;
+
+          if (mediaID) {
+            let listedMedia = includedMedia.find((mediaItem: any) => mediaItem.id == mediaID);
+
+            if (listedMedia) {
+              let fileID = listedMedia.relationships.field_media_image.data.id;
+              let listingFile = includedFiles.find((fileItem: any) => fileItem.id == fileID);
+              fileURL = listingFile.attributes.uri.url;
+            }
+          }
+
+          let file = (fileURL) ? fileURL : null;
+
+          posts.push({
+            'title': item.attributes.title,
+            'path': item.attributes.path.alias,
+            'created': item.attributes.created,
+            'image': file
+          });
+      });
+    }
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
       result: result.data,
       menu,
       infoMenu,
-      menuList
+      menuList,
+      blogs: posts
+
     },
     revalidate: 60
   };
