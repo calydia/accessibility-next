@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --quote-icon: url('/iconmonstr-quote-light.svg');
+}
+:root .dark {
+  --quote-icon: url('/iconmonstr-quote-dark.svg');
+}
 
 .gradient-border-light {
   border-image: linear-gradient(to right, #46037e 0%, RoyalBlue 50%, #46037e 100%);
@@ -55,7 +61,7 @@ h4 {
 }
 
 blockquote {
-  @apply italic my-8 pl-4 py-1 border-solid border-l-4 border-l-lt-purple dark:border-l-dk-blue-light
+  @apply relative bg-slate-300 dark:bg-slate-900 my-8 p-6 border-solid border-l-8 border-l-lt-purple dark:border-l-dk-blue-light;
 }
 
 .box p:first-of-type,
@@ -68,7 +74,19 @@ blockquote p:first-of-type {
 }
 
 blockquote cite {
-  @apply text-base not-italic
+  @apply block text-base not-italic mt-4 lg:text-right
+}
+
+blockquote::after {
+  @apply block absolute right-[-4px] md:right-[-2rem] top-[-2rem] text-7xl;
+
+  background-image: var(--quote-icon);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 4rem;
+  content: '';
+  height: 4rem;
+  width: 4rem;
 }
 
 code {
@@ -138,7 +156,6 @@ blockquote ul {
 blockquote p:last-of-type {
   @apply mb-0
 }
-
 
 /* Silly background images */
 .bg-1 {
@@ -238,6 +255,21 @@ blockquote p:last-of-type {
   @apply bg-lt-blue-dark text-white border-4 border-transparent dark:bg-dk-blue-light dark:text-black py-3 px-5;
   @apply hover:border-4 hover:border-lt-blue-dark hover:bg-transparent hover:text-lt-blue-dark dark:hover:text-dk-blue-light dark:hover:border-dk-blue-light;
   @apply focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white
+}
+
+.button--alternative {
+  @apply text-lt-blue-dark dark:text-dk-blue-light py-2 px-3;
+}
+
+.item--transition {
+  @apply transition-colors ease-in-out duration-300;
+  @apply hover:transition-colors hover:ease-in-out hover:duration-300
+}
+
+.hover--border {
+  @apply border-y-4 border-transparent;
+  @apply hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light;
+  @apply focus:outline focus:outline-2 focus:outline-offset-4	focus:outline-black dark:focus:outline-white;
 }
 
 .example-section p:first-child {

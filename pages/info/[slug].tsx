@@ -30,7 +30,7 @@ export default function InfoPage({ result, menu, infoMenu, menuList }: any) {
 
   return (
     <>
-      <header className="bg-gradient-to-r from-lt-perfume via-lt-blue-light to-lt-perfume
+      <header id="page-top" className="bg-gradient-to-r from-lt-perfume via-lt-blue-light to-lt-perfume
         dark:from-dk-purple-header dark:via-dk-blue-header dark:to-dk-purple-header">
         <SkipLink skipTarget="skip-target" skipTextVariable="skip-link-text" />
         <div className="flex flex-wrap justify-end gap-2">

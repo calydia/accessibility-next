@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Script from 'next/script'
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import { HiArrowCircleUp } from 'react-icons/hi';
 
 const Footer = ({data}: any) => {
   const { asPath } = useRouter();
@@ -12,8 +13,20 @@ const Footer = ({data}: any) => {
   const blogLink = t('ext-blog');
   const footerMenuAria = t('footer-menu-aria')
 
+  const handleTop = (event: React.MouseEvent<HTMLElement>): void => {
+    const target = document.getElementById('page-top');
+    (target as HTMLElement).setAttribute('tabindex', '-1');
+    (target as HTMLElement).focus();
+  }
+
   return (
-    <footer className="p-4-px lg:p-12-px border-t-8 border-solid border-blue-tory bg-lt-blue-light dark:bg-dk-purple">
+    <footer className="p-4-px lg:p-8-px border-t-8 border-solid border-blue-tory bg-lt-blue-light dark:bg-dk-purple">
+      <div className="text-center">
+        <button className="text-center button--alternative hover--border item--transition" onClick={handleTop}>
+          <HiArrowCircleUp className="h-12 w-12 mx-auto" />
+          Back to top
+        </button>
+      </div>
       <div className="md:flex md:justify-between max-w-[1500px] mx-auto">
         <nav aria-label={footerMenuAria}>
           <ul>
