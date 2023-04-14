@@ -3,10 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --quote-icon: url('/iconmonstr-quote-light.svg');
+  --quote-icon: url('/icons/iconmonstr-quote-light.svg');
+  --external-icon: url('/icons/icons8-external-link-light.svg');
+  --exclamation-icon: url('/icons/hi-exclamation-circle-light.svg');
 }
 :root .dark {
-  --quote-icon: url('/iconmonstr-quote-dark.svg');
+  --quote-icon: url('/icons/iconmonstr-quote-dark.svg');
+  --external-icon: url('/icons/icons8-external-link-dark.svg');
+  --exclamation-icon: url('/icons/hi-exclamation-circle-dark.svg');
 }
 
 .gradient-border-light {
@@ -37,7 +41,7 @@ body.dark {
 }
 
 p {
-  @apply my-6 leading-relaxed;
+  @apply my-8 leading-relaxed;
 }
 
 .post-link:hover .post-title {
@@ -78,15 +82,11 @@ blockquote cite {
 }
 
 blockquote::after {
-  @apply block absolute right-[-4px] md:right-[-2rem] top-[-2rem] text-7xl;
+  @apply block absolute right-[-4px] md:right-[-2rem] top-[-2rem] text-7xl bg-no-repeat bg-center h-16 w-16;
 
   background-image: var(--quote-icon);
-  background-position: center;
-  background-repeat: no-repeat;
   background-size: 4rem;
   content: '';
-  height: 4rem;
-  width: 4rem;
 }
 
 code {
@@ -368,4 +368,28 @@ input[type="text"] {
 }
 .glossary-term p:last-of-type {
   @apply mb-0;
+}
+
+main a[href^="https://"]::after {
+  @apply inline-block bg-no-repeat bg-right-bottom h-6 w-6;
+
+  background-image: var(--external-icon);
+  background-size: 1.25rem 1.25rem;
+  content: '';
+}
+
+.notice-box {
+  @apply flex items-center flex-nowrap bg-slate-300 dark:bg-slate-900 my-6 mx-6 shadow-lg rounded-lg dark:shadow-none;
+  @apply bg-gradient-to-r from-lt-perfume via-lt-blue-light to-lt-perfume;
+  @apply dark:from-dk-purple-header dark:via-dk-blue-header dark:to-dk-purple-header;
+}
+.notice-box::before {
+  @apply block m-0 w-12 p-8 mr-4 bg-no-repeat bg-center;
+
+  background-image: var(--exclamation-icon);
+  background-size: 2.5rem 2.5rem;
+  content: '';
+}
+.notice-box p {
+  @apply m-0;
 }

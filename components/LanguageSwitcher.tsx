@@ -26,6 +26,9 @@ const LanguageSwitcher = ({ englishURL, finnishURL }: SwitcherTypes) => {
   const compareURLEN = englishURL.replace(/\/$/, '');
   const compareURLFI = finnishURL.replace(/\/$/, '');
 
+  console.log(compareURLEN);
+  console.log(compareURLFI);
+
   const ariaCurrentPageEn = (asPath.includes(compareURLEN) && compareURLEN !== '/') ? 'page' : undefined;
   const ariaCurrentPageFi = (asPath.includes(compareURLFI) && compareURLFI !== '/') ? 'page' : undefined;
 
