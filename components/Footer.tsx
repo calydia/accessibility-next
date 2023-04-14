@@ -20,7 +20,7 @@ const Footer = ({data}: any) => {
   }
 
   return (
-    <footer className="p-4-px lg:p-8-px border-t-8 border-solid border-blue-tory bg-lt-blue-light dark:bg-dk-purple">
+    <footer className="p-4-px lg:px-8-px lg:py-4-px border-t-8 border-solid border-blue-tory bg-lt-blue-light dark:bg-dk-purple">
       <div className="text-center">
         <button className="text-center button--alternative hover--border item--transition" onClick={handleTop}>
           <HiArrowCircleUp className="h-12 w-12 mx-auto" />
