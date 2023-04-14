@@ -21,7 +21,7 @@ export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: a
 
   const engUrl = '/';
   const fiUrl = '/fi';
-
+console.log(page.locale);
   return (
     <>
       <header id="page-top" className="bg-gradient-to-r from-lt-perfume via-lt-blue-light to-lt-perfume
@@ -59,7 +59,11 @@ export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: a
           </div>
         </div>
       </main>
-      <BlogHighlights data={blogs} />
+      { (page.locale === "en") ?
+        <>
+          <BlogHighlights data={blogs} />
+        </>
+        : null }
       <Footer data={infoMenu.data} />
     </>
   );
@@ -76,6 +80,7 @@ export async function getStaticProps({ locale }: any) {
               title
               content
               metaDescription
+              locale
             }
           }
         }
