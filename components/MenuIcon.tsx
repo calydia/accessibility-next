@@ -28,133 +28,133 @@ const MenuIcon = (iconClass: {iconClass: string, iconPosition: string}): JSX.Ele
   if (iconClass.iconClass == 'icon--question') {
     return (
       <>
-        <HiQuestionMarkCircle className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiQuestionMarkCircle className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--user-group') {
     return (
       <>
-        <HiUserGroup className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiUserGroup className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--document-text') {
     return (
       <>
-        <HiDocumentText className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiDocumentText className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--scale') {
     return (
       <>
-        <HiScale className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiScale className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--book-open') {
     return (
       <>
-        <HiBookOpen className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiBookOpen className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--academic-cap') {
     return (
       <>
-        <HiAcademicCap className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiAcademicCap className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--document-search') {
     return (
       <>
-        <HiDocumentSearch className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiDocumentSearch className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--shield-check') {
     return (
       <>
-        <HiShieldCheck className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiShieldCheck className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--document-add') {
     return (
       <>
-        <HiDocumentAdd className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiDocumentAdd className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--flag') {
     return (
       <>
-        <HiFlag className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiFlag className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--template') {
     return (
       <>
-        <HiTemplate className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiTemplate className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--code') {
     return (
       <>
-        <HiCode className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiCode className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--document-duplicate') {
     return (
       <>
-        <HiDocumentDuplicate className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiDocumentDuplicate className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--glasses') {
     return (
       <>
-        <FaGlasses className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <FaGlasses className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--color-swatch') {
     return (
       <>
-        <HiColorSwatch className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiColorSwatch className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--cursor-click') {
     return (
       <>
-        <HiCursorClick className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiCursorClick className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--puzzle') {
     return (
       <>
-        <HiPuzzle className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiPuzzle className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--terminal') {
     return (
       <>
-        <HiTerminal className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiTerminal className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
   if (iconClass.iconClass == 'icon--speakerphone') {
     return (
       <>
-        <HiSpeakerphone className={`icon--${iconClass.iconPosition} h-6 w-6 shrink-0 self-start`} aria-hidden="true" />
+        <HiSpeakerphone className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }

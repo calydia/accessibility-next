@@ -394,3 +394,7 @@ main a[href^="https://"]::after {
 .notice-box p {
   @apply m-0;
 }
+
+.menu-icon {
+  @apply h-6 w-6 shrink-0 self-start mt-[2px];
+}
