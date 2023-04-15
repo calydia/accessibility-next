@@ -379,9 +379,10 @@ main a[href^="https://"]::after {
 }
 
 .notice-box {
-  @apply flex items-center flex-nowrap bg-slate-300 dark:bg-slate-900 my-6 mx-6 shadow-lg rounded-lg dark:shadow-none;
-  @apply bg-gradient-to-r from-lt-perfume via-lt-blue-light to-lt-perfume;
-  @apply dark:from-dk-purple-header dark:via-dk-blue-header dark:to-dk-purple-header;
+  @apply flex items-center flex-nowrap bg-slate-300 dark:bg-slate-900 my-6 shadow-lg rounded-lg dark:shadow-none py-4 pr-4;
+  @apply bg-gradient-to-r from-lt-code-bg to-lt-blue-light;
+  @apply dark:from-dk-code-bg dark:to-dk-blue-darkest;
+  @apply border border-black dark:border-white;
 }
 .notice-box::before {
   @apply block m-0 w-12 p-8 mr-4 bg-no-repeat bg-center;
