@@ -97,14 +97,17 @@ export async function getStaticProps({ locale }: any) {
           title
           type
           path
+          iconClass
           items {
             title
             type
             path
+            iconClass
             items {
               title
               type
               path
+              iconClass
             }
           }
         }
