@@ -92,7 +92,7 @@ const Header = ({data}: any) => {
                       </button>
                       {menuItem.items &&
                         <ul id={`menu-button-${index}`} key={`menu-button-${index}`}
-                          className="menu-button-ul ml-2 lg:absolute lg:mt-2 lg:z-20 lg:grid lg:grid-cols-3 lg:gap-8 lg:w-[80%] lg:max-w-screen-menu lg:mx-auto lg:left-0 lg:right-0 lg:p-4 lg:border-2 lg:border-solid lg:border-black lg:dark:border-white lg:bg-lt-code-bg lg:dark:bg-dk-code-bg">
+                          className="menu-button-ul ml-2 lg:absolute lg:mt-2 lg:z-20 lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-8 lg:w-[80%] lg:max-w-screen-menu lg:mx-auto lg:left-0 lg:right-0 lg:p-4 lg:border-2 lg:border-solid lg:border-black lg:dark:border-white lg:bg-lt-code-bg lg:dark:bg-dk-code-bg">
                           {menuItem.items && menuItem.items.map((subMenuItem: any, subIndex: string) => {
                             const activeClass = (asPath === subMenuItem.path) ? 'active-link': 'non-active-link';
                             const ariaCurrentPage = (asPath === subMenuItem.path) ? 'page' : undefined;
@@ -105,7 +105,7 @@ const Header = ({data}: any) => {
                                     <span key={`subMenuItem-heading-${subIndex}`} id={`subMenuItem-heading-${subIndex}-${subMenuItem.title.toLowerCase().replaceAll(' ', '-')}`}
                                       className={`sub-header flex gap-2 items-center text-xl p-1 mt-0 text-black dark:text-white ${subMenuItem.iconClass} max-lg:mt-3 max-lg:mb-2`}>
                                       <MenuIcon iconClass={subMenuItem.iconClass} iconPosition="header" />
-                                      {subMenuItem.title}
+                                      <span className="main-menu-heading">{subMenuItem.title}</span>
                                     </span>
                                     <button aria-expanded="true" className="mobile-menu-toggle absolute right-0 top-0 h-6 w-6 flex items-center justify-center md:top-1" aria-controls={`menu-button-lower-${subIndex}-${titleModified}`} onClick={buttonLowerToggleHandler}>
                                       <HiPlus className="h-6 w-6 icon--plus md:h-4 md:w-4" />
@@ -121,7 +121,7 @@ const Header = ({data}: any) => {
                                           return(
                                             <li key={`lowerSubMenuItem-${lowerSubIndex}`} className="my-3">
                                               <Link href={lowerSubMenuItem.path} aria-current={ariaCurrentPageLower} key={`lowerSubMenuItem-link-${lowerSubIndex}`}
-                                                className={`text-lg p-1 ${activeClassLower}`}
+                                                className={`text-lg p-1 block main-menu-link ${activeClassLower}`}
                                               >
                                                 {lowerSubMenuItem.title}
                                               </Link>
@@ -132,7 +132,7 @@ const Header = ({data}: any) => {
                                   </li>
                                 : <li key={`subMenuItem-link-wrapper-${subIndex}`} className="my-3">
                                     <Link href={subMenuItem.path} aria-current={ariaCurrentPage} key={`subMenuItem-link-${subIndex}`}
-                                      className={`text-lg p-1 ${activeClass}`}
+                                      className={`text-lg p-1 block main-menu-link ${activeClass}`}
                                     >
                                       {subMenuItem.title}
                                     </Link>
