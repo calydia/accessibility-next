@@ -1,13 +1,13 @@
 import { GetStaticPaths } from 'next';
 import { gql } from '@apollo/client';
-import { client } from '../lib/apollo';
+import { client } from '@/lib/apollo';
 import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useDarkMode } from '../components/useDarkMode';
+import { useDarkMode } from '@/components/useDarkMode';
 import SkipLink from '@/components/SkipLink';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
-import Toggle from '../components/Toggler';
-import Header from '../components/Header';
+import Toggle from '@/components/Toggler';
+import Header from '@/components/Header';
 import Breadcrumb from '@/components/Breadcrumb';
 import SearchBar from '@/components/SearchBar';
 import Footer from '@/components/Footer';
