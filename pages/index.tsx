@@ -14,6 +14,8 @@ import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 import BlogHighlights from '@/components/BlogHighlights';
 
+import { NodeArticle, MediaType } from '@/interfaces/jsonInterfaces';
+
 export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: any) {
   const page = result.frontPage.data.attributes;
 
@@ -163,79 +165,6 @@ export async function getStaticProps({ locale }: any) {
     const articles = await drupalArticles.json();
     const posts: { title: string, path: string, created: string, image?: string}[] = [];
 
-    interface NodeArticle {
-      type: string;
-      id: string;
-      links: {
-        self: {
-          href: string;
-        };
-      };
-      attributes: {
-        drupal_internal__nid: number;
-        langcode: string;
-        status: boolean;
-        title: string;
-        created: string;
-        path: {
-          alias: string;
-          pid: number;
-          langcode: string;
-        };
-      };
-      relationships: {
-        node_type: {
-          data: null;
-          links: {
-            self: {
-              href: string;
-            };
-          };
-        };
-        field_blog_category: {
-          data: {
-            type: string;
-            id: string;
-            meta: {
-              drupal_internal__target_id: number;
-            };
-          };
-          links: {
-            related: {
-              href: string;
-            };
-            self: {
-              href: string;
-            };
-          };
-        };
-        field_blog_listing_image: {
-          data: {
-            type: string;
-            id: string;
-            meta: {
-              drupal_internal__target_id: number;
-            };
-          };
-          links: {
-            related: {
-              href: string;
-            };
-            self: {
-              href: string;
-            };
-          };
-        };
-      };
-    }
-    interface mediaType {
-      'type': string,
-      'id': string,
-      links: object,
-      attributes: object,
-      relationships: object
-    }
-
     if (articles) {
       const includedFiles = articles.included.filter((item:any) => item.type === 'file--file');
       const includedMedia = articles.included.filter((item:any) => item.type === 'media--image');
@@ -246,11 +175,11 @@ export async function getStaticProps({ locale }: any) {
           let mediaID = item.relationships.field_blog_listing_image.data.id;
 
           if (mediaID) {
-            let listedMedia = includedMedia.find((mediaItem: mediaType ) => mediaItem.id == mediaID);
+            let listedMedia = includedMedia.find((mediaItem: MediaType ) => mediaItem.id == mediaID);
 
             if (listedMedia) {
               let fileID = listedMedia.relationships.field_media_image.data.id;
-              let listingFile = includedFiles.find((fileItem: mediaType) => fileItem.id == fileID);
+              let listingFile = includedFiles.find((fileItem: MediaType) => fileItem.id == fileID);
               fileURL = listingFile.attributes.uri.url;
             }
           }
