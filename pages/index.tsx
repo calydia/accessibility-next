@@ -1,4 +1,4 @@
-import { GetStaticPaths } from 'next';
+import { GetStaticPropsContext } from 'next';
 import { gql } from '@apollo/client';
 import { client } from '@/lib/apollo';
 import Head from 'next/head';
@@ -16,8 +16,68 @@ import BlogHighlights from '@/components/BlogHighlights';
 
 import { NodeArticle, MediaType } from '@/interfaces/jsonInterfaces';
 
-export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: any) {
-  const page = result.frontPage.data.attributes;
+export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: {
+  result: {
+    frontPage: {
+      data: {
+        attributes: {
+          title: string,
+          slug: string,
+          metaDescription: string,
+          locale: string,
+          content: string
+        }
+      }
+    }
+  },
+  menu: {
+    data: {
+
+    }
+  },
+  infoMenu: {
+    data: {
+      id: string,
+      type: string,
+      path: string,
+      iconClass: string
+      items: {
+        title: string,
+        type: string,
+        path: string,
+        iconClass: string,
+        items: {
+          title: string,
+          type: string,
+          path: string,
+          iconClass: string,
+        }
+      }
+    }
+  },
+  menuList: {
+    data: {
+      menuTitleList: {
+        data: {
+          attributes: {
+            titleList: {
+              menuItems: [{
+                menuPath: string,
+                menuTitle: string
+              }]
+            }
+          }
+        }
+      }
+    }
+
+  },
+  blogs: [
+    { title: string, path: string, created: string, image?: string }
+  ]
+}) {
+
+const page = result.frontPage.data.attributes;
 
   const [theme, themeToggler] = useDarkMode();
 
@@ -71,7 +131,7 @@ export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: a
   );
 }
 
-export async function getStaticProps({ locale }: any) {
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
 
   const result = await client.query({
     query: gql`
@@ -166,8 +226,8 @@ export async function getStaticProps({ locale }: any) {
     const posts: { title: string, path: string, created: string, image?: string}[] = [];
 
     if (articles) {
-      const includedFiles = articles.included.filter((item:any) => item.type === 'file--file');
-      const includedMedia = articles.included.filter((item:any) => item.type === 'media--image');
+      const includedFiles = articles.included.filter((item: MediaType) => item.type === 'file--file');
+      const includedMedia = articles.included.filter((item: MediaType) => item.type === 'media--image');
 
       articles.data.map((item: NodeArticle) => {
         let fileURL;
@@ -197,7 +257,7 @@ export async function getStaticProps({ locale }: any) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale as string, ['common'])),
       result: result.data,
       menu,
       infoMenu,
