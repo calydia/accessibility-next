@@ -1,15 +1,19 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Fragment } from 'react';
+import { MainMenuData, MainMenuItem } from '@/interfaces/menuInterfaces';
 
-const HumanSitemap = ({ data, keyPrefix }: any) => {
+const HumanSitemap = ({ data, keyPrefix }: {
+  data: MainMenuData,
+  keyPrefix: string
+}) => {
 
   const { asPath } = useRouter();
 
   return (
     <div>
       <ul key={`${keyPrefix}-parent`} className="ml-8 list-disc">
-        {data && data.renderNavigation.map((menuItem: any, index: number) => {
+        {data && data.renderNavigation.map((menuItem: MainMenuItem, index: number) => {
           const ariaCurrentPageTop = (asPath === menuItem.path) ? 'page' : undefined;
           const activeClassTop = (asPath === menuItem.path) ? 'active-link': 'non-active-link';
 
@@ -25,7 +29,7 @@ const HumanSitemap = ({ data, keyPrefix }: any) => {
                   </h3>
                   {menuItem.items &&
                     <ul key={`${keyPrefix}-menu-button-${index}`} className="ml-4 list-disc">
-                      {menuItem.items && menuItem.items.map((subMenuItem: any, subIndex: string) => {
+                      {menuItem.items && menuItem.items.map((subMenuItem: MainMenuItem, subIndex: number) => {
                         const activeClass = (asPath === subMenuItem.path) ? 'active-link': 'non-active-link';
                         const ariaCurrentPage = (asPath === subMenuItem.path) ? 'page' : undefined;
 
@@ -39,7 +43,7 @@ const HumanSitemap = ({ data, keyPrefix }: any) => {
                                   {subMenuItem.title}
                                 </h4>
                                 <ul key={`${keyPrefix}-subMenuItem-menu-${subIndex}`} className="ml-4 list-disc">
-                                  {subMenuItem.items && subMenuItem.items.map((lowerSubMenuItem: any, lowerSubIndex: string) => {
+                                  {subMenuItem.items && subMenuItem.items.map((lowerSubMenuItem: MainMenuItem, lowerSubIndex: number) => {
                                       const activeClassLower = (asPath === lowerSubMenuItem.path) ? 'active-link': 'non-active-link';
                                       const ariaCurrentPageLower = (asPath === lowerSubMenuItem.path && lowerSubMenuItem.path !== '/') ? 'page' : undefined;
                                       // The third level items are only links

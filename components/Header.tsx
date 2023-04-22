@@ -94,7 +94,7 @@ const Header = ({data}: MainMenuData) => {
                       {menuItem.items &&
                         <ul id={`menu-button-${index}`} key={`menu-button-${index}`}
                           className="menu-button-ul ml-2 lg:absolute lg:mt-2 lg:z-20 lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-8 lg:w-[80%] lg:max-w-screen-menu lg:mx-auto lg:left-0 lg:right-0 lg:p-4 lg:border-2 lg:border-solid lg:border-black lg:dark:border-white lg:bg-lt-code-bg lg:dark:bg-dk-code-bg">
-                          {menuItem.items && menuItem.items.map((subMenuItem: any, subIndex: number) => {
+                          {menuItem.items && menuItem.items.map((subMenuItem: MainMenuItem, subIndex: number) => {
                             const activeClass = (asPath === subMenuItem.path) ? 'active-link': 'non-active-link';
                             const ariaCurrentPage = (asPath === subMenuItem.path) ? 'page' : undefined;
                             const titleModified = subMenuItem.title.replace(/\s+/g, '-').toLowerCase();

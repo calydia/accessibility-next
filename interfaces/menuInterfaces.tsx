@@ -28,17 +28,17 @@ export interface MainMenuData {
       title: string,
       iconClass: string,
       type: string,
-      items: [{
+      items?: [{
         path: string,
         title: string,
         iconClass: string,
         type: string,
-        items: [{
+        items?: [{
           path: string,
           title: string,
           iconClass: string,
           type: string,
-          items: [{
+          items?: [{
             path: string,
             title: string,
             iconClass: string,
@@ -61,12 +61,12 @@ export interface MainMenuItem {
   title: string,
   iconClass: string,
   type: string,
-  items: [{
+  items?: [{
     path: string,
     title: string,
     iconClass: string,
     type: string,
-    items: [{
+    items?: [{
       path: string,
       title: string,
       iconClass: string,

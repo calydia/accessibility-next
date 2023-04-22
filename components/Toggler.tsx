@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next';
 
 interface Types {
   theme: string | (() => void),
-  toggleTheme: any
+  toggleTheme: () => void
 }
 
 const Toggle = ({theme, toggleTheme }: Types) => {
