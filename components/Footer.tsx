@@ -13,7 +13,8 @@ const Footer = ({data}: MenuData) => {
 
   const { t } = useTranslation('common')
   const blogLink = t('ext-blog');
-  const footerMenuAria = t('footer-menu-aria')
+  const footerMenuAria = t('footer-menu-aria');
+  const backToTop = t('back-to-top-button');
 
   const handleTop = (event: React.MouseEvent<HTMLElement>): void => {
     const target = document.getElementById('page-top');
@@ -26,7 +27,7 @@ const Footer = ({data}: MenuData) => {
       <div className="text-center">
         <button className="text-center button--alternative hover--border item--transition" onClick={handleTop}>
           <HiArrowCircleUp className="h-12 w-12 mx-auto" />
-          Back to top
+          {backToTop}
         </button>
       </div>
       <div className="md:flex md:justify-between max-w-[1500px] mx-auto">

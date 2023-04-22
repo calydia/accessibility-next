@@ -70,6 +70,7 @@ export default function DemoPage({ result, menu, infoMenu, menuList }: {
   const problematicHeading = t('demo-problematic-heading');
   const betterHeading = t('demo-better-heading');
   const finalHeading = t('demo-final-heading');
+  const siteName= t('site-name');
 
   const engUrl = (page.locale == 'en') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;
   const fiUrl = (page.locale == 'fi') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;
@@ -90,7 +91,7 @@ export default function DemoPage({ result, menu, infoMenu, menuList }: {
       <Breadcrumb currentTitle={page.title} currentSlug={page.slug} menuList={menuList.data.menuTitleList.data.attributes.titleList.menuItems} />
       <main className="mb-8 md:mb-12">
         <Head>
-          <title>{page.title} | Blog - Sanna Mäkinen</title>
+          <title>{page.title} | Sanna Mäkinen - {siteName}</title>
           <meta name="Description" content={page.metaDescription} />
           <meta
             property="og:description"

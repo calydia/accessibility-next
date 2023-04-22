@@ -13,6 +13,8 @@ import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 import { useTranslation } from 'next-i18next';
 
+import { MainMenuData, MenuData } from '@/interfaces/menuInterfaces';
+
 export default function SearchPage({ result, menu, infoMenu }: {
   result: {
     searchPage: {
@@ -27,31 +29,8 @@ export default function SearchPage({ result, menu, infoMenu }: {
       }
     }
   },
-  menu: {
-    data: {
-
-    }
-  },
-  infoMenu: {
-    data: {
-      id: string,
-      type: string,
-      path: string,
-      iconClass: string
-      items: {
-        title: string,
-        type: string,
-        path: string,
-        iconClass: string,
-        items: {
-          title: string,
-          type: string,
-          path: string,
-          iconClass: string,
-        }
-      }
-    }
-  },
+  menu: MainMenuData,
+  infoMenu: MenuData,
   menuList: {
     data: {
       menuTitleList: {
@@ -82,6 +61,7 @@ export default function SearchPage({ result, menu, infoMenu }: {
 
   const { t } = useTranslation('common');
   const searchPageTitle = t('search-title');
+  const siteName = t('site-name');
 
   // TODO: On this page we should take in possible search word from the global search component
 
@@ -102,7 +82,7 @@ export default function SearchPage({ result, menu, infoMenu }: {
       <MainImage />
       <main>
         <Head>
-          <title>{page.title} | Blog - Sanna Mäkinen</title>
+          <title>{page.title} | Sanna Mäkinen - {siteName}</title>
           <meta property="og:title" content={searchPageTitle} />
           <meta property="og:type" content="website" />
           <meta property="og:locale" content={page.locale} />

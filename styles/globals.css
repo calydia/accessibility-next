@@ -358,11 +358,6 @@ input[type="text"] {
   @apply hidden invisible;
 }
 
-.main-menu-heading::first-letter,
-.main-menu-link::first-letter {
-  @apply capitalize;
-}
-
 .sub-header {
   width: calc(100% - 1.25rem);
 }

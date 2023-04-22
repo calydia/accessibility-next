@@ -72,6 +72,7 @@ export default function ArticlePage({ result, menu, infoMenu, glossary, menuList
 
   const { t } = useTranslation('common');
   const sourceHeading = t('box-source');
+  const siteName = t('site-name');
 
   return (
     <>
@@ -89,7 +90,7 @@ export default function ArticlePage({ result, menu, infoMenu, glossary, menuList
       <Breadcrumb currentTitle={page.title} currentSlug={page.slug} menuList={menuList.data.menuTitleList.data.attributes.titleList.menuItems} />
       <main className="mb-8 md:mb-12">
         <Head>
-          <title>{page.title} | Blog - Sanna Mäkinen</title>
+          <title>{page.title} | Sanna Mäkinen - {siteName}</title>
           <meta name="Description" content={page.metaDescription} />
           <meta
             property="og:description"

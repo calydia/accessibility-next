@@ -24,7 +24,7 @@ const HumanSitemap = ({ data, keyPrefix }: {
                 // We know the first level items are only wrappers
                 <li key={`${keyPrefix}-menuItem-${index}`} className="my-2">
                   <h3 key={`${keyPrefix}-button-${index}`}
-                    className="mt-2">
+                    className="mt-2 first-letter:capitalize">
                     {menuItem.title}
                   </h3>
                   {menuItem.items &&
@@ -39,7 +39,7 @@ const HumanSitemap = ({ data, keyPrefix }: {
                             // The second level items will be either wrappers or links
                             ? <li key={`${keyPrefix}-subMenuItem-${subIndex}`} className="my-2">
                                 <h4 key={`${keyPrefix}-subMenuItem-heading-${subIndex}`}
-                                  className="mt-2">
+                                  className="mt-2 first-letter:capitalize">
                                   {subMenuItem.title}
                                 </h4>
                                 <ul key={`${keyPrefix}-subMenuItem-menu-${subIndex}`} className="ml-4 list-disc">
@@ -50,7 +50,7 @@ const HumanSitemap = ({ data, keyPrefix }: {
                                       return(
                                         <li key={`${keyPrefix}-lowerSubMenuItem-${lowerSubIndex}`} className="my-2">
                                           <Link href={lowerSubMenuItem.path} aria-current={ariaCurrentPageLower} key={`${keyPrefix}-lowerSubMenuItem-link-${lowerSubIndex}`}
-                                            className={`${activeClassLower}`}
+                                            className={`${activeClassLower} first-letter:capitalize`}
                                           >
                                             {lowerSubMenuItem.title}
                                           </Link>
@@ -61,7 +61,7 @@ const HumanSitemap = ({ data, keyPrefix }: {
                               </li>
                             : <li key={`${keyPrefix}-subMenuItem-link-wrapper-${subIndex}`} className="my-2">
                                 <Link href={subMenuItem.path} aria-current={ariaCurrentPage} key={`${keyPrefix}-subMenuItem-link-${subIndex}`}
-                                  className={`${activeClass}`}
+                                  className={`${activeClass} first-letter:capitalize`}
                                 >
                                   {subMenuItem.title}
                                 </Link>
@@ -77,7 +77,7 @@ const HumanSitemap = ({ data, keyPrefix }: {
               <Fragment key={`${keyPrefix}-Fragment-top-${index}`}>
                 <li key={`${keyPrefix}-menu-top-level-list-${index}`} className="my-2">
                   <Link href={menuItem.path} aria-current={ariaCurrentPageTop} key={`${keyPrefix}-top-level-link-${index}`}
-                    className={`${activeClassTop}`}
+                    className={`${activeClassTop} first-letter:capitalize`}
                   >
                     {menuItem.title}
                   </Link>

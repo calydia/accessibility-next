@@ -68,6 +68,7 @@ export default function InfoPage({ result, menu, infoMenu, menuList }: {
   const { t } = useTranslation('common');
   const mainMenuName = t('name-main-menu');
   const infoMenuName = t('name-info-menu');
+  const siteName = t('site-name');
 
   const engUrl = (page.locale == 'en') ? page.slug : page.localizations.data[0].attributes.slug;
   const fiUrl = (page.locale == 'fi') ? page.slug : page.localizations.data[0].attributes.slug;
@@ -88,7 +89,7 @@ export default function InfoPage({ result, menu, infoMenu, menuList }: {
       <Breadcrumb currentTitle={page.title} currentSlug={page.slug} menuList={menuList.data.menuTitleList.data.attributes.titleList.menuItems} />
       <main className="mb-8 md:mb-12">
         <Head>
-          <title>{page.title} | Blog - Sanna Mäkinen</title>
+          <title>{page.title} | Sanna Mäkinen - {siteName}</title>
           <meta name="Description" content={page.metaDescription} />
           <meta
             property="og:description"

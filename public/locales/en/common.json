@@ -20,5 +20,6 @@
   "ext-blog": "My blog",
   "box-source": "Source material",
   "search-label": "Search for content",
-  "search-button": "Search"
+  "search-button": "Search",
+  "back-to-top-button": "Back to top"
 }

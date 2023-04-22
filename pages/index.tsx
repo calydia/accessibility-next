@@ -13,7 +13,7 @@ import SearchBar from '@/components/SearchBar';
 import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 import BlogHighlights from '@/components/BlogHighlights';
-
+import { useTranslation } from 'next-i18next';
 import { NodeArticle, MediaType } from '@/interfaces/jsonInterfaces';
 import { MainMenuData, MenuData } from '@/interfaces/menuInterfaces';
 
@@ -62,6 +62,9 @@ const page = result.frontPage.data.attributes;
   const engUrl = '/';
   const fiUrl = '/fi';
 
+  const { t } = useTranslation('common');
+  const siteName = t('site-name');
+
   return (
     <>
       <header id="page-top" className="bg-gradient-to-r from-lt-perfume via-lt-blue-light to-lt-perfume
@@ -78,7 +81,7 @@ const page = result.frontPage.data.attributes;
       <Breadcrumb currentTitle={page.title} currentSlug={page.slug} menuList={menuList.data.menuTitleList.data.attributes.titleList.menuItems} />
       <main>
         <Head>
-          <title>{page.title} | Blog - Sanna Mäkinen</title>
+          <title>{page.title} | Sanna Mäkinen - {siteName}</title>
           <meta name="Description" content={page.metaDescription} />
           <meta
             property="og:description"
