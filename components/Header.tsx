@@ -106,7 +106,7 @@ const Header = ({data}: MainMenuData) => {
                                     <span key={`subMenuItem-heading-${subIndex}`} id={`subMenuItem-heading-${subIndex}-${subMenuItem.title.toLowerCase().replaceAll(' ', '-')}`}
                                       className={`sub-header flex gap-2 items-center text-xl p-1 mt-0 text-black dark:text-white ${subMenuItem.iconClass} max-lg:mt-3 max-lg:mb-2`}>
                                       <MenuIcon iconClass={subMenuItem.iconClass} iconPosition="header" />
-                                      <span className="main-menu-heading">{subMenuItem.title}</span>
+                                      <span className="main-menu-heading first-letter:capitalize">{subMenuItem.title}</span>
                                     </span>
                                     <button aria-expanded="true" className="mobile-menu-toggle absolute right-0 top-0 h-6 w-6 flex items-center justify-center md:top-1" aria-controls={`menu-button-lower-${subIndex}-${titleModified}`} onClick={buttonLowerToggleHandler}>
                                       <HiPlus className="h-6 w-6 icon--plus md:h-4 md:w-4" />
@@ -122,7 +122,7 @@ const Header = ({data}: MainMenuData) => {
                                           return(
                                             <li key={`lowerSubMenuItem-${lowerSubIndex}`} className="my-3">
                                               <Link href={lowerSubMenuItem.path} aria-current={ariaCurrentPageLower} key={`lowerSubMenuItem-link-${lowerSubIndex}`}
-                                                className={`text-lg p-1 block main-menu-link ${activeClassLower}`}
+                                                className={`text-lg p-1 block main-menu-link first-letter:capitalize ${activeClassLower}`}
                                               >
                                                 {lowerSubMenuItem.title}
                                               </Link>
@@ -133,7 +133,7 @@ const Header = ({data}: MainMenuData) => {
                                   </li>
                                 : <li key={`subMenuItem-link-wrapper-${subIndex}`} className="my-3">
                                     <Link href={subMenuItem.path} aria-current={ariaCurrentPage} key={`subMenuItem-link-${subIndex}`}
-                                      className={`text-lg p-1 block main-menu-link ${activeClass}`}
+                                      className={`text-lg p-1 block main-menu-link first-letter:capitalize ${activeClass}`}
                                     >
                                       {subMenuItem.title}
                                     </Link>

@@ -50,7 +50,7 @@ const HumanSitemap = ({ data, keyPrefix }: {
                                       return(
                                         <li key={`${keyPrefix}-lowerSubMenuItem-${lowerSubIndex}`} className="my-2">
                                           <Link href={lowerSubMenuItem.path} aria-current={ariaCurrentPageLower} key={`${keyPrefix}-lowerSubMenuItem-link-${lowerSubIndex}`}
-                                            className={`${activeClassLower} first-letter:capitalize`}
+                                            className={`${activeClassLower} block first-letter:capitalize`}
                                           >
                                             {lowerSubMenuItem.title}
                                           </Link>
@@ -61,7 +61,7 @@ const HumanSitemap = ({ data, keyPrefix }: {
                               </li>
                             : <li key={`${keyPrefix}-subMenuItem-link-wrapper-${subIndex}`} className="my-2">
                                 <Link href={subMenuItem.path} aria-current={ariaCurrentPage} key={`${keyPrefix}-subMenuItem-link-${subIndex}`}
-                                  className={`${activeClass} first-letter:capitalize`}
+                                  className={`${activeClass} block first-letter:capitalize`}
                                 >
                                   {subMenuItem.title}
                                 </Link>
@@ -77,7 +77,7 @@ const HumanSitemap = ({ data, keyPrefix }: {
               <Fragment key={`${keyPrefix}-Fragment-top-${index}`}>
                 <li key={`${keyPrefix}-menu-top-level-list-${index}`} className="my-2">
                   <Link href={menuItem.path} aria-current={ariaCurrentPageTop} key={`${keyPrefix}-top-level-link-${index}`}
-                    className={`${activeClassTop} first-letter:capitalize`}
+                    className={`${activeClassTop} block first-letter:capitalize`}
                   >
                     {menuItem.title}
                   </Link>
