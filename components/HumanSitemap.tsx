@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Fragment } from 'react';
-import { MainMenuData, MainMenuItem } from '@/interfaces/menuInterfaces';
+import { MainMenuItem, MainMenuSitemapData } from '@/interfaces/menuInterfaces';
 
 const HumanSitemap = ({ data, keyPrefix }: {
-  data: MainMenuData,
+  data: MainMenuSitemapData,
   keyPrefix: string
 }) => {
 

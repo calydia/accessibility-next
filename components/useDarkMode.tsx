@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 
-export const useDarkMode = () => {
+type ThemeTogglerType = () => void;
+
+export const useDarkMode = (): [string, ThemeTogglerType] => {
   const [theme, setTheme] = useState('light');
   const setMode = (mode: string) => {
     window.localStorage.setItem('theme', mode)
@@ -10,7 +12,7 @@ export const useDarkMode = () => {
   const supportsDarkMode = () =>
   window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-  const toggleTheme = () => {
+  const toggleTheme: ThemeTogglerType = () => {
     if (theme === 'light') {
       document.body.classList.remove('light');
       document.body.classList.add('dark');

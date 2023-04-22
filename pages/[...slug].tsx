@@ -15,6 +15,8 @@ import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 import { useTranslation } from 'next-i18next';
 import Glossary from '@/components/Glossary';
+import { MainMenuData, MenuData } from '@/interfaces/menuInterfaces';
+import { glossaryData } from '@/interfaces/glossaryInterfaces';
 
 export default function ArticlePage({ result, menu, infoMenu, glossary, menuList }: {
   result: {
@@ -39,39 +41,9 @@ export default function ArticlePage({ result, menu, infoMenu, glossary, menuList
       }]
     }
   },
-  menu: {
-    data: {
-
-    }
-  },
-  infoMenu: {
-    data: {
-      id: string,
-      type: string,
-      path: string,
-      iconClass: string
-      items: {
-        title: string,
-        type: string,
-        path: string,
-        iconClass: string,
-        items: {
-          title: string,
-          type: string,
-          path: string,
-          iconClass: string,
-        }
-      }
-    }
-  },
-  glossary: {
-    data: {
-      attribute: {
-        termName: string,
-        termDescription: string
-      }
-    }
-  }
+  menu: MainMenuData,
+  infoMenu: MenuData,
+  glossary: glossaryData,
   menuList: {
     data: {
       menuTitleList: {

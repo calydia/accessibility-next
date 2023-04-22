@@ -5,20 +5,47 @@ export interface MenuData {
       title: string,
       iconClass: string,
       type: string,
-      items: {
+      items?: [{
         path: string,
         title: string,
         iconClass: string,
         type: string,
-        items: {
+        items?: [{
           path: string,
           title: string,
           iconClass: string,
           type: string,
-        }
-      }
+        }]
+      }]
     }]
   }
+}
+
+export interface MainMenuSitemapData {
+  renderNavigation: [{
+    path: string,
+    title: string,
+    iconClass: string,
+    type: string,
+    items?: [{
+      path: string,
+      title: string,
+      iconClass: string,
+      type: string,
+      items?: [{
+        path: string,
+        title: string,
+        iconClass: string,
+        type: string,
+        items?: [{
+          path: string,
+          title: string,
+          iconClass: string,
+          type: string,
+        }]
+      }]
+    }]
+  }]
 }
 
 export interface MainMenuData {

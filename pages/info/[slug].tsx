@@ -16,6 +16,8 @@ import MainImage from '@/components/MainImage';
 import HumanSitemap from '@/components/HumanSitemap';
 import { useTranslation } from 'next-i18next';
 
+import { MainMenuData, MenuData } from '@/interfaces/menuInterfaces';
+
 
 export default function InfoPage({ result, menu, infoMenu, menuList }: {
   result: {
@@ -40,31 +42,8 @@ export default function InfoPage({ result, menu, infoMenu, menuList }: {
       }]
     }
   },
-  menu: {
-    data: {
-
-    }
-  },
-  infoMenu: {
-    data: {
-      id: string,
-      type: string,
-      path: string,
-      iconClass: string
-      items: {
-        title: string,
-        type: string,
-        path: string,
-        iconClass: string,
-        items: {
-          title: string,
-          type: string,
-          path: string,
-          iconClass: string,
-        }
-      }
-    }
-  },
+  menu: MainMenuData,
+  infoMenu: MenuData,
   menuList: {
     data: {
       menuTitleList: {

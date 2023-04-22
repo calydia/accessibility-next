@@ -15,6 +15,7 @@ import MainImage from '@/components/MainImage';
 import BlogHighlights from '@/components/BlogHighlights';
 
 import { NodeArticle, MediaType } from '@/interfaces/jsonInterfaces';
+import { MainMenuData, MenuData } from '@/interfaces/menuInterfaces';
 
 export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: {
   result: {
@@ -30,31 +31,8 @@ export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: {
       }
     }
   },
-  menu: {
-    data: {
-
-    }
-  },
-  infoMenu: {
-    data: {
-      id: string,
-      type: string,
-      path: string,
-      iconClass: string
-      items: {
-        title: string,
-        type: string,
-        path: string,
-        iconClass: string,
-        items: {
-          title: string,
-          type: string,
-          path: string,
-          iconClass: string,
-        }
-      }
-    }
-  },
+  menu: MainMenuData,
+  infoMenu: MenuData,
   menuList: {
     data: {
       menuTitleList: {
