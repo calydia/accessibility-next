@@ -1,4 +1,5 @@
 import { GetStaticPaths } from 'next';
+import { GetStaticPathsContext } from 'next';
 import { gql } from '@apollo/client';
 import { client } from '../lib/apollo';
 import Head from 'next/head';
@@ -15,7 +16,81 @@ import MainImage from '@/components/MainImage';
 import { useTranslation } from 'next-i18next';
 import Glossary from '@/components/Glossary';
 
-export default function ArticlePage({ result, menu, infoMenu, glossary, menuList }: any) {
+export default function ArticlePage({ result, menu, infoMenu, glossary, menuList }: {
+  result: {
+    pages: {
+      data: [{
+        attributes: {
+          title: string,
+          slug: string,
+          metaDescription: string,
+          locale: string,
+          content: string,
+          pageUrl: string,
+          sourceMaterial: string,
+          localizations: {
+            data: [{
+              attributes: {
+                pageUrl: string
+              }
+            }]
+          }
+        }
+      }]
+    }
+  },
+  menu: {
+    data: {
+
+    }
+  },
+  infoMenu: {
+    data: {
+      id: string,
+      type: string,
+      path: string,
+      iconClass: string
+      items: {
+        title: string,
+        type: string,
+        path: string,
+        iconClass: string,
+        items: {
+          title: string,
+          type: string,
+          path: string,
+          iconClass: string,
+        }
+      }
+    }
+  },
+  glossary: {
+    data: {
+      attribute: {
+        termName: string,
+        termDescription: string
+      }
+    }
+  }
+  menuList: {
+    data: {
+      menuTitleList: {
+        data: {
+          attributes: {
+            titleList: {
+              menuItems: [{
+                menuPath: string,
+                menuTitle: string
+              }]
+            }
+          }
+        }
+      }
+    }
+
+  }
+}) {
+
   const page = result.pages.data[0].attributes;
 
   const [theme, themeToggler] = useDarkMode();
@@ -79,12 +154,25 @@ export default function ArticlePage({ result, menu, infoMenu, glossary, menuList
   );
 }
 
-// TODO what is the type of the locales?
-export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
+type AccItem = {
+  params: {
+    slug: string[]
+  };
+  locale: string;
+};
+
+type PageItem = {
+  attributes: {
+    pageUrl: string,
+    locale: string
+  }
+}
+
+export const getStaticPaths: GetStaticPaths = async ({ locales }: GetStaticPathsContext) => {
   // array of locales provided in context object in getStaticPaths
   const paths = (
     await Promise.all(
-      locales.map(async (locale: string) => {
+      (locales as string[]).map(async (locale: string) => {
         // map through locales
         const { data } = await client.query({
           query: gql`
@@ -113,19 +201,22 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
         };
       })
     )
-  ).reduce((acc, item) => {
-    item.pages.data.map((page: any) => {
+  ).reduce((acc: AccItem[], item) => {
+    item.pages.data.map((page: PageItem) => {
+
         // reduce through the array of returned objects
-        const slugArray = page.attributes.pageUrl.split('/').filter((p:any) => p);
+        const slugArray = page.attributes.pageUrl.split('/').filter((p: string) => p);
         const hasInfo = slugArray.includes('info');
 
         if (!hasInfo) {
-          acc.push({
+          const accItem : AccItem = {
             params: {
               slug: slugArray,
             },
             locale: page.attributes.locale,
-          });
+          }
+
+          acc.push(accItem);
         }
 
         return page;
@@ -139,7 +230,12 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
   };
 };
 
-export async function getStaticProps({ locale, params }: any) {
+export async function getStaticProps({ locale, params }: {
+  locale: string,
+  params: {
+    slug: []
+  }
+}) {
   const slug = params.slug.at(-1);
 
   const result = await client.query({
@@ -259,7 +355,7 @@ export async function getStaticProps({ locale, params }: any) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale as string, ['common'])),
       result: result.data,
       menu,
       infoMenu,

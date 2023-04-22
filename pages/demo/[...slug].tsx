@@ -1,4 +1,5 @@
 import { GetStaticPaths } from 'next';
+import { GetStaticPathsContext } from 'next';
 import { gql } from '@apollo/client';
 import { client } from '@/lib/apollo';
 import Head from 'next/head';
@@ -14,7 +15,74 @@ import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 import { useTranslation } from 'next-i18next';
 
-export default function DemoPage({ result, menu, infoMenu, menuList }: any) {
+export default function DemoPage({ result, menu, infoMenu, menuList }: {
+  result: {
+    demoPages: {
+      data: [{
+        attributes: {
+          title: string,
+          slug: string,
+          metaDescription: string,
+          locale: string,
+          introduction: string,
+          problematicExample: string,
+          betterExample: string,
+          finalComments: string,
+          pageUrl: string,
+          localizations: {
+            data: [{
+              attributes: {
+                pageUrl: string
+              }
+            }]
+          }
+        }
+      }]
+    }
+  },
+  menu: {
+    data: {
+
+    }
+  },
+  infoMenu: {
+    data: {
+      id: string,
+      type: string,
+      path: string,
+      iconClass: string
+      items: {
+        title: string,
+        type: string,
+        path: string,
+        iconClass: string,
+        items: {
+          title: string,
+          type: string,
+          path: string,
+          iconClass: string,
+        }
+      }
+    }
+  },
+  menuList: {
+    data: {
+      menuTitleList: {
+        data: {
+          attributes: {
+            titleList: {
+              menuItems: [{
+                menuPath: string,
+                menuTitle: string
+              }]
+            }
+          }
+        }
+      }
+    }
+
+  }
+}) {
   const page = result.demoPages.data[0].attributes;
 
   const [theme, themeToggler] = useDarkMode();
@@ -81,12 +149,25 @@ export default function DemoPage({ result, menu, infoMenu, menuList }: any) {
   );
 }
 
-// TODO what is the type of the locales?
-export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
+type AccItem = {
+  params: {
+    slug: string[]
+  };
+  locale: string;
+};
+
+type PageItem = {
+  attributes: {
+    pageUrl: string,
+    locale: string
+  }
+}
+
+export const getStaticPaths: GetStaticPaths = async ({ locales }: GetStaticPathsContext) => {
   // array of locales provided in context object in getStaticPaths
   const paths = (
     await Promise.all(
-      locales.map(async (locale: string) => {
+      (locales as string[]).map(async (locale: string) => {
         // map through locales
         const { data } = await client.query({
           query: gql`
@@ -115,15 +196,18 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
         };
       })
     )
-  ).reduce((acc, item) => {
-    item.pages.data.map((page: any) => {
-      const slugArray = page.attributes.pageUrl.split('/').filter((p:any) => p);
-      acc.push({
-        params: {
-          slug: slugArray,
-        },
-        locale: page.attributes.locale,
-      });
+  ).reduce((acc: AccItem[], item) => {
+    item.pages.data.map((page: PageItem) => {
+      const slugArray = page.attributes.pageUrl.split('/').filter((p: string) => p);
+
+        const accItem : AccItem = {
+          params: {
+            slug: slugArray,
+          },
+          locale: page.attributes.locale,
+        }
+
+        acc.push(accItem);
       return page;
   });
     return acc;
@@ -134,7 +218,12 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
   };
 };
 
-export async function getStaticProps({ locale, params }: any) {
+export async function getStaticProps({ locale, params }: {
+  locale: string,
+  params: {
+    slug: []
+  }
+}) {
   const slug = params.slug.at(-1);
 
   const result = await client.query({

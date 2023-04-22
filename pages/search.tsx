@@ -1,3 +1,4 @@
+import { GetStaticPropsContext } from 'next';
 import { gql } from '@apollo/client';
 import { client } from '../lib/apollo';
 import Head from 'next/head';
@@ -12,7 +13,66 @@ import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 import { useTranslation } from 'next-i18next';
 
-export default function SearchPage({ result, menu, infoMenu }: any) {
+export default function SearchPage({ result, menu, infoMenu }: {
+  result: {
+    searchPage: {
+      data: {
+        attributes: {
+          title: string,
+          slug: string,
+          metaDescription: string,
+          locale: string,
+          content: string
+        }
+      }
+    }
+  },
+  menu: {
+    data: {
+
+    }
+  },
+  infoMenu: {
+    data: {
+      id: string,
+      type: string,
+      path: string,
+      iconClass: string
+      items: {
+        title: string,
+        type: string,
+        path: string,
+        iconClass: string,
+        items: {
+          title: string,
+          type: string,
+          path: string,
+          iconClass: string,
+        }
+      }
+    }
+  },
+  menuList: {
+    data: {
+      menuTitleList: {
+        data: {
+          attributes: {
+            titleList: {
+              menuItems: [{
+                menuPath: string,
+                menuTitle: string
+              }]
+            }
+          }
+        }
+      }
+    }
+
+  },
+  blogs: [
+    { title: string, path: string, created: string, image?: string }
+  ]
+}) {
   const page = result.searchPage.data.attributes;
 
   const engUrl = '/search';
@@ -23,6 +83,9 @@ export default function SearchPage({ result, menu, infoMenu }: any) {
   const { t } = useTranslation('common');
   const searchPageTitle = t('search-title');
 
+  // TODO: On this page we should take in possible search word from the global search component
+
+  // TODO: After search: update search word to page title, breadcrumb and heading
 
   return (
     <>
@@ -60,7 +123,7 @@ export default function SearchPage({ result, menu, infoMenu }: any) {
   );
 }
 
-export async function getStaticProps({ locale }: any) {
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
 
   const result = await client.query({
     query: gql`
@@ -130,7 +193,7 @@ export async function getStaticProps({ locale }: any) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale as string, ['common'])),
       result: result.data,
       menu: menu,
       infoMenu: infoMenu

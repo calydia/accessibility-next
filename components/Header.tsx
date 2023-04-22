@@ -4,8 +4,9 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { HiMenu, HiChevronDown, HiX, HiPlus, HiMinus } from "react-icons/hi";
 import MenuIcon from './MenuIcon';
+import { MainMenuData, MainMenuItem } from '@/interfaces/menuInterfaces';
 
-const Header = ({data}: any) => {
+const Header = ({data}: MainMenuData) => {
   const { asPath } = useRouter();
 
   const { t } = useTranslation('common')
@@ -77,7 +78,7 @@ const Header = ({data}: any) => {
           <ul id="main-menu" key="first-ul" className="text-left mx-auto lg:visible lg:flex lg:flex-wrap lg:justify-center mt-4 p-0 mb-0
             max-lg:absolute max-lg:z-20 lg:w-[80%] max-lg:mx-auto max-lg:left-0 max-lg:right-0 max-lg:p-4 max-lg:border-2 max-lg:border-solid max-lg:border-black max-lg:dark:border-white max-lg:bg-lt-code-bg max-lg:dark:bg-dk-code-bg"
           >
-            {data && data.renderNavigation.map((menuItem: any, index: number) => {
+            {data && data.renderNavigation.map((menuItem: MainMenuItem, index: number) => {
               const ariaCurrentPath = (asPath.includes(menuItem.path) && menuItem.path !== '/') ? true : undefined;
 
               return (
@@ -93,7 +94,7 @@ const Header = ({data}: any) => {
                       {menuItem.items &&
                         <ul id={`menu-button-${index}`} key={`menu-button-${index}`}
                           className="menu-button-ul ml-2 lg:absolute lg:mt-2 lg:z-20 lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-8 lg:w-[80%] lg:max-w-screen-menu lg:mx-auto lg:left-0 lg:right-0 lg:p-4 lg:border-2 lg:border-solid lg:border-black lg:dark:border-white lg:bg-lt-code-bg lg:dark:bg-dk-code-bg">
-                          {menuItem.items && menuItem.items.map((subMenuItem: any, subIndex: string) => {
+                          {menuItem.items && menuItem.items.map((subMenuItem: any, subIndex: number) => {
                             const activeClass = (asPath === subMenuItem.path) ? 'active-link': 'non-active-link';
                             const ariaCurrentPage = (asPath === subMenuItem.path) ? 'page' : undefined;
                             const titleModified = subMenuItem.title.replace(/\s+/g, '-').toLowerCase();
@@ -114,7 +115,7 @@ const Header = ({data}: any) => {
                                     </button>
                                     <ul id={`menu-button-lower-${subIndex}-${titleModified}`} key={`subMenuItem-menu-${subIndex}`} aria-labelledby={`subMenuItem-heading-${subIndex}-${subMenuItem.path.toLowerCase().replaceAll(' ', '-')}`}
                                       className="ml-3 menu-lower-level">
-                                      {subMenuItem.items && subMenuItem.items.map((lowerSubMenuItem: any, lowerSubIndex: string) => {
+                                      {subMenuItem.items && subMenuItem.items.map((lowerSubMenuItem: MainMenuItem, lowerSubIndex: number) => {
                                           const activeClassLower = (asPath === lowerSubMenuItem.path) ? 'active-link': 'non-active-link';
                                           const ariaCurrentPageLower = (asPath === lowerSubMenuItem.path && lowerSubMenuItem.path !== '/') ? 'page' : undefined;
                                           // The third level items are only links

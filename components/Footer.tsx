@@ -6,7 +6,9 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { HiArrowCircleUp } from 'react-icons/hi';
 
-const Footer = ({data}: any) => {
+import { MenuData, FooterMenuItem } from '@/interfaces/menuInterfaces';
+
+const Footer = ({data}: MenuData) => {
   const { asPath } = useRouter();
 
   const { t } = useTranslation('common')
@@ -30,7 +32,7 @@ const Footer = ({data}: any) => {
       <div className="md:flex md:justify-between max-w-[1500px] mx-auto">
         <nav aria-label={footerMenuAria}>
           <ul>
-          {data && data.renderNavigation.map((menuItem: any, index: number) => {
+          {data && data.renderNavigation.map((menuItem: FooterMenuItem, index: number) => {
             const ariaCurrentPage = (asPath === menuItem.path) ? 'page' : undefined;
             const activeClass = (asPath === menuItem.path) ? 'active-link': 'non-active-link';
 
