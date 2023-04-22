@@ -1,9 +1,10 @@
 import { Fragment } from 'react';
+import { glossaryData, glossaryItem } from '@/interfaces/glossaryInterfaces';
 
-const Glossary = ({data}: any) => {
+const Glossary = ({data}: glossaryData) => {
   return (
     <dl className="grid grid-cols-5 gap-2 gap-y-6 items-start">
-      {data && data.glossaryTerms.data.map((glossaryTerm: any, index: number) => {
+      {data && data.glossaryTerms.data.map((glossaryTerm: glossaryItem, index: number) => {
 
         return (
           <Fragment key={`glossary-fragment-${index}`}>
