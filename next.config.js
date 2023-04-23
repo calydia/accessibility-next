@@ -363,6 +363,12 @@ const nextConfig = {
         locale: false,
         permanent: true,
       },
+      {
+        source: '/demos/all-demos',
+        destination: '/',
+        locale: false,
+        permanent: true,
+      },
       // Finnish redirects
       {
         source: '/fi/saavutettavuus/miksi-panostaa-saavutettavuuteen',
@@ -703,6 +709,12 @@ const nextConfig = {
       {
         source: '/fi/demot/listatyylin-poistaminen-listaelementilta',
         destination: '/fi/demo/muut/listatyylin-poistaminen-listaelementilta',
+        locale: false,
+        permanent: true,
+      },
+      {
+        source: '/fi/demot/kaikki-demot',
+        destination: '/fi/',
         locale: false,
         permanent: true,
       }
