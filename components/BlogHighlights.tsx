@@ -1,11 +1,8 @@
 import dayjs from 'dayjs';
 import Image from 'next/image';
+import { BlogData } from '@/interfaces/blogInterfaces';
 
-interface BlogType {
-  data: [{ title: string, path: string, created: string, image?: string }]
-}
-
-const BlogHighlights = ({data}: BlogType) => {
+const BlogHighlights = ({data}: BlogData) => {
 
   return (
     <section aria-labelledby="a11y-blog-heading" className="w-full bg-slate-300 mt-12 pt-12 pb-12 md:pb-20 px-4 dark:bg-slate-900">

@@ -16,6 +16,7 @@ import BlogHighlights from '@/components/BlogHighlights';
 import { useTranslation } from 'next-i18next';
 import { NodeArticle, MediaType } from '@/interfaces/jsonInterfaces';
 import { MainMenuData, MenuData } from '@/interfaces/menuInterfaces';
+import { BlogData } from '@/interfaces/blogInterfaces';
 
 export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: {
   result: {
@@ -50,9 +51,7 @@ export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: {
     }
 
   },
-  blogs: [
-    { title: string, path: string, created: string, image?: string }
-  ]
+  blogs: BlogData
 }) {
 
 const page = result.frontPage.data.attributes;
