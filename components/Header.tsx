@@ -113,7 +113,7 @@ const Header = ({data}: MainMenuData) => {
                                       <HiMinus className="h-6 w-6 icon--minus md:h-4 md:w-4" />
                                       <span className="sr-only">{nextLevel}</span>
                                     </button>
-                                    <ul id={`menu-button-lower-${subIndex}-${titleModified}`} key={`subMenuItem-menu-${subIndex}`} aria-labelledby={`subMenuItem-heading-${subIndex}-${subMenuItem.path.toLowerCase().replaceAll(' ', '-')}`}
+                                    <ul id={`menu-button-lower-${subIndex}-${titleModified}`} key={`subMenuItem-menu-${subIndex}`} aria-labelledby={`subMenuItem-heading-${subIndex}-${subMenuItem.title.toLowerCase().replaceAll(' ', '-')}`}
                                       className="ml-3 menu-lower-level">
                                       {subMenuItem.items && subMenuItem.items.map((lowerSubMenuItem: MainMenuItem, lowerSubIndex: number) => {
                                           const activeClassLower = (asPath === lowerSubMenuItem.path) ? 'active-link': 'non-active-link';
