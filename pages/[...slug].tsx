@@ -296,7 +296,7 @@ export async function getStaticProps({ locale, params }: {
   const glossaryItems = await client.query({
     query: gql`
     query GlossaryItems($locale: I18NLocaleCode) {
-      glossaryTerms(locale: $locale, publicationState: LIVE, pagination: {pageSize: 100}) {
+      glossaryTerms(locale: $locale, publicationState: LIVE, sort: "termName:asc", pagination: {pageSize: 100}) {
         data {
           attributes {
             termName

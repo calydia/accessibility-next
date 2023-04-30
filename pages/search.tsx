@@ -47,10 +47,7 @@ export default function SearchPage({ result, menu, infoMenu }: {
       }
     }
 
-  },
-  blogs: [
-    { title: string, path: string, created: string, image?: string }
-  ]
+  }
 }) {
   const page = result.searchPage.data.attributes;
 
@@ -128,14 +125,17 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
           title
           type
           path
+          iconClass
           items {
             title
             type
             path
+            iconClass
             items {
               title
               type
               path
+              iconClass
             }
           }
         }
@@ -175,8 +175,8 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
     props: {
       ...(await serverSideTranslations(locale as string, ['common'])),
       result: result.data,
-      menu: menu,
-      infoMenu: infoMenu
+      menu,
+      infoMenu
     },
     revalidate: 60
   };

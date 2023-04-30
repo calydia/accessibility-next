@@ -103,7 +103,7 @@ const page = result.frontPage.data.attributes;
       </main>
       { (page.locale === "en") ?
         <>
-          <BlogHighlights data={blogs} />
+          <BlogHighlights data={blogs.data} />
         </>
         : null }
       <Footer data={infoMenu.data} />

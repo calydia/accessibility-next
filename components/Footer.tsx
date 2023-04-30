@@ -72,6 +72,7 @@ const Footer = ({data}: MenuData) => {
           <a
             href="https://blog.sanna.ninja"
             rel="noopener noreferrer"
+            className="font-light"
           >
             {blogLink}
           </a>
