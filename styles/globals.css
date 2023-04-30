@@ -41,7 +41,7 @@ body.dark {
 }
 
 p {
-  @apply my-8 leading-relaxed;
+  @apply my-8 leading-relaxed font-light;
 }
 
 .post-link:hover .post-title {
@@ -134,6 +134,10 @@ ol {
   margin-inline-start: 1.5em;
   margin-inline-end: 0;
   padding-inline-start: 0;
+}
+
+ol, ul {
+  @apply font-light
 }
 
 ol li {

@@ -76,7 +76,7 @@ const Header = ({data}: MainMenuData) => {
             <span>{menuButton}</span>
           </button>
           <ul id="main-menu" key="first-ul" className="text-left mx-auto lg:visible lg:flex lg:flex-wrap lg:justify-center mt-4 p-0 mb-0
-            max-lg:absolute max-lg:z-20 lg:w-[80%] max-lg:mx-auto max-lg:left-0 max-lg:right-0 max-lg:p-4 max-lg:border-2 max-lg:border-solid max-lg:border-black max-lg:dark:border-white max-lg:bg-lt-code-bg max-lg:dark:bg-dk-code-bg"
+            max-lg:absolute max-lg:z-20 lg:w-[90%] max-lg:mx-auto max-lg:left-0 max-lg:right-0 max-lg:p-4 max-lg:border-2 max-lg:border-solid max-lg:border-black max-lg:dark:border-white max-lg:bg-lt-code-bg max-lg:dark:bg-dk-code-bg"
           >
             {data && data.renderNavigation.map((menuItem: MainMenuItem, index: number) => {
               const ariaCurrentPath = (asPath.includes(menuItem.path) && menuItem.path !== '/') ? true : undefined;
@@ -87,7 +87,7 @@ const Header = ({data}: MainMenuData) => {
                     // We know the first level items are only wrappers
                     <li key={`menuItem-${index}`} className="m-2 static">
                       <button id={`button-${index}`} key={`button-${index}`} aria-current={ariaCurrentPath} aria-expanded="false" aria-controls={`menu-button-${index}`} aria-haspopup="true" onClick={buttonClickHandler}
-                        className={`menu-button flex items-center text-left gap-2 text-black dark:text-white text-xl p-1 dark:text-shadow-text hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white`}>
+                        className={`menu-button font-light flex items-center text-left gap-2 text-black dark:text-white text-xl p-1 dark:text-shadow-text hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white`}>
                         {menuItem.title}
                         <HiChevronDown className="menu-button--icon h-6 w-6" />
                       </button>

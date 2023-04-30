@@ -4,7 +4,7 @@ import { client } from '../lib/apollo';
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from 'next/router';
 import '../styles/globals.css';
-import { Average_Sans, Rock_Salt } from 'next/font/google'
+import { Average_Sans, Rock_Salt, Inter } from 'next/font/google'
 import { appWithTranslation } from 'next-i18next';
 import { useTranslation } from 'next-i18next';
 import { useClickAnyWhere } from 'usehooks-ts';
@@ -15,9 +15,9 @@ const rockSalt = Rock_Salt({
   variable: '--font-rock-salt'
 })
 
-const averageSans = Average_Sans({
+const averageSans = Inter({
   subsets: ['latin'],
-  weight: '400',
+  weight: ['300', '400', '700'],
   variable: '--font-average-sans'
 })
 
