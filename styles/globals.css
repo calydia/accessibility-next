@@ -401,3 +401,7 @@ main a[href^="https://"]::after {
 .menu-icon {
   @apply h-6 w-6 shrink-0 self-start mt-[2px];
 }
+
+.demo-select {
+  @apply focus:outline focus:outline-2 focus:outline-offset-4 	focus:outline-black dark:focus:outline-white
+}
