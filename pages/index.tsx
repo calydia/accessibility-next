@@ -50,10 +50,10 @@ export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: {
     }
 
   },
-  blogs: BlogData
+  blogs: [{ title: string, path: string, created: string, image?: string }]
 }) {
-
-const page = result.frontPage.data.attributes;
+console.log(blogs);
+  const page = result.frontPage.data.attributes;
 
   const [theme, themeToggler] = useDarkMode();
 
@@ -62,7 +62,7 @@ const page = result.frontPage.data.attributes;
 
   const { t } = useTranslation('common');
   const siteName = t('site-name');
-
+console.log(blogs);
   return (
     <>
       <header id="page-top" className="bg-gradient-to-r from-lt-perfume via-lt-blue-light to-lt-perfume
@@ -99,9 +99,9 @@ const page = result.frontPage.data.attributes;
           </div>
         </div>
       </main>
-      { (page.locale === "en") ?
+      { (page.locale === "en" && blogs) ?
         <>
-          <BlogHighlights data={blogs.data} />
+          <BlogHighlights data={blogs} />
         </>
         : null }
       <Footer data={infoMenu.data} />
