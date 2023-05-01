@@ -10,7 +10,6 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Toggle from '@/components/Toggler';
 import Header from '@/components/Header';
 import Breadcrumb from '@/components/Breadcrumb';
-import SearchBar from '@/components/SearchBar';
 import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 import HumanSitemap from '@/components/HumanSitemap';
@@ -84,7 +83,6 @@ export default function InfoPage({ result, menu, infoMenu, menuList }: {
         </div>
         <Header data={menu.data} />
       </header>
-      <SearchBar />
       <MainImage />
       <Breadcrumb currentTitle={page.title} currentSlug={page.slug} menuList={menuList.data.menuTitleList.data.attributes.titleList.menuItems} />
       <main className="mb-8 md:mb-12">
