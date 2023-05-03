@@ -1,3 +1,5 @@
-# Disallow all crawlers
+# Allow all crawlers
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://accessibility-strapi.ampere.corrupted.pw/sitemap/index.xml
