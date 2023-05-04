@@ -1,9 +1,469 @@
 # English redirects
 [[redirects]]
+  from = "/accessibility/why-accessibility"
+  to = "/accessibility-fundamentals/the-basics/why-focus-on-accessibility"
+
+[[redirects]]
+  from = "/accessibility/accessibility-policy"
+  to = "/accessibility-fundamentals/documents/accessibility-policy"
+
+[[redirects]]
+  from = "/accessibility/accessibility-statement"
+  to = "/accessibility-fundamentals/documents/accessibility-statement"
+
+[[redirects]]
+  from = "/resources/great-resources-learn-about-accessibility"
+  to = "/accessibility-fundamentals/places-to-learn-about-accessibility/web-resources-on-accessibility"
+
+[[redirects]]
+  from = "/resources/courses-accessibility"
+  to = "/accessibility-fundamentals/places-to-learn-about-accessibility/courses-on-accessibility"
+
+[[redirects]]
+  from = "/resources/articles-and-books-accessibility"
+  to = "/accessibility-fundamentals/places-to-learn-about-accessibility/articles-and-books-on-accessibility"
+
+[[redirects]]
+  from = "/resources/accessibility-social-media"
+  to = "/accessibility-fundamentals/places-to-learn-about-accessibility/follow-accessibility-content-in-social-media"
+
+[[redirects]]
+  from = "/accessibility/accessibility-auditing"
+  to = "/testing-for-accessibility/accessibility-audit/how-to-do-accessibility-auditing"
+
+[[redirects]]
+  from = "/accessibility/fixing-audit-report-findings"
+  to = "/testing-for-accessibility/accessibility-audit/fixing-audit-report-findings"
+
+[[redirects]]
+  from = "/resources/testing-accessibility"
+  to = "/testing-for-accessibility/accessibility-audit/tools-and-techniques-for-accessibility-testing"
+
+[[redirects]]
+  from = "/testing-for-accessibility/accessibility-audit/tools-and-techniques-for-accessibility-testing"
+  to = "/testing-for-accessibility/using-assistive-technologies/using-voiceover"
+
+[[redirects]]
+  from = "/resources/using-voiceover"
+  to = "/testing-for-accessibility/using-assistive-technologies/using-voiceover"
+
+[[redirects]]
+  from = "/resources/using-nvda"
+  to = "/testing-for-accessibility/using-assistive-technologies/using-nvda"
+
+[[redirects]]
+  from = "/wcag/what-wcag"
+  to = "/ensuring-accessibility-compliance/wcag/what-is-wcag"
+
+[[redirects]]
+  from = "/wcag/general-information-wcag-terminology"
+  to = "/ensuring-accessibility-compliance/wcag/wcag-terminology"
+
+[[redirects]]
+  from = "/wcag/wcag-tips-perceivable"
+  to = "/ensuring-accessibility-compliance/wcag/wcag-tips-perceivable"
+
+[[redirects]]
+  from = "/wcag/wcag-tips-operable"
+  to = "/ensuring-accessibility-compliance/wcag/wcag-tips-operable"
+
+[[redirects]]
+  from = "/wcag/wcag-tips-understandable"
+  to = "/ensuring-accessibility-compliance/wcag/wcag-tips-understandable"
+
+[[redirects]]
+  from = "/wcag/wcag-tips-robust"
+  to = "/ensuring-accessibility-compliance/wcag/wcag-tips-robust"
+
+[[redirects]]
+  from = "/atag/what-atag"
+  to = "/ensuring-accessibility-compliance/atag/what-is-atag"
+
+[[redirects]]
+  from = "/atag/atag-terminology"
+  to = "/ensuring-accessibility-compliance/atag/atag-terminology"
+
+[[redirects]]
+  from = "/atag/atag-structure"
+  to = "/ensuring-accessibility-compliance/atag/atag-structure"
+
+[[redirects]]
+  from = "/atag/checking-atag-conformance"
+  to = "/ensuring-accessibility-compliance/atag/checking-for-atag-conformance"
+
+[[redirects]]
+  from = "/wai-aria/what-wai-aria"
+  to = "/ensuring-accessibility-compliance/wai-aria/what-is-wai-aria"
+
+[[redirects]]
+  from = "/wai-aria/aria-roles"
+  to = "/ensuring-accessibility-compliance/wai-aria/aria-roles"
+
+[[redirects]]
+  from = "/wai-aria/aria-properties"
+  to = "/ensuring-accessibility-compliance/wai-aria/aria-properties"
+
+[[redirects]]
+  from = "/wai-aria/aria-live-regions"
+  to = "/ensuring-accessibility-compliance/wai-aria/aria-live-regions"
+
+[[redirects]]
+  from = "/wai-aria/aria-states"
+  to = "/ensuring-accessibility-compliance/wai-aria/aria-states"
+
+[[redirects]]
+  from = "/designers/structure-and-functionality"
+  to = "/ensuring-accessibility-compliance/for-designers/structure-and-functionality"
+
+[[redirects]]
+  from = "/designers/fonts"
+  to = "/ensuring-accessibility-compliance/for-designers/fonts"
+
+[[redirects]]
+  from = "/designers/color-contrast-and-other-visual-cues"
+  to = "/ensuring-accessibility-compliance/for-designers/color-contrast-and-other-visual-cues"
+
+[[redirects]]
+  from = "/designers/design-tips-text-content"
+  to = "/ensuring-accessibility-compliance/for-designers/design-tips-for-text-content"
+
+[[redirects]]
+  from = "/designers/designing-forms"
+  to = "/ensuring-accessibility-compliance/for-designers/designing-forms"
+
+[[redirects]]
+  from = "/designers/designing-animations-and-moving-content"
+  to = "/ensuring-accessibility-compliance/for-designers/designing-animations-and-moving-content"
+
+[[redirects]]
+  from = "/resources/helpful-resources-designers"
+  to = "/ensuring-accessibility-compliance/for-designers/helpful-resources-for-designers"
+
+[[redirects]]
+  from = "/developers/page-structure-and-functionality"
+  to = "/ensuring-accessibility-compliance/for-developers/page-structure-and-functionality"
+
+[[redirects]]
+  from = "/developers/language"
+  to = "/ensuring-accessibility-compliance/for-developers/language"
+
+[[redirects]]
+  from = "/developers/forms"
+  to = "/ensuring-accessibility-compliance/for-developers/forms"
+
+[[redirects]]
+  from = "/developers/iframes"
+  to = "/ensuring-accessibility-compliance/for-developers/iframes"
+
+[[redirects]]
+  from = "/developers/developing-keyboard-and-screen-reader-users"
+  to = "/ensuring-accessibility-compliance/for-developers/developing-for-keyboard-and-screen-reader-users"
+
+[[redirects]]
+  from = "/developers/website-styles"
+  to = "/ensuring-accessibility-compliance/for-developers/website-styles"
+
+[[redirects]]
+  from = "/resources/helpful-resources-developers"
+  to = "/ensuring-accessibility-compliance/for-developers/helpful-resources-for-developers"
+
+[[redirects]]
+  from = "/writers/writing-website-text-content"
+  to = "/ensuring-accessibility-compliance/for-content-creators/writing-website-text-content"
+
+[[redirects]]
+  from = "/writers/creating-non-text-content"
+  to = "/ensuring-accessibility-compliance/for-content-creators/creating-non-text-content"
+
+[[redirects]]
+  from = "/writers/creating-documents"
+  to = "/ensuring-accessibility-compliance/for-content-creators/creating-documents"
+
+[[redirects]]
+  from = "/writers/social-media"
+  to = "/ensuring-accessibility-compliance/for-content-creators/social-media-and-accessibility"
+
+[[redirects]]
+  from = "/demos/111-non-text-content-alt-attribute"
+  to = "/demo/perceivable/1-1-1-non-text-content-alt-attribute"
+
+[[redirects]]
+  from = "/demos/131-tables"
+  to = "/demo/perceivable/1-3-1-tables"
+
+[[redirects]]
+  from = "/demos/143-contrast"
+  to = "/demo/perceivable/1-4-3-contrast"
+
+[[redirects]]
+  from = "/demos/211-keyboard"
+  to = "/demo/operable/2-1-1-keyboard"
+
+[[redirects]]
+  from = "/demos/247-focus-visible"
+  to = "/demo/operable/2-4-7-focus-visible"
+
+[[redirects]]
+  from = "/demos/253-label-name"
+  to = "/demo/operable/2-5-3-label-in-name"
+
+[[redirects]]
+  from = "/demos/312-language-parts"
+  to = "/demo/understandable/3-1-2-language-of-parts"
+
+[[redirects]]
+  from = "/demos/412-name-role-value"
+  to = "/demo/robust/4-1-2-name-role-value"
+
+[[redirects]]
+  from = "/demos/form-field-instructions"
+  to = "/demo/other/form-field-instructions"
+
+[[redirects]]
+  from = "/demos/hashtags-and-screen-readers"
+  to = "/demo/other/hashtags-and-screen-readers"
+
+[[redirects]]
+  from = "/demos/pseudo-elements-and-after"
+  to = "/demo/other/pseudo-elements-before-and-after"
+
+[[redirects]]
+  from = "/demos/removing-list-style-list-element"
+  to = "/demo/other/removing-list-style-from-a-list-element"
+
+[[redirects]]
   from = "/demos/all-demos"
   to = "/"
 
 # Finnish redirects
 [[redirects]]
-  from = "/fi/demot/kaikki-demo"
+  from = "/fi/saavutettavuus/miksi-panostaa-saavutettavuuteen"
+  to = "/fi/saavutettavuuden-perusteet/perusjutut/miksi-panostaa-saavutettavuuteen"
+
+[[redirects]]
+  from = "/fi/saavutettavuus/saavutettavuuskaytannot"
+  to = "/fi/saavutettavuuden-perusteet/dokumentaatio/saavutettavuuskaytannot"
+
+[[redirects]]
+  from = "/fi/saavutettavuus/saavutettavuusseloste"
+  to = "/fi/saavutettavuuden-perusteet/dokumentaatio/saavutettavuusseloste"
+
+[[redirects]]
+  from = "/fi/materiaalia/hyvia-saavutettavuusresursseja"
+  to = "/fi/saavutettavuuden-perusteet/missa-oppia-saavutettavuudesta/saavutettavuusmateriaalia-netissa"
+
+[[redirects]]
+  from = "/fi/materiaalia/saavutettavuuskursseja"
+  to = "/fi/saavutettavuuden-perusteet/missa-oppia-saavutettavuudesta/kursseja-saavutettavuudesta"
+
+[[redirects]]
+  from = "/fi/materiaalia/artikkeleita-ja-kirjoja-saavutettavuudesta"
+  to = "/fi/saavutettavuuden-perusteet/missa-oppia-saavutettavuudesta/artikkeleita-ja-kirjoja-saavutettavuudesta"
+
+[[redirects]]
+  from = "/fi/materiaalia/saavutettavuudesta-sosiaalisessa-mediassa"
+  to = "/fi/saavutettavuuden-perusteet/missa-oppia-saavutettavuudesta/saavutettavuudesta-sosiaalisessa-mediassa"
+
+[[redirects]]
+  from = "/fi/saavutettavuus/saavutettavuuden-auditointi"
+  to = "/fi/saavutettavuuden-testaaminen/saavutettavuusauditointi/miten-tehda-saavutettavuusauditointi"
+
+[[redirects]]
+  from = "/fi/saavutettavuus/auditointiraportissa-listattujen-ongelmien-korjaus"
+  to = "/fi/saavutettavuuden-testaaminen/saavutettavuusauditointi/auditointiraportissa-listattujen-ongelmien-korjaus"
+
+[[redirects]]
+  from = "/fi/materiaalia/saavutettavuuden-testaus"
+  to = "/fi/saavutettavuuden-testaaminen/saavutettavuusauditointi/tyokaluja-ja-tekniikoita-saavutettavuuden-testaamiseen"
+
+[[redirects]]
+  from = "/fi/materiaalia/voiceoverin-kaytto"
+  to = "/fi/saavutettavuuden-testaaminen/avustavien-teknologioiden-kayttaminen/voiceoverin-kayttaminen"
+
+[[redirects]]
+  from = "/fi/materiaalia/nvdan-kaytto"
+  to = "/fi/saavutettavuuden-testaus/avustavien-teknologioiden-kayttaminen/nvdan-kayttaminen"
+
+[[redirects]]
+  from = "/fi/wcag/mika-wcag"
+  to = "/fi/saavutettavuuden-varmistaminen/wcag/mika-on-wcag"
+
+[[redirects]]
+  from = "/fi/wcag/yleista-tietoa-wcagn-termistosta"
+  to = "/fi/saavutettavuuden-varmistaminen/wcag/yleista-tietoa-wcagn-termistosta"
+
+[[redirects]]
+  from = "/fi/wcag/wcag-vinkkeja-havaittava"
+  to = "/fi/saavutettavuuden-varmistaminen/wcag/wcag-vinkkeja-havaittava"
+
+[[redirects]]
+  from = "/fi/wcag/wcag-vinkkeja-hallittava"
+  to = "/fi/saavutettavuuden-varmistaminen/wcag/wcag-vinkkeja-hallittava"
+
+[[redirects]]
+  from = "/fi/wcag/wcag-vinkkeja-ymmarrettava"
+  to = "/fi/saavutettavuuden-varmistaminen/wcag/wcag-vinkkeja-ymmarrettava"
+
+[[redirects]]
+  from = "/fi/wcag/wcag-vinkkeja-toimintavarma"
+  to = "/fi/saavutettavuuden-varmistaminen/wcag/wcag-vinkkeja-toimintavarma"
+
+[[redirects]]
+  from = "/fi/atag/mika-atag"
+  to = "/fi/saavutettavuuden-varmistaminen/atag/mika-on-atag"
+
+[[redirects]]
+  from = "/fi/atag/atag-termistoa"
+  to = "/fi/saavutettavuuden-varmistaminen/atag/atag-termistoa"
+
+[[redirects]]
+  from = "/fi/atag/atagin-rakenne"
+  to = "/fi/saavutettavuuden-varmistaminen/atag/atagin-rakenne"
+
+[[redirects]]
+  from = "/fi/atag/miten-tarkistaa-atagin-vaatimustenmukaisuus"
+  to = "/fi/saavutettavuuden-varmistaminen/atag/miten-tarkistaa-atagin-vaatimustenmukaisuus"
+
+[[redirects]]
+  from = "/fi/wai-aria/mika-wai-aria"
+  to = "/fi/saavutettavuuden-varmistaminen/wai-aria/mika-on-wai-aria"
+
+[[redirects]]
+  from = "/fi/wai-aria/aria-roolit"
+  to = "/fi/saavutettavuuden-varmistaminen/wai-aria/aria-roolit"
+
+[[redirects]]
+  from = "/fi/wai-aria/aria-ominaisuudet"
+  to = "/fi/saavutettavuuden-varmistaminen/wai-aria/aria-ominaisuudet"
+
+[[redirects]]
+  from = "/fi/wai-aria/aria-live-alueet"
+  to = "/fi/saavutettavuuden-varmistaminen/wai-aria/aria-live-alueet"
+
+[[redirects]]
+  from = "/fi/wai-aria/aria-tilat"
+  to = "/fi/saavutettavuuden-varmistaminen/wai-aria/aria-tilat"
+
+[[redirects]]
+  from = "/fi/suunnittelijoille/rakenne-ja-toiminnallisuudet"
+  to = "/fi/saavutettavuuden-varmistaminen/suunnittelijoille/rakenne-ja-toiminnallisuudet"
+
+[[redirects]]
+  from = "/fi/suunnittelijoille/fontit"
+  to = "/fi/saavutettavuuden-varmistaminen/suunnittelijoille/fontit"
+
+[[redirects]]
+  from = "/fi/suunnittelijoille/vari-kontrasti-ja-muut-visuaaliset-vihjeet"
+  to = "/fi/saavutettavuuden-varmistaminen/suunnittelijoille/vari-kontrasti-ja-muut-visuaaliset-vihjeet"
+
+[[redirects]]
+  from = "/fi/suunnittelijoille/vinkkeja-tekstisisallon-suunnitteluun"
+  to = "/fi/saavutettavuuden-varmistaminen/suunnittelijoille/vinkkeja-tekstisisallon-suunnitteluun"
+
+[[redirects]]
+  from = "/fi/suunnittelijoille/lomakkeiden-suunnittelu"
+  to = "/fi/saavutettavuuden-varmistaminen/suunnittelijoille/lomakkeiden-suunnittelu"
+
+[[redirects]]
+  from = "/fi/suunnittelijoille/animaatioiden-ja-liikkuvan-sisallon-suunnittelu"
+  to = "/fi/saavutettavuuden-varmistaminen/suunnittelijoille/animaatioiden-ja-liikkuvan-sisaelloen-suunnittelu"
+
+[[redirects]]
+  from = "/fi/materiaalia/materiaalia-ja-tyokaluja-suunnittelijoille"
+  to = "/fi/saavutettavuuden-varmistaminen/suunnittelijoille/materiaalia-ja-tyokaluja-suunnittelijoille"
+
+[[redirects]]
+  from = "/fi/kehittajille/rakenne-ja-toiminnallisuus"
+  to = "/fi/saavutettavuuden-varmistaminen/kehittajille/rakenne-ja-toiminnallisuus"
+
+[[redirects]]
+  from = "/fi/kehittajille/kieli"
+  to = "/fi/saavutettavuuden-varmistaminen/kehittajille/kieli"
+
+[[redirects]]
+  from = "/fi/kehittajille/lomakkeet"
+  to = "/fi/saavutettavuuden-varmistaminen/kehittajille/lomakkeet"
+
+[[redirects]]
+  from = "/fi/kehittajille/iframet"
+  to = "/fi/saavutettavuuden-varmistaminen/kehittajille/iframet"
+
+[[redirects]]
+  from = "/fi/kehittajille/nappaimistoa-ja-ruudunlukijaa-kayttavien-huomioiminen"
+  to = "/fi/saavutettavuuden-varmistaminen/kehittajille/nappaimistoa-ja-ruudunlukijaa-kayttavien-huomioiminen"
+
+[[redirects]]
+  from = "/fi/kehittajille/sivuston-tyylit"
+  to = "/fi/saavutettavuuden-varmistaminen/kehittajille/sivuston-tyylit"
+
+[[redirects]]
+  from = "/fi/materiaalia/hyodyllista-materiaalia-kehittajille"
+  to = "/fi/saavutettavuuden-varmistaminen/kehittajille/hyodyllista-materiaalia-kehittajille"
+
+[[redirects]]
+  from = "/fi/sisallontuottajille/saavutettavan-tekstisisallon-kirjoittaminen"
+  to = "/fi/saavutettavuuden-varmistaminen/sisallontuottajille/saavutettavan-tekstisisallon-kirjoittaminen"
+
+[[redirects]]
+  from = "/fi/sisallontuottajille/ei-tekstuaalisen-sisallon-tuottaminen"
+  to = "/fi/saavutettavuuden-varmistaminen/sisallontuottajille/ei-tekstuaalisen-sisaellon-tuottaminen"
+
+[[redirects]]
+  from = "/fi/sisallontuottajille/saavutettavat-tiedostot"
+  to = "/fi/saavutettavuuden-varmistaminen/sisallontuottajille/saavutettavat-tiedostot"
+
+[[redirects]]
+  from = "/fi/sisallontuottajille/sosiaalinen-media"
+  to = "/fi/saavutettavuuden-varmistaminen/sisallontuottajille/sosiaalinen-media-ja-saavutettavuus"
+
+[[redirects]]
+  from = "/fi/demot/111-ei-tekstuaalinen-sisalto-alt-attribuutti"
+  to = "/fi/demo/havaittava/1-1-1-ei-tekstuaalinen-sisalto-alt-attribuutti"
+
+[[redirects]]
+  from = "/fi/demot/131-taulukot"
+  to = "/fi/demo/havaittava/1-3-1-taulukot"
+
+[[redirects]]
+  from = "/fi/demot/143-kontrasti"
+  to = "/fi/demo/havaittava/1-4-3-kontrasti"
+
+[[redirects]]
+  from = "/fi/demot/211-nappaimisto"
+  to = "/fi/demo/hallittava/2-1-1-nappaimisto"
+
+[[redirects]]
+  from = "/fi/demot/247-nakyva-kohdistus"
+  to = "/fi/demo/hallittava/2-4-7-nakyva-kohdistus"
+
+[[redirects]]
+  from = "/fi/demot/253-nimilappu-nimessa"
+  to = "/fi/demo/hallittava/2-5-3-nimilappu-nimessa"
+
+[[redirects]]
+  from = "/fi/demot/312-osien-kieli"
+  to = "/fi/demo/ymmarrettava/3-1-2-osien-kieli"
+
+[[redirects]]
+  from = "/fi/demot/412-nimi-rooli-arvo"
+  to = "/fi/demo/toimintavarma/4-1-2-nimi-rooli-arvo"
+
+[[redirects]]
+  from = "/fi/demot/lomakkeen-kenttien-ohjeistukset"
+  to = "/fi/demo/muut/lomakkeen-kenttien-ohjeistukset"
+
+[[redirects]]
+  from = "/fi/demot/hashtagit-ja-ruudunlukijat"
+  to = "/fi/demo/muut/hashtagit-ja-ruudunlukijat"
+
+[[redirects]]
+  from = "/fi/demot/pseudo-elemetit-ja-after"
+  to = "/fi/demo/muut/pseudo-elemetit-before-ja-after"
+
+[[redirects]]
+  from = "/fi/demot/listatyylin-poistaminen-listaelementilta"
+  to = "/fi/demo/muut/listatyylin-poistaminen-listaelementilta"
+
+[[redirects]]
+  from = "/fi/demot/kaikki-demot"
   to = "/fi/"
