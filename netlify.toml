@@ -1,0 +1,9 @@
+# English redirects
+[[redirects]]
+  from = "/demos/all-demos"
+  to = "/"
+
+# Finnish redirects
+[[redirects]]
+  from = "/fi/demot/kaikki-demo"
+  to = "/fi/"
