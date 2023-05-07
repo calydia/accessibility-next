@@ -70,10 +70,6 @@ export default function SearchPage({ result, menu, infoMenu }: {
   const searchLabel = t('search-label');
   const searchButton = t('search-button');
 
-  // TODO: On this page we should take in possible search word from the global search component
-
-  // TODO: After search: update search word to page title, breadcrumb and heading
-
   const [searchWords, setSearchWords] = useState("");
   const [searchDemoResult, setSearchDemoResult] = useState<any>();
   const [searchPageResult, setSearchPageResult] = useState<any>();
@@ -156,49 +152,50 @@ export default function SearchPage({ result, menu, infoMenu }: {
             </form>
           </div>
 
-          { (searchPageResult || searchDemoResult) ?
+          <div className="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
+            { (searchPageResult || searchDemoResult) ?
+              <>
+                <h2>Search results for {searchWords}</h2>
+                <div>Results: {searchPageResult.totalHits}</div>
+              </>
+            : null }
+
+            { (searchPageResult) ?
             <>
-              <h2>Search results for {searchWords}</h2>
-              <div>Results: {searchPageResult.totalHits}</div>
+              <h3>Pages</h3>
+              <ul>
+                {searchPageResult.map((result: SearchResults, index: number) => {
+                  const resultPrefix = (result.locale == 'en') ? '/' : '/fi/';
+                  return (
+                      <li key={`result-${index}`} className="my-4
+                      ">
+                        <a lang={result.locale} href={`${resultPrefix}${result.pageUrl}`}>{result.title}</a>
+                        <span lang={result.locale} className="block">{result.metaDescription}</span>
+                      </li>
+                  );
+                })}
+              </ul>
             </>
           : null }
 
-          { (searchPageResult) ?
-          <>
-            <h3>Pages</h3>
-            <ul>
-              {searchPageResult.map((result: SearchResults, index: number) => {
-                const resultPrefix = (result.locale == 'en') ? '/' : '/fi/';
-                return (
-                    <li key={`result-${index}`} className="my-4
-                    ">
-                      <a lang={result.locale} href={`${resultPrefix}${result.pageUrl}`}>{result.title}</a>
-                      <span lang={result.locale} className="block">{result.metaDescription}</span>
-                    </li>
-                );
-              })}
-            </ul>
-          </>
-        : null }
-
-        { (searchDemoResult) ?
-          <>
-            <h3>Demos</h3>
-            <ul>
-              {searchDemoResult.map((demoResult: SearchResults, index: number) => {
-                const demoResultPrefix = (demoResult.locale == 'en') ? '/' : '/fi/';
-                return (
-                    <li key={`result-demo-${index}`} className="my-4
-                    ">
-                      <a lang={demoResult.locale} href={`${demoResultPrefix}${demoResult.pageUrl}`}>{demoResult.title}</a>
-                      <span lang={demoResult.locale} className="block">{demoResult.metaDescription}</span>
-                    </li>
-                );
-              })}
-            </ul>
-          </>
-        : null }
-
+          { (searchDemoResult) ?
+            <>
+              <h3>Demos</h3>
+              <ul>
+                {searchDemoResult.map((demoResult: SearchResults, index: number) => {
+                  const demoResultPrefix = (demoResult.locale == 'en') ? '/' : '/fi/';
+                  return (
+                      <li key={`result-demo-${index}`} className="my-4
+                      ">
+                        <a lang={demoResult.locale} href={`${demoResultPrefix}${demoResult.pageUrl}`}>{demoResult.title}</a>
+                        <span lang={demoResult.locale} className="block">{demoResult.metaDescription}</span>
+                      </li>
+                  );
+                })}
+              </ul>
+            </>
+          : null }
+          </div>
         </div>
       </main>
       <Footer data={infoMenu.data} />
