@@ -12,13 +12,15 @@ import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 import { useTranslation } from 'next-i18next';
 import { MeiliSearch } from "meilisearch";
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
+import { SearchResults } from '@/interfaces/searchInterfaces';
 
 const searchClient = new MeiliSearch({
-   host: "http://localhost:7700", apiKey: "e304830a043781414cd895e6c14f66e309c873c744c3b9c619e591d767602170"
+  host: "http://localhost:7700", apiKey: "e304830a043781414cd895e6c14f66e309c873c744c3b9c619e591d767602170"
 });
 
 import { MainMenuData, MenuData } from '@/interfaces/menuInterfaces';
+
 
 export default function SearchPage({ result, menu, infoMenu }: {
   result: {
@@ -54,6 +56,7 @@ export default function SearchPage({ result, menu, infoMenu }: {
 
   }
 }) {
+
   const page = result.searchPage.data.attributes;
 
   const engUrl = '/search';
@@ -72,26 +75,46 @@ export default function SearchPage({ result, menu, infoMenu }: {
   // TODO: After search: update search word to page title, breadcrumb and heading
 
   const [searchWords, setSearchWords] = useState("");
+  const [searchDemoResult, setSearchDemoResult] = useState<any>();
+  const [searchPageResult, setSearchPageResult] = useState<any>();
+
+  const GetSearchResults = async (searchWords: string) => {
+    try {
+      const pageResults = await searchClient.index('page').search(searchWords, {
+        limit: 25,
+        attributesToRetrieve: [
+          'title',
+          'locale',
+          'pageUrl',
+          'metaDescription'
+        ]
+      });
+      setSearchPageResult(pageResults.hits);
+
+      const demoResults = await searchClient.index('demo-page').search(searchWords, {
+        limit: 25,
+        attributesToRetrieve: [
+          'title',
+          'locale',
+          'pageUrl',
+          'metaDescription'
+        ]
+      });
+      setSearchDemoResult(demoResults.hits);
+    }
+    catch (e) {
+      console.error(e);
+    }
+  }
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
     setSearchWords(event.currentTarget.value);
   }
 
-  const formSubmit = () => {
-    const test = searchClient.multiSearch({ queries: [
-      {
-        indexUid: 'demo-page',
-        q: searchWords,
-        limit: 10
-      },
-      {
-        indexUid: 'page',
-        q: searchWords,
-        limit: 10
-      }
-    ]});
+  const formSubmit = (event: FormEvent) => {
+    event.preventDefault();
 
-    console.log(test);
+    GetSearchResults(searchWords);
   }
 
   return (
@@ -117,6 +140,8 @@ export default function SearchPage({ result, menu, infoMenu }: {
           <meta property="og:image" content="/some-share.jpg" />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
+          <link rel="alternate" hrefLang="fi" href={`https://a11y.sanna.ninja/${fiUrl}`} />
+          <link rel="alternate" hrefLang="en" href={`https://a11y.sanna.ninja/${engUrl}`} />
         </Head>
         <div className="max-w-[1564px] mx-auto md:px-8-px">
           <div className="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
@@ -130,6 +155,49 @@ export default function SearchPage({ result, menu, infoMenu }: {
               <button type="submit" className="button item--transition max-md:mt-4">{searchButton}</button>
             </form>
           </div>
+
+          { (searchPageResult || searchDemoResult) ?
+            <>
+              <h2>Search results for {searchWords}</h2>
+              <div>Results: {searchPageResult.totalHits}</div>
+            </>
+          : null }
+
+          { (searchPageResult) ?
+          <>
+            <h3>Pages</h3>
+            <ul>
+              {searchPageResult.map((result: SearchResults, index: number) => {
+                const resultPrefix = (result.locale == 'en') ? '/' : '/fi/';
+                return (
+                    <li key={`result-${index}`} className="my-4
+                    ">
+                      <a lang={result.locale} href={`${resultPrefix}${result.pageUrl}`}>{result.title}</a>
+                      <span lang={result.locale} className="block">{result.metaDescription}</span>
+                    </li>
+                );
+              })}
+            </ul>
+          </>
+        : null }
+
+        { (searchDemoResult) ?
+          <>
+            <h3>Demos</h3>
+            <ul>
+              {searchDemoResult.map((demoResult: SearchResults, index: number) => {
+                const demoResultPrefix = (demoResult.locale == 'en') ? '/' : '/fi/';
+                return (
+                    <li key={`result-demo-${index}`} className="my-4
+                    ">
+                      <a lang={demoResult.locale} href={`${demoResultPrefix}${demoResult.pageUrl}`}>{demoResult.title}</a>
+                      <span lang={demoResult.locale} className="block">{demoResult.metaDescription}</span>
+                    </li>
+                );
+              })}
+            </ul>
+          </>
+        : null }
 
         </div>
       </main>
