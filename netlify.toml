@@ -5,11 +5,19 @@
 
 [[redirects]]
   from = "/accessibility/accessibility-policy"
-  to = "/accessibility-fundamentals/documents/accessibility-policy"
+  to = "/accessibility-fundamentals/documents-and-policies/accessibility-policy"
+
+[[redirects]]
+  from = "/accessibility-fundamentals/documents/accessibility-policy"
+  to = "/accessibility-fundamentals/documents-and-policies/accessibility-policy"
 
 [[redirects]]
   from = "/accessibility/accessibility-statement"
-  to = "/accessibility-fundamentals/documents/accessibility-statement"
+  to = "/accessibility-fundamentals/documents-and-policies/accessibility-statement"
+
+[[redirects]]
+  from = "/accessibility-fundamentals/documents/accessibility-statement"
+  to = "/accessibility-fundamentals/documents-and-policies/accessibility-statement"
 
 [[redirects]]
   from = "/resources/great-resources-learn-about-accessibility"
@@ -242,11 +250,21 @@
 
 [[redirects]]
   from = "/fi/saavutettavuus/saavutettavuuskaytannot"
-  to = "/fi/saavutettavuuden-perusteet/dokumentaatio/saavutettavuuskaytannot"
+  to = "/fi/saavutettavuuden-perusteet/dokumentaatio-ja-toimintaperiaatteet/saavutettavuuskaytannot"
+
+[[redirects]]
+  from = "/fi/saavutettavuuden-perusteet/dokumentaatio/saavutettavuuskaytannot"
+  to = "/fi/saavutettavuuden-perusteet/dokumentaatio-ja-toimintaperiaatteet/saavutettavuuskaytannot"
+
 
 [[redirects]]
   from = "/fi/saavutettavuus/saavutettavuusseloste"
-  to = "/fi/saavutettavuuden-perusteet/dokumentaatio/saavutettavuusseloste"
+  to = "/fi/saavutettavuuden-perusteet/dokumentaatio-ja-toimintaperiaatteet/saavutettavuusseloste"
+
+[[redirects]]
+  from = "/fi/saavutettavuuden-perusteet/dokumentaatio/saavutettavuusseloste"
+  to = "/fi/saavutettavuuden-perusteet/dokumentaatio-ja-toimintaperiaatteet/saavutettavuusseloste"
+
 
 [[redirects]]
   from = "/fi/materiaalia/hyvia-saavutettavuusresursseja"
