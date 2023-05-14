@@ -165,7 +165,7 @@ export default function SearchPage({ result, menu, infoMenu }: {
             </form>
           </div>
 
-          <div className="text-lt-gray dark:text-dk-gray pb-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
+          <div className="text-lt-gray dark:text-dk-gray pt-4 pb-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
             { (searchPageResult || searchDemoResult) ?
               <div className="border-t-4 gradient-border-light dark:gradient-border-dark pt-4">
                 <h2>{searchMainHeading} {searchWords}</h2>
@@ -187,7 +187,9 @@ export default function SearchPage({ result, menu, infoMenu }: {
                       <li key={`result-${index}`} className="my-2 py-6 flex flex-col border-t-2
                       ">
                         <span className="w-full self-end text-sm">{languageLabel}</span>
-                        <a className="my-2 text-xl" lang={result.locale} href={`${resultPrefix}${result.pageUrl}`}>{result.title}</a>
+                        <a className="my-2 text-xl" lang={result.locale} href={`${resultPrefix}${result.pageUrl}`}>
+                          <h4 className="mt-0">{result.title}</h4>
+                        </a>
                         <span lang={result.locale} className="block text-lg">{result.metaDescription}</span>
                       </li>
                   );
@@ -207,7 +209,9 @@ export default function SearchPage({ result, menu, infoMenu }: {
                       <li key={`result-demo-${index}`} className="my-2 py-6 flex flex-col border-t-2
                       ">
                         <span className="w-full self-end text-sm">{languageLabel}</span>
-                        <a className="my-2 text-xl" lang={demoResult.locale} href={`${demoResultPrefix}${demoResult.pageUrl}`}>{demoResult.title}</a>
+                        <a className="my-2 text-xl" lang={demoResult.locale} href={`${demoResultPrefix}${demoResult.pageUrl}`}>
+                          <h4 className="mt-0">{demoResult.title}</h4>
+                        </a>
                         <span lang={demoResult.locale} className="block text-lg">{demoResult.metaDescription}</span>
                       </li>
                   );
