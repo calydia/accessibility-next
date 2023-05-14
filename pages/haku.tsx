@@ -15,7 +15,7 @@ import { MeiliSearch } from "meilisearch";
 import { FormEvent, ReactNode, useState } from 'react';
 import { SearchResults } from '@/interfaces/searchInterfaces';
 import Breadcrumb from '@/components/Breadcrumb';
-import Script from 'next/script';
+import Script from 'next/script'
 
 const searchClient = new MeiliSearch({
   host: "http://localhost:7700", apiKey: "e304830a043781414cd895e6c14f66e309c873c744c3b9c619e591d767602170"

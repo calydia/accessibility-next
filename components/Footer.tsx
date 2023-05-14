@@ -1,7 +1,7 @@
 import MenuIcon from './MenuIcon';
 import Link from 'next/link';
 import Image from 'next/image';
-import Script from 'next/script'
+import Script from 'next/script';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { HiArrowCircleUp } from 'react-icons/hi';
