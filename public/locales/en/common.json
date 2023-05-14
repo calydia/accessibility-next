@@ -2,6 +2,7 @@
   "site-name": "I would if I could",
   "site-slogan": "a guide to web accessibility",
   "skip-link-text": "Skip to content",
+  "skip-link-search-text": "Skip to search",
   "breadcrumb-aria": "Breadcrumb",
   "home-link": "Home",
   "main-menu-aria": "Site main menu",
@@ -21,5 +22,13 @@
   "box-source": "Source material",
   "search-label": "Search for content",
   "search-button": "Search",
+  "search-lang-label-en": "Content language: English",
+  "search-lang-label-fi": "Content language: Finnish",
+  "search-main-heading": "Search results for:",
+  "search-description": "The search engine does not have language support yet so the search will provide you with both site languages.",
+  "search-result-pages": "Pages: ",
+  "search-result-demos": "Demos: ",
+  "search-result": "results",
+  "search-demo-link": "Jump to demo results",
   "back-to-top-button": "Back to top"
 }

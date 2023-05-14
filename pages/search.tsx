@@ -12,7 +12,7 @@ import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 import { useTranslation } from 'next-i18next';
 import { MeiliSearch } from "meilisearch";
-import { FormEvent, useState } from 'react';
+import { FormEvent, ReactNode, useState } from 'react';
 import { SearchResults } from '@/interfaces/searchInterfaces';
 
 const searchClient = new MeiliSearch({
@@ -69,15 +69,26 @@ export default function SearchPage({ result, menu, infoMenu }: {
   const siteName = t('site-name');
   const searchLabel = t('search-label');
   const searchButton = t('search-button');
+  const searchLangLabelEn = t('search-lang-label-en');
+  const searchLangLabelFi = t('search-lang-label-fi');
+  const searchMainHeading = t('search-main-heading');
+  const searchDescription = t('search-description');
+  const searchResultPageLabel = t('search-result-pages');
+  const searchResultDemoLabel = t('search-result-demos');
+  const searchResultLabel = t('search-result');
+  const searchDemoLink = t('search-demo-link');
 
   const [searchWords, setSearchWords] = useState("");
   const [searchDemoResult, setSearchDemoResult] = useState<any>();
   const [searchPageResult, setSearchPageResult] = useState<any>();
+  const [searchPageResultNumber, setSearchPageResultNumber] = useState<ReactNode>();
+  const [searchDemoResultNumber, setDemoPageResultNumber] = useState<ReactNode>();
+
 
   const GetSearchResults = async (searchWords: string) => {
     try {
       const pageResults = await searchClient.index('page').search(searchWords, {
-        limit: 25,
+        limit: 100,
         attributesToRetrieve: [
           'title',
           'locale',
@@ -86,9 +97,10 @@ export default function SearchPage({ result, menu, infoMenu }: {
         ]
       });
       setSearchPageResult(pageResults.hits);
+      setSearchPageResultNumber(pageResults.estimatedTotalHits);
 
       const demoResults = await searchClient.index('demo-page').search(searchWords, {
-        limit: 25,
+        limit: 100,
         attributesToRetrieve: [
           'title',
           'locale',
@@ -97,6 +109,7 @@ export default function SearchPage({ result, menu, infoMenu }: {
         ]
       });
       setSearchDemoResult(demoResults.hits);
+      setDemoPageResultNumber(demoResults.estimatedTotalHits);
     }
     catch (e) {
       console.error(e);
@@ -117,7 +130,8 @@ export default function SearchPage({ result, menu, infoMenu }: {
     <>
       <header className="bg-gradient-to-r from-lt-perfume via-lt-blue-light to-lt-perfume
         dark:from-dk-purple-header dark:via-dk-blue-header dark:to-dk-purple-header">
-        <SkipLink skipTarget="skip-target" skipTextVariable="skip-link-text" />
+        <SkipLink skipId="skip" skipTarget="skip-target" skipTextVariable="skip-link-text" />
+        <SkipLink skipId="skip-search" skipTarget="search-input" skipTextVariable="skip-link-search-text" />
         <div className="flex flex-wrap justify-end gap-1">
           <LanguageSwitcher englishURL={engUrl} finnishURL={fiUrl} />
           <Toggle theme={theme} toggleTheme={themeToggler} />
@@ -142,35 +156,39 @@ export default function SearchPage({ result, menu, infoMenu }: {
         <div className="max-w-[1564px] mx-auto md:px-8-px">
           <div className="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
             <h1 id="skip-target" className="text-3xl font-bold mt-4 mb-2 lg:text-4xl">{page.title}</h1>
-          </div>
 
-          <div className="flex flex-wrap grow max-w-[1564px] w-full mx-auto justify-center md:justify-end px-2 py-6 md:py-4">
-            <form id="site-search" onSubmit={formSubmit} role="search" className="flex flex-wrap items-center w-full md:gap-6 flex-col md:flex-row md:justify-end">
-              <label htmlFor="search-input" className="text-black dark:text-white" >{searchLabel}</label>
-              <input id="search-input" type="text" className="w-full max-w-sm" onChange={handleChange} />
-              <button type="submit" className="button item--transition max-md:mt-4">{searchButton}</button>
+            <form id="site-search" onSubmit={formSubmit} role="search" className="mt-8 flex flex-col flex-wrap w-full md:items-center md:gap-x-6 md:gap-y-2 md:flex-row">
+              <label htmlFor="search-input" className="text-black dark:text-white w-full">{searchLabel}</label>
+              <input id="search-input" type="text" className="w-full md:max-w-sm" onChange={handleChange} />
+              <span className="sr-only">After you submit the search, </span>
+              <button type="submit" className="button item--transition max-md:my-4">{searchButton}</button>
             </form>
           </div>
 
-          <div className="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
+          <div className="text-lt-gray dark:text-dk-gray pb-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
             { (searchPageResult || searchDemoResult) ?
-              <>
-                <h2>Search results for {searchWords}</h2>
-                <div>Results: {searchPageResult.totalHits}</div>
-              </>
+              <div className="border-t-4 gradient-border-light dark:gradient-border-dark pt-4">
+                <h2>{searchMainHeading} {searchWords}</h2>
+                <p>{searchDescription}</p>
+                <p>
+                  <a href="#search-result-demos">{searchDemoLink}</a>
+                </p>
+              </div>
             : null }
 
             { (searchPageResult) ?
             <>
-              <h3>Pages</h3>
+              <h3 id="search-result-pages">{searchResultPageLabel} {searchPageResultNumber} {searchResultLabel}</h3>
               <ul>
                 {searchPageResult.map((result: SearchResults, index: number) => {
                   const resultPrefix = (result.locale == 'en') ? '/' : '/fi/';
+                  const languageLabel = (result.locale == 'en') ? searchLangLabelEn : searchLangLabelFi;
                   return (
-                      <li key={`result-${index}`} className="my-4
+                      <li key={`result-${index}`} className="my-2 py-6 flex flex-col border-t-2
                       ">
-                        <a lang={result.locale} href={`${resultPrefix}${result.pageUrl}`}>{result.title}</a>
-                        <span lang={result.locale} className="block">{result.metaDescription}</span>
+                        <span className="w-full self-end text-sm">{languageLabel}</span>
+                        <a className="my-2 text-xl" lang={result.locale} href={`${resultPrefix}${result.pageUrl}`}>{result.title}</a>
+                        <span lang={result.locale} className="block text-lg">{result.metaDescription}</span>
                       </li>
                   );
                 })}
@@ -180,15 +198,17 @@ export default function SearchPage({ result, menu, infoMenu }: {
 
           { (searchDemoResult) ?
             <>
-              <h3>Demos</h3>
+              <h3 id="search-result-demos">{searchResultDemoLabel} {searchDemoResultNumber} {searchResultLabel}</h3>
               <ul>
                 {searchDemoResult.map((demoResult: SearchResults, index: number) => {
                   const demoResultPrefix = (demoResult.locale == 'en') ? '/' : '/fi/';
+                  const languageLabel = (demoResult.locale == 'en') ? searchLangLabelEn : searchLangLabelFi;
                   return (
-                      <li key={`result-demo-${index}`} className="my-4
+                      <li key={`result-demo-${index}`} className="my-2 py-6 flex flex-col border-t-2
                       ">
-                        <a lang={demoResult.locale} href={`${demoResultPrefix}${demoResult.pageUrl}`}>{demoResult.title}</a>
-                        <span lang={demoResult.locale} className="block">{demoResult.metaDescription}</span>
+                        <span className="w-full self-end text-sm">{languageLabel}</span>
+                        <a className="my-2 text-xl" lang={demoResult.locale} href={`${demoResultPrefix}${demoResult.pageUrl}`}>{demoResult.title}</a>
+                        <span lang={demoResult.locale} className="block text-lg">{demoResult.metaDescription}</span>
                       </li>
                   );
                 })}
