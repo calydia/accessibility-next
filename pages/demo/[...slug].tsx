@@ -313,7 +313,6 @@ export async function getStaticProps({ locale, params }: {
       menu,
       infoMenu,
       menuList
-    },
-    revalidate: 60
+    }
   };
 }
