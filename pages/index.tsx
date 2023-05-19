@@ -16,6 +16,7 @@ import { useTranslation } from 'next-i18next';
 import { NodeArticle, MediaType } from '@/interfaces/jsonInterfaces';
 import { MainMenuData, MenuData } from '@/interfaces/menuInterfaces';
 import { BlogData } from '@/interfaces/blogInterfaces';
+import SearchBlock from '@/components/SearchBlock';
 
 export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: {
   result: {
@@ -69,7 +70,8 @@ export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: {
         dark:from-dk-purple-header dark:via-dk-blue-header dark:to-dk-purple-header">
         <SkipLink skipId="skip" skipTarget="skip-target" skipTextVariable="skip-link-text" />
         <div className="flex flex-wrap justify-end gap-1">
-          <LanguageSwitcher englishURL={engUrl} finnishURL={fiUrl} />
+          <SearchBlock locale={page.locale} />
+          <LanguageSwitcher englishURL={engUrl} finnishURL={fiUrl} locale={page.locale} />
           <Toggle theme={theme} toggleTheme={themeToggler} />
         </div>
         <Header data={menu.data} />

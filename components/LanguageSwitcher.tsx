@@ -6,7 +6,12 @@ import { HiTranslate } from "react-icons/hi";
 
 interface SwitcherTypes {
   englishURL: string,
-  finnishURL: string
+  finnishURL: string,
+  locale?: string
+}
+
+interface AriaCurrentType {
+
 }
 
 const buttonClickHandler = (event: React.MouseEvent<HTMLElement>) => {
@@ -16,7 +21,7 @@ const buttonClickHandler = (event: React.MouseEvent<HTMLElement>) => {
   (currentExpanded == 'true') ? current.setAttribute('aria-expanded', 'false') : current.setAttribute('aria-expanded', 'true');
 }
 
-const LanguageSwitcher = ({ englishURL, finnishURL }: SwitcherTypes) => {
+const LanguageSwitcher = ({ englishURL, finnishURL, locale }: SwitcherTypes) => {
   const { t } = useTranslation('common')
   const ariaLabel = t('language-switcher-aria');
   const ariaLanguage = t('language-switcher-language');
@@ -26,12 +31,18 @@ const LanguageSwitcher = ({ englishURL, finnishURL }: SwitcherTypes) => {
   const compareURLEN = englishURL.replace(/\/$/, '');
   const compareURLFI = finnishURL.replace(/\/$/, '');
 
-  const ariaCurrentPageEn = (asPath.includes(compareURLEN) && compareURLEN !== '/') ? 'page' : undefined;
-  const ariaCurrentPageFi = (asPath.includes(compareURLFI) && compareURLFI !== '/') ? 'page' : undefined;
+  let ariaCurrentPageEn: 'page' | undefined = (asPath.includes(compareURLEN) && compareURLEN !== '/') ? 'page' : undefined;
+  let ariaCurrentPageFi: 'page' | undefined = (asPath.includes(compareURLFI) && compareURLFI !== '/') ? 'page' : undefined;
 
-console.log(asPath);
-console.log(compareURLEN);
-console.log(compareURLFI);
+  if (asPath == '/') {
+    if (locale == 'en') {
+      ariaCurrentPageEn = 'page';
+      ariaCurrentPageFi = undefined;
+    } else {
+      ariaCurrentPageEn = undefined;
+      ariaCurrentPageFi = 'page';
+    }
+  }
 
   return (
     <div id="language-switcher" className="lang-switcher text-black dark:text-white px-3 relative">

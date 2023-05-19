@@ -13,6 +13,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 import { useTranslation } from 'next-i18next';
+import SearchBlock from '@/components/SearchBlock';
 
 import { MainMenuData, MenuData } from '@/interfaces/menuInterfaces';
 
@@ -80,6 +81,7 @@ export default function DemoPage({ result, menu, infoMenu, menuList }: {
         dark:from-dk-purple-header dark:via-dk-blue-header dark:to-dk-purple-header">
         <SkipLink skipId="skip" skipTarget="skip-target" skipTextVariable="skip-link-text" />
         <div className="flex flex-wrap justify-end gap-2">
+          <SearchBlock locale={page.locale} />
           <LanguageSwitcher englishURL={engUrl} finnishURL={fiUrl} />
           <Toggle theme={theme} toggleTheme={themeToggler} />
         </div>

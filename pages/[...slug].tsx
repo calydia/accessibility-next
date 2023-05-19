@@ -16,6 +16,7 @@ import { useTranslation } from 'next-i18next';
 import Glossary from '@/components/Glossary';
 import { MainMenuData, MenuData } from '@/interfaces/menuInterfaces';
 import { glossaryData } from '@/interfaces/glossaryInterfaces';
+import SearchBlock from '@/components/SearchBlock';
 
 export default function ArticlePage({ result, menu, infoMenu, glossary, menuList }: {
   result: {
@@ -79,6 +80,7 @@ export default function ArticlePage({ result, menu, infoMenu, glossary, menuList
         dark:from-dk-purple-header dark:via-dk-blue-header dark:to-dk-purple-header">
         <SkipLink skipId="skip" skipTarget="skip-target" skipTextVariable="skip-link-text" />
         <div className="flex flex-wrap justify-end gap-1">
+          <SearchBlock locale={page.locale} />
           <LanguageSwitcher englishURL={engUrl} finnishURL={fiUrl} />
           <Toggle theme={theme} toggleTheme={themeToggler} />
         </div>
