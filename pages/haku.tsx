@@ -18,7 +18,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import Script from 'next/script'
 
 const searchClient = new MeiliSearch({
-  host: "http://localhost:7700", apiKey: "e304830a043781414cd895e6c14f66e309c873c744c3b9c619e591d767602170"
+  host: "https://accessibility-meilisearch.ampere.corrupted.pw", apiKey: "06d78bd068226f2d9cfc2a0faa0b8e1630a0220adbf69b74eab82610aa4fa9ef"
 });
 
 import { MainMenuData, MenuData } from '@/interfaces/menuInterfaces';
