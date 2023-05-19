@@ -79,12 +79,14 @@ export default function SearchPage({ result, menu, infoMenu, menuList }: {
   const searchResultDemoLabel = t('search-result-demos');
   const searchResultLabel = t('search-result');
   const searchDemoLink = t('search-demo-link');
+  const noResults = t('search-result-no-results');
 
   const [searchWords, setSearchWords] = useState("");
   const [searchDemoResult, setSearchDemoResult] = useState<any>();
   const [searchPageResult, setSearchPageResult] = useState<any>();
   const [searchPageResultNumber, setSearchPageResultNumber] = useState<ReactNode>();
   const [searchDemoResultNumber, setDemoPageResultNumber] = useState<ReactNode>();
+  const [totalEstimatedHits, setTotalEstimatedHits] = useState<ReactNode>();
 
 
   const GetSearchResults = async (searchWords: string) => {
@@ -112,6 +114,8 @@ export default function SearchPage({ result, menu, infoMenu, menuList }: {
       });
       setSearchDemoResult(demoResults.hits);
       setDemoPageResultNumber(demoResults.estimatedTotalHits);
+      setTotalEstimatedHits(pageResults.estimatedTotalHits + demoResults.estimatedTotalHits);
+      document.getElementById('result-focus')?.focus();
     }
     catch (e) {
       console.error(e);
@@ -163,15 +167,16 @@ export default function SearchPage({ result, menu, infoMenu, menuList }: {
             <form id="site-search" onSubmit={formSubmit} role="search" className="mt-8 flex flex-col flex-wrap w-full md:items-center md:gap-x-6 md:gap-y-2 md:flex-row">
               <label htmlFor="search-input" className="text-black dark:text-white w-full">{searchLabel}</label>
               <input id="search-input" type="text" className="w-full md:max-w-sm" onChange={handleChange} />
-              <span className="sr-only">After you submit the search, </span>
               <button type="submit" className="button item--transition max-md:my-4">{searchButton}</button>
             </form>
+            <div className="sr-only" role="status">
+              {(totalEstimatedHits as number > 0) ? totalEstimatedHits + ' ' + searchResultLabel : noResults}
+            </div>
           </div>
-
           <div className="text-lt-gray dark:text-dk-gray pt-4 pb-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
-            { (searchPageResult || searchDemoResult) ?
+            { ((searchPageResult || searchDemoResult) && totalEstimatedHits as number > 0) ?
               <div className="border-t-4 gradient-border-light dark:gradient-border-dark pt-4">
-                <h2>{searchMainHeading} {searchWords}</h2>
+                <h2>{searchMainHeading} {searchWords}, {totalEstimatedHits} {searchResultLabel}</h2>
                 <p>{searchDescription}</p>
                 <p>
                   <a href="#search-result-demos">{searchDemoLink}</a>
@@ -179,7 +184,7 @@ export default function SearchPage({ result, menu, infoMenu, menuList }: {
               </div>
             : null }
 
-            { (searchPageResult) ?
+            { (searchPageResult && searchPageResultNumber as number > 0) ?
             <>
               <h3 id="search-result-pages">{searchResultPageLabel} {searchPageResultNumber} {searchResultLabel}</h3>
               <ul>
@@ -201,7 +206,7 @@ export default function SearchPage({ result, menu, infoMenu, menuList }: {
             </>
           : null }
 
-          { (searchDemoResult) ?
+          { (searchDemoResult && searchDemoResultNumber as number > 0) ?
             <>
               <h3 id="search-result-demos">{searchResultDemoLabel} {searchDemoResultNumber} {searchResultLabel}</h3>
               <ul>
@@ -222,6 +227,10 @@ export default function SearchPage({ result, menu, infoMenu, menuList }: {
               </ul>
             </>
           : null }
+
+          {(totalEstimatedHits as number == 0) ?
+          <p>No results.</p>
+          : null}
           </div>
         </div>
       </main>
