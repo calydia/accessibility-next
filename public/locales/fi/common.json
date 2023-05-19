@@ -2,6 +2,7 @@
   "site-name": "Toki, jos voisin",
   "site-slogan": "opas saavutettavuuteen",
   "skip-link-text": "Hyppää pääsisältöön",
+  "skip-link-search-text": "Hyppää hakuun",
   "breadcrumb-aria": "Murupolku",
   "home-link": "Etusivu",
   "main-menu-aria": "Sivuston päävalikko",
@@ -21,5 +22,13 @@
   "box-source": "Lähdemateriaali",
   "search-label": "Hae sisältöä",
   "search-button": "Hae",
+  "search-lang-label-en": "Sisällön kieli: englanti",
+  "search-lang-label-fi": "Sisällön kieli: suomi",
+  "search-main-heading": "Hakutulokset haulle:",
+  "search-description": "Hakukone ei vielä tue kieliversiointia, joten haku tarjoaa tuloksia molemmilla sivuston kielillä.",
+  "search-result-pages": "Sivut: ",
+  "search-result-demos": "Demot: ",
+  "search-result": "tulosta",
+  "search-demo-link": "Hyppää demosivujen tuloksiin",
   "back-to-top-button": "Takaisin sivun ylälaitaan"
 }

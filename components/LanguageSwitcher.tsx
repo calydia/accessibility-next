@@ -29,6 +29,10 @@ const LanguageSwitcher = ({ englishURL, finnishURL }: SwitcherTypes) => {
   const ariaCurrentPageEn = (asPath.includes(compareURLEN) && compareURLEN !== '/') ? 'page' : undefined;
   const ariaCurrentPageFi = (asPath.includes(compareURLFI) && compareURLFI !== '/') ? 'page' : undefined;
 
+console.log(asPath);
+console.log(compareURLEN);
+console.log(compareURLFI);
+
   return (
     <div id="language-switcher" className="lang-switcher text-black dark:text-white px-3 relative">
       <button id="language-menu-button" aria-label={ariaLabel} aria-expanded="false" aria-controls="lang-switcher" onClick={buttonClickHandler} className="lang-switcher flex gap-2 py-2 border-y-4 border-transparent items-center

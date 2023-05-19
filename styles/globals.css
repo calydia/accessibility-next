@@ -345,7 +345,7 @@ a.no-focus:focus {
 }
 
 input[type="text"] {
-  @apply py-2.5 px-4 my-2 text-black border-2 m-0 border-solid border-black dark:border-white;
+  @apply py-3.5 px-4 my-2 text-black border-2 m-0 border-solid border-black dark:border-white;
   @apply focus:outline focus:outline-2 focus:outline-offset-4	focus:outline-black dark:focus:outline-white
 }
 

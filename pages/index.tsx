@@ -67,7 +67,7 @@ export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: {
     <>
       <header id="page-top" className="bg-gradient-to-r from-lt-perfume via-lt-blue-light to-lt-perfume
         dark:from-dk-purple-header dark:via-dk-blue-header dark:to-dk-purple-header">
-        <SkipLink skipTarget="skip-target" skipTextVariable="skip-link-text" />
+        <SkipLink skipId="skip" skipTarget="skip-target" skipTextVariable="skip-link-text" />
         <div className="flex flex-wrap justify-end gap-1">
           <LanguageSwitcher englishURL={engUrl} finnishURL={fiUrl} />
           <Toggle theme={theme} toggleTheme={themeToggler} />
@@ -91,6 +91,8 @@ export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: {
           <meta property="og:image" content="/some-share.jpg" />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
+          <link rel="alternate" hrefLang="fi" href={`https://a11y.sanna.ninja/fi`} />
+          <link rel="alternate" hrefLang="en" href={`https://a11y.sanna.ninja`} />
         </Head>
         <div className="max-w-[1564px] mx-auto md:px-8-px">
           <div className="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
@@ -241,8 +243,6 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       infoMenu,
       menuList,
       blogs: posts
-
-    },
-    revalidate: 60
+    }
   };
 }

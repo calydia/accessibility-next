@@ -485,3 +485,12 @@
 [[redirects]]
   from = "/fi/demot/kaikki-demot"
   to = "/fi/"
+
+# Search
+[[redirects]]
+  from = "/fi/search"
+  to = "/fi/haku"
+
+[[redirects]]
+  from = "/haku"
+  to = "/search"
