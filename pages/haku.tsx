@@ -16,7 +16,6 @@ import { FormEvent, ReactNode, useState } from 'react';
 import { SearchResults } from '@/interfaces/searchInterfaces';
 import Breadcrumb from '@/components/Breadcrumb';
 import Script from 'next/script';
-import SearchBlock from '@/components/SearchBlock';
 
 const searchClient = new MeiliSearch({
   host: "https://accessibility-meilisearch.ampere.corrupted.pw", apiKey: "06d78bd068226f2d9cfc2a0faa0b8e1630a0220adbf69b74eab82610aa4fa9ef"
@@ -140,7 +139,6 @@ export default function SearchPage({ result, menu, infoMenu, menuList }: {
         <SkipLink skipId="skip" skipTarget="skip-target" skipTextVariable="skip-link-text" />
         <SkipLink skipId="skip-search" skipTarget="search-input" skipTextVariable="skip-link-search-text" />
         <div className="flex flex-wrap justify-end gap-1">
-          <SearchBlock locale={page.locale} />
           <LanguageSwitcher englishURL={engUrl} finnishURL={fiUrl} />
           <Toggle theme={theme} toggleTheme={themeToggler} />
         </div>
