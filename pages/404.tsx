@@ -18,14 +18,12 @@ import { MainMenuData, MenuData } from '@/interfaces/menuInterfaces';
 import { BlogData } from '@/interfaces/blogInterfaces';
 import SearchBlock from '@/components/SearchBlock';
 
-export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: {
+export default function notFoundPage({ result, menu, infoMenu, menuList, blogs }: {
   result: {
-    frontPage: {
+    notFound: {
       data: {
         attributes: {
           title: string,
-          slug: string,
-          metaDescription: string,
           locale: string,
           content: string
         }
@@ -54,7 +52,7 @@ export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: {
   blogs: [{ title: string, path: string, created: string, image?: string }]
 }) {
 
-  const page = result.frontPage.data.attributes;
+  const page = result.notFound.data.attributes;
 
   const [theme, themeToggler] = useDarkMode();
 
@@ -123,7 +121,6 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
             attributes {
               title
               content
-              metaDescription
               locale
             }
           }
