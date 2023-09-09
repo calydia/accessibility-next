@@ -81,7 +81,7 @@ export default function FrontPage({ result, menu, infoMenu, menuList, blogs }: {
       <main>
         <Head>
           <title>{page.title} | Sanna Mäkinen - {siteName}</title>
-          <meta name="Description" content={page.metaDescription} />
+          <meta name="description" content={page.metaDescription} />
           <meta
             property="og:description"
             content={page.metaDescription}

@@ -92,7 +92,7 @@ export default function DemoPage({ result, menu, infoMenu, menuList }: {
       <main className="mb-8 md:mb-12">
         <Head>
           <title>{page.title} | Sanna Mäkinen - {siteName}</title>
-          <meta name="Description" content={page.metaDescription} />
+          <meta name="description" content={page.metaDescription} />
           <meta
             property="og:description"
             content={page.metaDescription}
