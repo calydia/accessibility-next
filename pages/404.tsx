@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 import { client } from '@/lib/apollo';
 import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { UseDarkMode } from '@/components/UseDarkMode';
+import { UseDarkMode } from '../components/UseDarkMode';
 import SkipLink from '@/components/SkipLink';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Toggle from '@/components/Toggler';
