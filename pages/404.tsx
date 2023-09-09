@@ -8,7 +8,6 @@ import SkipLink from '@/components/SkipLink';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Toggle from '@/components/Toggler';
 import Header from '@/components/Header';
-import Breadcrumb from '@/components/Breadcrumb';
 import Footer from '@/components/Footer';
 import MainImage from '@/components/MainImage';
 import BlogHighlights from '@/components/BlogHighlights';
