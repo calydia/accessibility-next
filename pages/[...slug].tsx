@@ -4,7 +4,7 @@ import { gql } from '@apollo/client';
 import { client } from '../lib/apollo';
 import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useDarkMode } from '../components/useDarkMode';
+import { UseDarkMode } from '../components/UseDarkMode';
 import SkipLink from '@/components/SkipLink';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Toggle from '../components/Toggler';
@@ -65,7 +65,7 @@ export default function ArticlePage({ result, menu, infoMenu, glossary, menuList
 
   const page = result.pages.data[0].attributes;
 
-  const [theme, themeToggler] = useDarkMode();
+  const [theme, themeToggler] = UseDarkMode();
 
   const engUrl = (page.locale == 'en') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;
   const fiUrl = (page.locale == 'fi') ? page.pageUrl : page.localizations.data[0].attributes.pageUrl;

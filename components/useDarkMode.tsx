@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 type ThemeTogglerType = () => void;
 
-export const useDarkMode = (): [string, ThemeTogglerType] => {
+export const UseDarkMode = (): [string, ThemeTogglerType] => {
   const [theme, setTheme] = useState('light');
   const setMode = (mode: string) => {
     window.localStorage.setItem('theme', mode)

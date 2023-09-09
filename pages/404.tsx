@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 import { client } from '@/lib/apollo';
 import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useDarkMode } from '@/components/useDarkMode';
+import { UseDarkMode } from '@/components/UseDarkMode';
 import SkipLink from '@/components/SkipLink';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Toggle from '@/components/Toggler';
@@ -18,7 +18,7 @@ import { MainMenuData, MenuData } from '@/interfaces/menuInterfaces';
 import { BlogData } from '@/interfaces/blogInterfaces';
 import SearchBlock from '@/components/SearchBlock';
 
-export default function notFoundPage({ result, menu, infoMenu, menuList, blogs }: {
+export default function NotFoundPage({ result, menu, infoMenu, menuList, blogs }: {
   result: {
     notFound: {
       data: {
@@ -54,7 +54,7 @@ export default function notFoundPage({ result, menu, infoMenu, menuList, blogs }
 
   const page = result.notFound.data.attributes;
 
-  const [theme, themeToggler] = useDarkMode();
+  const [theme, themeToggler] = UseDarkMode();
 
   const engUrl = '/';
   const fiUrl = '/fi';
@@ -75,24 +75,9 @@ export default function notFoundPage({ result, menu, infoMenu, menuList, blogs }
         <Header data={menu.data} />
       </header>
       <MainImage />
-      <Breadcrumb currentTitle={page.title} currentSlug={page.slug} menuList={menuList.data.menuTitleList.data.attributes.titleList.menuItems} />
       <main>
         <Head>
           <title>{page.title} | Sanna Mäkinen - {siteName}</title>
-          <meta name="Description" content={page.metaDescription} />
-          <meta
-            property="og:description"
-            content={page.metaDescription}
-          />
-          <meta property="og:title" content={page.title} />
-          <meta property="og:type" content="website" />
-          <meta property="og:locale" content={page.locale} />
-          <meta property="og:site_name" content="I would if I could" />
-          <meta property="og:image" content="/some-share.jpg" />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
-          <link rel="alternate" hrefLang="fi" href={`https://a11y.sanna.ninja/fi`} />
-          <link rel="alternate" hrefLang="en" href={`https://a11y.sanna.ninja`} />
         </Head>
         <div className="max-w-[1564px] mx-auto md:px-8-px">
           <div className="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
