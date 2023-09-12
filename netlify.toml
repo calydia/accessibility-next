@@ -494,3 +494,28 @@
 [[redirects]]
   from = "/haku"
   to = "/search"
+
+# September adds
+[[redirects]]
+  from = "/accessibility-fundamentals/documents-and-policies/accessibility-policy"
+  to = "/accessibility-fundamentals/standards-laws-and-management-strategies/accessibility-policy"
+
+[[redirects]]
+  from = "/accessibility-fundamentals/documents-and-policies/accessibility-statement"
+  to = "/accessibility-fundamentals/the-basics/accessibility-statement"
+
+[[redirects]]
+  from = "/accessibility-fundamentals/documents-and-policies/define-accessibility-maturity-with-the-capability-maturity-model"
+  to = "/accessibility-fundamentals/standards-laws-and-management-strategies/define-accessibility-maturity-with-the-capability-maturity-model"
+
+[[redirects]]
+  from = "/fi/saavutettavuuden-perusteet/dokumentaatio-ja-toimintaperiaatteet/saavutettavuuskaytannot"
+  to = "/fi/saavutettavuuden-perusteet/standardit-lait-ja-hallintastrategiat/saavutettavuuskaytannot"
+
+[[redirects]]
+  from = "/fi/saavutettavuuden-perusteet/dokumentaatio-ja-toimintaperiaatteet/saavutettavuusseloste"
+  to = "/fi/saavutettavuuden-perusteet/perusjutut/saavutettavuusseloste"
+
+[[redirects]]
+  from = "/fi/saavutettavuuden-perusteet/dokumentaatio-ja-toimintaperiaatteet/maarittele-saavutettavuden-kypsyysaste-kypsyyskyvykkyysmallin-avulla"
+  to = "/fi/saavutettavuuden-perusteet/standardit-lait-ja-hallintastrategiat/maarittele-saavutettavuden-kypsyysaste-kypsyyskyvykkyysmallin-avulla"
