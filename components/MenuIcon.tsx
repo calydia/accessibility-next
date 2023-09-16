@@ -21,7 +21,8 @@ import {
   HiSpeakerphone,
   HiDocumentDuplicate,
   HiClipboardList,
-  HiUser } from 'react-icons/hi';
+  HiUser,
+  HiCloud } from 'react-icons/hi';
 
 const MenuIcon = (iconClass: {iconClass: string, iconPosition: string}): JSX.Element => {
   // Main menu icons
@@ -155,6 +156,13 @@ const MenuIcon = (iconClass: {iconClass: string, iconPosition: string}): JSX.Ele
     return (
       <>
         <HiSpeakerphone className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
+      </>
+    );
+  }
+  if (iconClass.iconClass == 'icon--cloud') {
+    return (
+      <>
+        <HiCloud className={`icon--${iconClass.iconPosition} menu-icon`} aria-hidden="true" />
       </>
     );
   }
