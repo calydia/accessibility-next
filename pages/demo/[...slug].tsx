@@ -308,7 +308,6 @@ export async function getStaticProps({ locale, params }: {
     variables: { locale }
   });
 
-
   if (!result.data.demoPages.data[0]) {
     return {
       notFound: true,

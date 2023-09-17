@@ -328,6 +328,13 @@ export async function getStaticProps({ locale, params }: {
     variables: { locale }
   });
 
+  if (!result.data.pages.data[0]) {
+    return {
+      notFound: true,
+      revalidate: 1000,
+    };
+  }
+
   return {
     props: {
       ...(await serverSideTranslations(locale as string, ['common'])),
