@@ -333,6 +333,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       menu,
       infoMenu,
       menuList
-    }
+    },
+    revalidate: 86400,
   };
 }

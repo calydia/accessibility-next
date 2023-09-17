@@ -308,6 +308,14 @@ export async function getStaticProps({ locale, params }: {
     variables: { locale }
   });
 
+
+  if (!result.data.demoPages.data[0]) {
+    return {
+      notFound: true,
+      revalidate: 1000,
+    };
+  }
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
@@ -315,6 +323,7 @@ export async function getStaticProps({ locale, params }: {
       menu,
       infoMenu,
       menuList
-    }
+    },
+    revalidate: 86400,
   };
 }

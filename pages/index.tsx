@@ -245,6 +245,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       infoMenu,
       menuList,
       blogs: posts
-    }
+    },
+    revalidate: 86400,
   };
 }
