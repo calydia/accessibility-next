@@ -121,7 +121,7 @@ const Header = ({data}: MainMenuData) => {
                                           // The third level items are only links
                                           return(
                                             <li key={`lowerSubMenuItem-${lowerSubIndex}`} className="my-3">
-                                              <Link href={lowerSubMenuItem.path} aria-current={ariaCurrentPageLower} key={`lowerSubMenuItem-link-${lowerSubIndex}`}
+                                              <Link href={lowerSubMenuItem.path} aria-current={ariaCurrentPageLower} key={`lowerSubMenuItem-link-${lowerSubIndex}`} as={lowerSubMenuItem.path}
                                                 className={`text-lg p-1 block main-menu-link first-letter:capitalize ${activeClassLower}`}
                                               >
                                                 {lowerSubMenuItem.title}
@@ -132,7 +132,7 @@ const Header = ({data}: MainMenuData) => {
                                     </ul>
                                   </li>
                                 : <li key={`subMenuItem-link-wrapper-${subIndex}`} className="my-3">
-                                    <Link href={subMenuItem.path} aria-current={ariaCurrentPage} key={`subMenuItem-link-${subIndex}`}
+                                    <Link href={subMenuItem.path} aria-current={ariaCurrentPage} key={`subMenuItem-link-${subIndex}`} as={subMenuItem.path}
                                       className={`text-lg p-1 block main-menu-link first-letter:capitalize ${activeClass}`}
                                     >
                                       {subMenuItem.title}
