@@ -6,11 +6,17 @@
   --quote-icon: url('/icons/iconmonstr-quote-light.svg');
   --external-icon: url('/icons/icons8-external-link-light.svg');
   --exclamation-icon: url('/icons/hi-exclamation-circle-light.svg');
+  --nav-background: rgba(255,255,255,0.2);
+  --nav-border: rgba(255,255,255,0.4);
+  --menu-header-background: rgba(0,0,0,0.4);
 }
 :root .dark {
   --quote-icon: url('/icons/iconmonstr-quote-dark.svg');
   --external-icon: url('/icons/icons8-external-link-dark.svg');
   --exclamation-icon: url('/icons/hi-exclamation-circle-dark.svg');
+  --nav-background: rgba(0,0,0,0.1);
+  --nav-border: rgba(0,0,0,0.4);
+  --menu-header-background: rgba(255,255,255,0.4);
 }
 
 .gradient-border-light {
@@ -102,8 +108,8 @@ main {
 #main-menu-nav a,
 main a,
 footer a {
-  @apply underline underline-offset-4 decoration-2 text-lt-blue-dark dark:text-dk-blue-light;
-  @apply hover:text-lt-purple hover:decoration-4 dark:hover:text-wheat;
+  @apply text-lt-blue-dark dark:text-dk-blue-light;
+  @apply hover:underline hover:underline-offset-4 hover:text-lt-purple hover:decoration-2 dark:hover:text-wheat;
   @apply focus:text-lt-purple dark:focus:text-wheat focus:outline-2 focus:outline-offset-2 focus:no-underline focus:outline-lt-purple dark:focus:outline-wheat
 }
 
@@ -363,6 +369,9 @@ input[type="text"] {
 }
 
 .sub-header {
+  @apply lg:border-b lg:border-solid;
+
+  border-color: var(--menu-header-background);
   width: calc(100% - 1.25rem);
 }
 
@@ -403,5 +412,11 @@ main a[href^="https://"]::after {
 }
 
 .demo-select {
-  @apply focus:outline focus:outline-2 focus:outline-offset-4 	focus:outline-black dark:focus:outline-white
+  @apply focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white
+}
+
+.nav-bar {
+  @apply pb-4 ;
+  background-color: var(--nav-background);
+  border-top: 1px solid var(--nav-border);
 }

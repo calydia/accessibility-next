@@ -31,6 +31,7 @@ module.exports = {
       fontFamily: {
         'title': ['var(--font-rock-salt)', 'cursive'],
         'sans': ['var(--font-average-sans)', 'Arial', 'sans-serif'],
+        'menu': ['var(--font-lato)', 'Arial', 'sans-serif'],
       },
       outlineOffset: {
         15: '15px',
@@ -47,7 +48,7 @@ module.exports = {
         '350-px': '350px'
       },
       maxWidth: {
-        'screen-menu': '96rem'
+        'screen-menu': '100rem'
       },
     },
   },

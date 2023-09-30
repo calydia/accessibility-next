@@ -56,7 +56,7 @@ const Header = ({data}: MainMenuData) => {
   }
 
   return (
-      <div className="text-center pb-8 clear-both lg:clear:none">
+      <div className="text-center clear-both lg:clear:none">
         <div>
           <Link href="/" className="inline-block border-y-4 border-transparent p-4
             hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light
@@ -65,7 +65,7 @@ const Header = ({data}: MainMenuData) => {
             <span className="block text-lg mt-2 font-title leading-none text-blue-tory dark:text-lt-perfume dark:text-shadow-text">{siteSlogan}</span>
           </Link>
         </div>
-        <nav id="main-menu-nav" aria-labelledby="main-menu-label" className="text-black dark:text-white">
+        <nav id="main-menu-nav" aria-labelledby="main-menu-label" className="text-black dark:text-white py-1 mt-2 nav-bar">
           <span id="main-menu-label" className="sr-only" key="first-heading">{ariaLabel}</span>
           <button id="main-menu-toggle" className="menu-toggle flex items-center gap-2 mt-2 mx-auto text-black border-y-4 border-transparent dark:text-white lg:hidden lg:invisible
           hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light
@@ -87,13 +87,13 @@ const Header = ({data}: MainMenuData) => {
                     // We know the first level items are only wrappers
                     <li key={`menuItem-${index}`} className="m-2 static">
                       <button id={`button-${index}`} key={`button-${index}`} aria-current={ariaCurrentPath} aria-expanded="false" aria-controls={`menu-button-${index}`} aria-haspopup="true" onClick={buttonClickHandler}
-                        className={`menu-button font-light flex items-center text-left gap-2 text-black dark:text-white text-xl p-1 dark:text-shadow-text hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white`}>
-                        {menuItem.title}
+                        className={`menu-button font-light font-lato flex items-center text-left gap-2 text-black dark:text-white text-lg p-1 dark:text-shadow-text hover:text-lt-purple dark:hover:text-dk-blue-light hover:underline hover:decoration-2 hover:underline-offset-4 selection:focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white`}>
+                        <span>{menuItem.title}</span>
                         <HiChevronDown className="menu-button--icon h-6 w-6" />
                       </button>
                       {menuItem.items &&
                         <ul id={`menu-button-${index}`} key={`menu-button-${index}`}
-                          className="menu-button-ul ml-2 lg:absolute lg:mt-2 lg:z-20 lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-8 lg:w-[80%] lg:max-w-screen-menu lg:mx-auto lg:left-0 lg:right-0 lg:p-4 lg:border-2 lg:border-solid lg:border-black lg:dark:border-white lg:bg-lt-code-bg lg:dark:bg-dk-code-bg">
+                          className="menu-button-ul ml-2 lg:absolute lg:mt-6 lg:z-20 lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-8 lg:w-[100%] lg:max-w-screen-menu lg:mx-auto lg:left-0 lg:right-0 lg:p-4 lg:border-t-8 lg:border-solid lg:border-black lg:dark:border-white lg:bg-lt-code-bg lg:dark:bg-dk-code-bg">
                           {menuItem.items && menuItem.items.map((subMenuItem: MainMenuItem, subIndex: number) => {
                             const activeClass = (asPath === subMenuItem.path) ? 'active-link': 'non-active-link';
                             const ariaCurrentPage = (asPath === subMenuItem.path) ? 'page' : undefined;
@@ -104,7 +104,7 @@ const Header = ({data}: MainMenuData) => {
                                 // The second level items will be either wrappers or links
                                 ? <li key={`subMenuItem-${subIndex}`} className="relative">
                                     <span key={`subMenuItem-heading-${subIndex}`} id={`subMenuItem-heading-${subIndex}-${subMenuItem.title.toLowerCase().replaceAll(' ', '-')}`}
-                                      className={`sub-header flex gap-2 items-center text-xl p-1 mt-0 text-black dark:text-white ${subMenuItem.iconClass} max-lg:mt-3 max-lg:mb-2`}>
+                                      className={`sub-header flex gap-2 items-center text-lg p-1 mt-0 text-black font-menu dark:text-white ${subMenuItem.iconClass} max-lg:mt-2 max-lg:mb-1.5`}>
                                       <MenuIcon iconClass={subMenuItem.iconClass} iconPosition="header" />
                                       <span className="main-menu-heading first-letter:capitalize flex-grow">{subMenuItem.title}</span>
                                     </span>
@@ -114,15 +114,15 @@ const Header = ({data}: MainMenuData) => {
                                       <span className="sr-only">{nextLevel}</span>
                                     </button>
                                     <ul id={`menu-button-lower-${subIndex}-${titleModified}`} key={`subMenuItem-menu-${subIndex}`} aria-labelledby={`subMenuItem-heading-${subIndex}-${subMenuItem.title.toLowerCase().replaceAll(' ', '-')}`}
-                                      className="ml-3 menu-lower-level">
+                                      className="ml-3 menu-lower-level lg:ml-8">
                                       {subMenuItem.items && subMenuItem.items.map((lowerSubMenuItem: MainMenuItem, lowerSubIndex: number) => {
                                           const activeClassLower = (asPath === lowerSubMenuItem.path) ? 'active-link': 'non-active-link';
                                           const ariaCurrentPageLower = (asPath === lowerSubMenuItem.path && lowerSubMenuItem.path !== '/') ? 'page' : undefined;
                                           // The third level items are only links
                                           return(
-                                            <li key={`lowerSubMenuItem-${lowerSubIndex}`} className="my-3">
+                                            <li key={`lowerSubMenuItem-${lowerSubIndex}`} className="my-1.5">
                                               <Link href={lowerSubMenuItem.path} aria-current={ariaCurrentPageLower} key={`lowerSubMenuItem-link-${lowerSubIndex}`} prefetch={false}
-                                                className={`text-lg p-1 block main-menu-link first-letter:capitalize ${activeClassLower}`}
+                                                className={`text-md p-1 block main-menu-link first-letter:capitalize ${activeClassLower}`}
                                               >
                                                 {lowerSubMenuItem.title}
                                               </Link>
@@ -131,9 +131,9 @@ const Header = ({data}: MainMenuData) => {
                                       })}
                                     </ul>
                                   </li>
-                                : <li key={`subMenuItem-link-wrapper-${subIndex}`} className="my-3">
+                                : <li key={`subMenuItem-link-wrapper-${subIndex}`} className="my-1.5">
                                     <Link href={subMenuItem.path} aria-current={ariaCurrentPage} key={`subMenuItem-link-${subIndex}`} prefetch={false}
-                                      className={`text-lg p-1 block main-menu-link first-letter:capitalize ${activeClass}`}
+                                      className={`text-md p-1 block main-menu-link first-letter:capitalize ${activeClass}`}
                                     >
                                       {subMenuItem.title}
                                     </Link>

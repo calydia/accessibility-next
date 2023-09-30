@@ -1,13 +1,19 @@
 import { AppProps } from 'next/app';
 import { ApolloProvider } from '@apollo/client';
 import { client } from '../lib/apollo';
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 import '../styles/globals.css';
-import { Average_Sans, Rock_Salt, Inter } from 'next/font/google'
+import { Rock_Salt, Inter, Lato } from 'next/font/google'
 import { appWithTranslation } from 'next-i18next';
 import { useTranslation } from 'next-i18next';
 import { useClickAnyWhere } from 'usehooks-ts';
+
+const lato = Lato({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-lato'
+})
 
 const rockSalt = Rock_Salt({
   subsets: ['latin'],
@@ -161,7 +167,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ApolloProvider client={client}>
-      <div className={`${rockSalt.className} ${averageSans.className} ${rockSalt.variable} ${averageSans.variable}`}>
+      <div className={`${rockSalt.className} ${averageSans.className} ${lato.className} ${rockSalt.variable} ${averageSans.variable} ${lato.variable}`}>
         <script
             dangerouslySetInnerHTML={{
               __html: `
