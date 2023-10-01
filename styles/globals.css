@@ -382,6 +382,10 @@ input[type="text"] {
   @apply mb-0;
 }
 
+main a {
+  @apply underline;
+}
+
 main a[href^="https://"]::after {
   @apply inline-block bg-no-repeat bg-right-bottom h-6 w-6;
 
